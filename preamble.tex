@@ -1,0 +1,59 @@
+% -------------------------------
+% Packages
+% -------------------------------
+\usepackage[a4paper,margin=3cm]{geometry}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% -------------------------------
+% Fonts and Encoding
+% -------------------------------
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% -------------------------------
+% Theorem Environments
+% -------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{proposition}[definition]{Proposition}
+
+% -------------------------------
+% Header and Footer
+% -------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{\textit{Mathematical Notes}}
+\cfoot{}
+
+% -------------------------------
+% Custom Commands
+% -------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\im}{Im}
+
+% -------------------------------
+% Examples & exercises
+% -------------------------------
+\newenvironment{solution}{\par\noindent\textbf{Solution.}\ }{\par}
+\newenvironment{exercise}{\par\noindent\textbf{Exercise.}\ }{\par}

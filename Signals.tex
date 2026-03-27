@@ -1,0 +1,746 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+	
+	\title{Notes}
+	\author{Ramon A. Oba}
+	\date{}
+	
+	\maketitle
+	\section*{Introduction}
+	
+	Let
+	\[
+	f:\mathbb{R}\to\mathbb{R}
+	\]
+	be a function. A transformation of its independent variable is described by another mapping
+	\[
+	g:\mathbb{R}\to\mathbb{R}.
+	\]
+	The variable is first sent through \(g\),
+	\[
+	t\mapsto g(t),
+	\]
+	and the resulting value is then used as the input of \(f\). In this way one obtains a new function
+	\[
+	F:\mathbb{R}\to\mathbb{R},\qquad F(t)=f(g(t)).
+	\]
+	Thus the transformed function is the composition
+	\[
+	F=f\circ g.
+	\]
+	Structurally, the process may be represented by the mapping scheme
+	\[
+	\mathbb{R}\xrightarrow{\;g\;}\mathbb{R}\xrightarrow{\;f\;}\mathbb{R},
+	\]
+	so that
+	\[
+	t\longmapsto g(t)\longmapsto f(g(t)).
+	\]
+	Hence the transformation acts on the point of the domain at which \(f\) is evaluated, rather than directly on the output values of \(f\).
+	
+	A particularly important class of such transformations is obtained when \(g\) is an affine function. An affine function on \(\mathbb{R}\) is a mapping of the form
+	\[
+	g(t)=at+b,\qquad a,b\in\mathbb{R},\quad a\neq 0.
+	\]
+	Thus an affine function is determined by two parameters: the coefficient \(a\), which controls the scaling of the variable and may also reverse its orientation when negative, and the constant term \(b\), which produces a translation of the variable. When the independent variable is transformed by an affine function, the resulting function takes the form
+	\[
+	F(t)=f(at+b).
+	\]
+	Accordingly, affine transformations provide a unified mathematical model for the standard manipulations of the independent variable.
+	
+	In mapping form, the affine case is represented by
+	\[
+	\mathbb{R}\xrightarrow{\;t\mapsto at+b\;}\mathbb{R}\xrightarrow{\;f\;}\mathbb{R},
+	\]
+	so that
+	\[
+	t\longmapsto at+b\longmapsto f(at+b).
+	\]
+	Therefore the transformation is completely determined by the affine mapping applied to the argument, while the transformed function itself is obtained by composition with \(f\).
+	
+	From a structural viewpoint, the family of mappings
+	\[
+	t\mapsto at+b,\qquad a\neq 0,
+	\]
+	forms the collection of affine transformations of the real line. Under composition, these transformations carry an algebraic structure known as the affine group. In this sense, the study of transformations of the independent variable can be regarded as the study of how a function behaves under the action of the affine group on its domain. This viewpoint is mathematically convenient because it gathers translation, scaling, and orientation reversal into a single general framework.
+	
+	Thus the essential scheme is
+	\[
+	f:\mathbb{R}\to\mathbb{R},\qquad g:\mathbb{R}\to\mathbb{R},\qquad F=f\circ g,
+	\]
+	and, in the affine case,
+	\[
+	g(t)=at+b,\qquad F(t)=f(at+b).
+	\]
+	This provides the general mathematical framework for later specialization to signal models.
+	
+	\section*{Periodic Functions and Equivalence Classes Modulo \(T\)}
+	
+	A function
+	\[
+	f:\mathbb{R}\to\mathbb{R}
+	\]
+	is said to be \emph{periodic} if there exists a real number \(T\neq 0\) such that
+	\[
+	f(t+T)=f(t)\qquad \forall t\in\mathbb{R}.
+	\]
+	If one further requires \(T>0\), then \(T\) is called a \emph{period} of \(f\). This condition expresses the fact that the value of the function remains unchanged under translation of the argument by \(T\). Repeating this translation yields
+	\[
+	f(t+nT)=f(t)\qquad \forall t\in\mathbb{R},\ \forall n\in\mathbb{Z},
+	\]
+	so that the function takes the same value at all points that differ by an integer multiple of \(T\).
+	
+	This naturally leads to the equivalence relation on \(\mathbb{R}\) defined by
+	\[
+	t_1\sim t_2
+	\quad\Longleftrightarrow\quad
+	t_1-t_2=nT
+	\ \text{for some } n\in\mathbb{Z}.
+	\]
+	In other words, two real numbers are equivalent when they differ by an integer multiple of the period. The equivalence class of \(t\) is denoted by
+	\[
+	[t]=t+T\mathbb{Z},
+	\]
+	and the set of all such classes is the quotient set
+	\[
+	\mathbb{R}/T\mathbb{Z}.
+	\]
+	Thus a periodic function is constant on each equivalence class modulo \(T\), which means that it does not depend on the full value of \(t\), but only on its class modulo \(T\).
+	
+	Accordingly, a periodic function may be viewed as a function on the quotient space \(\mathbb{R}/T\mathbb{Z}\). More precisely, there exists a function
+	\[
+	\Phi:\mathbb{R}/T\mathbb{Z}\to\mathbb{R}
+	\]
+	such that
+	\[
+	f=\Phi\circ\pi,
+	\]
+	where
+	\[
+	\pi:\mathbb{R}\to\mathbb{R}/T\mathbb{Z}
+	\]
+	is the canonical projection sending each real number \(t\) to its equivalence class \([t]\). The corresponding mapping scheme is therefore
+	\[
+	\mathbb{R}\xrightarrow{\;\pi\;}\mathbb{R}/T\mathbb{Z}\xrightarrow{\;\Phi\;}\mathbb{R},
+	\]
+	so that
+	\[
+	t\longmapsto [t]\longmapsto \Phi([t]).
+	\]
+	In this sense, the notation
+	\[
+	t \bmod T
+	\]
+	expresses that the function depends only on the residue class of \(t\) modulo \(T\), rather than on the particular representative chosen from that class.
+	
+	From this structural viewpoint, periodicity is an invariance property under translations of the form
+	\[
+	t\mapsto t+T.
+	\]
+	Hence a periodic function is one whose value is unchanged under the action of integer translations by multiples of \(T\), and may therefore be understood as a function defined on equivalence classes modulo \(T\).
+	
+	\section*{Operators on Functions}
+	
+	A natural continuation of the preceding framework is obtained by passing from transformations of the independent variable to transformations of the function itself. Previously, one considers a function
+	\[
+	f:\mathbb{R}\to\mathbb{R}
+	\]
+	and a mapping
+	\[
+	g:\mathbb{R}\to\mathbb{R},
+	\]
+	so that the transformed function is given by composition,
+	\[
+	F=f\circ g,
+	\qquad
+	F(t)=f(g(t)).
+	\]
+	In this case, the transformation acts on the argument of the function. A different level of structure is obtained when the transformation takes the whole function as its input.
+	
+	Let \(\mathcal{S}\) denote a collection of functions
+	\[
+	f:\mathbb{R}\to\mathbb{R}.
+	\]
+	An operator on \(\mathcal{S}\) is a mapping
+	\[
+	T:\mathcal{S}\to\mathcal{S}.
+	\]
+	Thus, to each function \(f\in\mathcal{S}\), the operator assigns another function \(T(f)\in\mathcal{S}\). If one denotes the resulting function by \(F\), then
+	\[
+	F=T(f).
+	\]
+	Evaluating the output at a point \(t\in\mathbb{R}\) gives
+	\[
+	F(t)=(T(f))(t).
+	\]
+	This notation makes clear that two distinct operations are involved: first the operator \(T\) acts on the entire function \(f\), and only afterwards is the resulting function evaluated at the point \(t\).
+	
+	The corresponding mapping scheme is
+	\[
+	\mathcal{S}\xrightarrow{\;T\;}\mathcal{S},
+	\qquad
+	f\longmapsto T(f),
+	\]
+	whereas, in the case of composition with a transformation of the independent variable, the structure is
+	\[
+	\mathbb{R}\xrightarrow{\;g\;}\mathbb{R}\xrightarrow{\;f\;}\mathbb{R},
+	\qquad
+	t\longmapsto g(t)\longmapsto f(g(t)).
+	\]
+	Hence the two constructions act at different levels: composition with \(g\) acts on the variable of the function, whereas the operator \(T\) acts on the function itself.
+	
+	From this viewpoint, operators provide a general framework for studying transformations of functions as elements of a function space. This perspective is structurally important, since later properties such as linearity and invariance are properties not of individual functions alone, but of operators acting on classes of functions.
+	
+	\section*{Complex Representation of Sinusoidal Functions}
+	
+	A fundamental class of real-valued functions is given by the sinusoidal functions
+	\[
+	f:\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t)=A\cos(\omega t+\phi),
+	\]
+	where \(A\in\mathbb{R}\) is the amplitude, \(\omega\in\mathbb{R}\) is a parameter, and \(\phi\in\mathbb{R}\) is a phase constant. In this form, the function is real-valued, so its codomain is \(\mathbb{R}\).
+	
+	A structural change is obtained by replacing this real-valued description with a complex-valued one. This is done by introducing a new function
+	\[
+	\widetilde f:\mathbb{R}\to\mathbb{C},
+	\]
+	so that the domain remains \(\mathbb{R}\), while the codomain is enlarged from \(\mathbb{R}\) to \(\mathbb{C}\). Thus the independent variable is not altered; what changes is the space in which the function values are allowed to lie.
+	
+	The relation between the original real-valued function and its complex-valued representative is expressed through the real-part projection
+	\[
+	\Re:\mathbb{C}\to\mathbb{R}.
+	\]
+	The original function is then recovered by
+	\[
+	f=\Re\circ \widetilde f.
+	\]
+	Hence the structural scheme is
+	\[
+	\mathbb{R}\xrightarrow{\;\widetilde f\;}\mathbb{C}\xrightarrow{\;\Re\;}\mathbb{R},
+	\]
+	so that
+	\[
+	t\longmapsto \widetilde f(t)\longmapsto \Re(\widetilde f(t)).
+	\]
+	
+	In the sinusoidal case, the complex-valued representative is taken to be
+	\[
+	\widetilde f(t)=Ae^{i(\omega t+\phi)}.
+	\]
+	By Euler's identity,
+	\[
+	e^{i\theta}=\cos\theta+i\sin\theta,
+	\]
+	and therefore
+	\[
+	Ae^{i(\omega t+\phi)}
+	=
+	A\cos(\omega t+\phi)
+	+
+	iA\sin(\omega t+\phi).
+	\]
+	Taking real parts yields
+	\[
+	\Re\!\bigl(Ae^{i(\omega t+\phi)}\bigr)=A\cos(\omega t+\phi),
+	\]
+	so that
+	\[
+	f(t)=\Re\!\bigl(Ae^{i(\omega t+\phi)}\bigr).
+	\]
+	
+	Thus the passage from a real sinusoidal function to a complex exponential is achieved not by transforming the independent variable, but by enlarging the codomain and introducing a complex-valued representative from which the original function is recovered by projection. In this way, the trigonometric pair
+	\[
+	\cos(\omega t+\phi),
+	\qquad
+	\sin(\omega t+\phi)
+	\]
+	is unified into the single complex-valued function
+	\[
+	e^{i(\omega t+\phi)}.
+	\]
+	
+	From a structural viewpoint, the complex exponential provides a richer representation of the sinusoidal function. The original real-valued function appears as one component of this larger object, while the imaginary part carries the complementary sinusoidal term. This enlargement of the codomain will later provide the natural setting in which operators acting on functions may preserve functional form, thereby leading to the notion of eigenfunction.
+	
+	\section*{Eigenfunctions}
+	
+	Let \(\mathcal{S}\) be a collection of functions and let
+	\[
+	T:\mathcal{S}\to\mathcal{S}
+	\]
+	be an operator acting on that space. For each function \(f\in\mathcal{S}\), the operator assigns another function
+	\[
+	T(f)\in\mathcal{S}.
+	\]
+	In general, the output \(T(f)\) may have a form different from that of \(f\). A particularly important situation occurs when the action of the operator preserves the functional form of \(f\), changing it only by multiplication by a scalar. In that case one has
+	\[
+	T(f)=\lambda f
+	\]
+	for some scalar \(\lambda\).
+	
+	This relation expresses that the operator does not transform \(f\) into a function of a different structural type, but returns the same function multiplied by a constant. Thus the function is preserved in form under the action of the operator. Such functions play a distinguished role, since they are naturally adapted to the operator.
+	
+	A basic example is provided by the differentiation operator
+	\[
+	D(f)=\frac{df}{dt}.
+	\]
+	If
+	\[
+	f(t)=e^{\lambda t},
+	\]
+	then
+	\[
+	D(f)=\lambda e^{\lambda t}=\lambda f.
+	\]
+	Hence the exponential function is preserved in form under differentiation. By contrast, if
+	\[
+	f(t)=\cos(\omega t),
+	\]
+	then
+	\[
+	D(f)=-\omega \sin(\omega t),
+	\]
+	which is not a scalar multiple of \(\cos(\omega t)\). Thus the cosine function, taken by itself, is not preserved in this sense.
+	
+	The complex exponential form is therefore structurally important. For
+	\[
+	f(t)=e^{i\omega t},
+	\]
+	one obtains
+	\[
+	\frac{d}{dt}e^{i\omega t}=i\omega e^{i\omega t},
+	\]
+	so that the form of the function is preserved. In the same way, if one considers the translation operator \(S_\tau\) defined by
+	\[
+	(S_\tau f)(t)=f(t+\tau),
+	\]
+	then
+	\[
+	(S_\tau e^{i\omega t})(t)=e^{i\omega(t+\tau)}=e^{i\omega\tau}e^{i\omega t}.
+	\]
+	Again the function is preserved up to multiplication by a scalar.
+	
+	This motivates the definition of an eigenfunction. A nonzero function \(f\in\mathcal{S}\) is called an \emph{eigenfunction} of the operator \(T\) if there exists a scalar \(\lambda\) such that
+	\[
+	T(f)=\lambda f.
+	\]
+	The scalar \(\lambda\) is called the corresponding \emph{eigenvalue}. Thus an eigenfunction is a function whose form is preserved under the action of the operator, while the eigenvalue measures the scalar factor by which it is modified.
+	
+	A nonzero function \(f\in\mathcal{S}\) is called an \emph{eigenfunction} of an operator
+	\[
+	T:\mathcal{S}\to\mathcal{S}
+	\]
+	if there exists a scalar \(\lambda\) such that
+	\[
+	T(f)=\lambda f.
+	\]
+	The scalar \(\lambda\) is called the corresponding \emph{eigenvalue}. This relation means that the operator acts on \(f\) without altering its functional form, changing it only by multiplication by a scalar factor. Thus the function is preserved in form under the action of the operator. The condition \(f\neq 0\) is necessary because the zero function satisfies
+	\[
+	T(0)=\lambda 0
+	\]
+	for every scalar \(\lambda\), and therefore provides no structural information. In pointwise form, the eigenfunction relation may be written as
+	\[
+	(T(f))(t)=\lambda f(t)\qquad \forall t,
+	\]
+	which shows that the equality is an equality of functions. A basic example is provided by the differentiation operator
+	\[
+	D(f)=\frac{df}{dt}.
+	\]
+	If
+	\[
+	f(t)=e^{\mu t},
+	\]
+	then
+	\[
+	D(f)=\mu e^{\mu t}=\mu f,
+	\]
+	so \(e^{\mu t}\) is an eigenfunction of \(D\) with eigenvalue \(\mu\). In particular, for
+	\[
+	f(t)=e^{i\omega t},
+	\]
+	one obtains
+	\[
+	D(f)=i\omega e^{i\omega t}=i\omega f,
+	\]
+	so the complex exponential is an eigenfunction of the differentiation operator with eigenvalue \(i\omega\).
+	
+	A nonzero function \(f\in\mathcal{S}\) is called an \emph{eigenfunction} of an operator
+	\[
+	T:\mathcal{S}\to\mathcal{S}
+	\]
+	if there exists a scalar \(\lambda\) such that
+	\[
+	T(f)=\lambda f.
+	\]
+	The scalar \(\lambda\) is called the corresponding \emph{eigenvalue}. This relation means that the operator acts on \(f\) without altering its functional form, changing it only by multiplication by a scalar factor. Thus the function is preserved in form under the action of the operator. The condition \(f\neq 0\) is necessary because the zero function satisfies
+	\[
+	T(0)=\lambda 0
+	\]
+	for every scalar \(\lambda\), and therefore provides no structural information. In pointwise form, the eigenfunction relation may be written as
+	\[
+	(T(f))(t)=\lambda f(t)\qquad \forall t,
+	\]
+	which shows that the equality is an equality of functions. A basic example is provided by the differentiation operator
+	\[
+	D(f)=\frac{df}{dt}.
+	\]
+	If
+	\[
+	f(t)=e^{\mu t},
+	\]
+	then
+	\[
+	D(f)=\mu e^{\mu t}=\mu f,
+	\]
+	so \(e^{\mu t}\) is an eigenfunction of \(D\) with eigenvalue \(\mu\). In particular, for
+	\[
+	f(t)=e^{i\omega t},
+	\]
+	one obtains
+	\[
+	D(f)=i\omega e^{i\omega t}=i\omega f,
+	\]
+	so the complex exponential is an eigenfunction of the differentiation operator with eigenvalue \(i\omega\).
+	
+	The eigenvalue relation
+	\[
+	T(f)=\lambda f
+	\]
+	is understood relative to a specified function space \(\mathcal{S}\) and an operator
+	\[
+	T:\mathcal{S}\to\mathcal{S}.
+	\]
+	Accordingly, the function \(f\) must belong to \(\mathcal{S}\), the action of \(T\) on \(f\) must be well defined, and the resulting function \(T(f)\) must again lie in \(\mathcal{S}\). The condition \(f\neq 0\) is essential, since the zero function satisfies
+	\[
+	T(0)=\lambda 0
+	\]
+	for every scalar \(\lambda\), and therefore carries no meaningful structural information. The scalar \(\lambda\) must belong to the underlying field of the function space, typically \(\mathbb{R}\) or \(\mathbb{C}\), and it must be a constant, not a function of the independent variable. Thus the equality
+	\[
+	T(f)=\lambda f
+	\]
+	is an equality of functions, meaning explicitly that
+	\[
+	(T(f))(t)=\lambda f(t)\qquad \forall t
+	\]
+	in the domain. Although the formal relation may be written for arbitrary operators, the notion of eigenfunction is most structurally significant when \(T\) is linear, since in that setting the operator preserves the form of the function in a way analogous to the action of a linear transformation on a vector.
+	
+	\section*{Mathematical Laboratory}
+	
+	The following examples are intended to reinforce the structural distinctions introduced previously, namely the distinction between composition on the independent variable, operators acting on functions, periodicity as invariance under translation, and preservation of functional form in the sense of eigenfunctions.
+	
+	Consider first the expression
+	\[
+	f(2t+1).
+	\]
+	This is a composition on the variable. If one defines
+	\[
+	g:\mathbb{R}\to\mathbb{R},\qquad g(t)=2t+1,
+	\]
+	then
+	\[
+	F(t)=f(2t+1)=f(g(t))=(f\circ g)(t).
+	\]
+	Thus the transformation acts on the argument of the function, not on the function itself. For example, if
+	\[
+	f(u)=u^2,
+	\]
+	then
+	\[
+	(f\circ g)(t)=f(g(t))=(g(t))^2=(2t+1)^2.
+	\]
+	
+	Now consider the differentiation operator
+	\[
+	D:\mathcal{S}\to\mathcal{S},\qquad D(f)=f'.
+	\]
+	This is not a composition on the variable, but an operator acting on the whole function. Its action is written
+	\[
+	f\longmapsto D(f),
+	\]
+	and at the level of evaluation,
+	\[
+	(D(f))(t)=f'(t).
+	\]
+	If
+	\[
+	f(t)=e^{3t},
+	\]
+	then
+	\[
+	D(f)=3e^{3t}=3f,
+	\]
+	so the exponential function is preserved in form and is therefore an eigenfunction of the differentiation operator, with eigenvalue
+	\[
+	\lambda=3.
+	\]
+	
+	Next, consider the expression
+	\[
+	f(t+T).
+	\]
+	This again is a composition on the variable. If one defines
+	\[
+	g(t)=t+T,
+	\]
+	then
+	\[
+	F(t)=f(t+T)=f(g(t))=(f\circ g)(t).
+	\]
+	This expression does not by itself imply periodicity. It becomes a periodicity condition only when one imposes the invariance relation
+	\[
+	f(t+T)=f(t)\qquad \forall t.
+	\]
+	Thus translation of the variable and periodicity must be distinguished: the first is a transformation of the argument, whereas the second is the requirement that the function remain unchanged under that transformation.
+	
+	Consider now the operator defined by
+	\[
+	T(f)=f'.
+	\]
+	This is an operator on functions, specifically the differentiation operator. Its input is a function \(f\), and its output is the derivative of \(f\). If
+	\[
+	f(t)=\cos(\omega t),
+	\]
+	then
+	\[
+	T(f)=f'=-\omega\sin(\omega t).
+	\]
+	This output is not of the form
+	\[
+	\lambda \cos(\omega t)
+	\]
+	for any constant scalar \(\lambda\). Hence \(\cos(\omega t)\) is not an eigenfunction of differentiation. Although
+	\[
+	\sin(\omega t)=\cos\!\left(\omega t-\frac{\pi}{2}\right),
+	\]
+	so that the derivative remains within the broader sinusoidal family, this does not satisfy the eigenfunction condition. In the eigenfunction relation
+	\[
+	T(f)=\lambda f,
+	\]
+	the internal form of the function must remain unchanged, and only multiplication by a scalar constant is allowed.
+	
+	By contrast, for the complex exponential
+	\[
+	f(t)=e^{i\omega t},
+	\]
+	one obtains
+	\[
+	D(f)=i\omega e^{i\omega t}=i\omega f.
+	\]
+	Thus the complex exponential is preserved in form under differentiation and is therefore an eigenfunction of the differentiation operator, with eigenvalue
+	\[
+	\lambda=i\omega.
+	\]
+	
+	These examples illustrate the main structural distinctions developed so far. Composition with a map \(g\) acts on the independent variable, operators act on whole functions, periodicity is invariance under translation of the variable, and the eigenfunction condition requires preservation of the entire function up to multiplication by a scalar constant.
+	
+	\section*{Homework}
+	
+	The following exercises are intended to consolidate the structural framework developed so far, namely composition on the independent variable, periodicity as invariance under translation, operators on function spaces, enlargement of the codomain, and preservation of functional form in the sense of eigenfunctions.
+	
+	\subsection*{Part I: Composition on the Variable}
+	
+	For each of the following expressions, identify an outer function \(f\), an inner function \(g\), and write the composition in the form
+	\[
+	F=f\circ g.
+	\]
+	Then write explicitly the mapping scheme
+	\[
+	\mathbb{R}\xrightarrow{\;g\;}\mathbb{R}\xrightarrow{\;f\;}\mathbb{R}.
+	\]
+	
+	\begin{enumerate}
+		\item
+		\[
+		F(t)=\sqrt{3t-2}
+		\]
+		\item
+		\[
+		F(t)=\sin(5t+\pi)
+		\]
+		\item
+		\[
+		F(t)=e^{-(2t+1)}
+		\]
+		\item
+		\[
+		F(t)=\frac{1}{(t-4)^2+1}
+		\]
+	\end{enumerate}
+	
+	\subsection*{Part II: Translation and Periodicity}
+	
+	For each of the following, determine whether the expression represents merely a translation of the independent variable, or whether it also expresses a periodicity relation.
+	
+	\begin{enumerate}
+		\item
+		\[
+		f(t+3)
+		\]
+		\item
+		\[
+		\sin(t+2\pi)=\sin t
+		\]
+		\item
+		\[
+		e^{t+1}
+		\]
+		\item
+		\[
+		\cos\!\left(t+\frac{\pi}{2}\right)
+		\]
+	\end{enumerate}
+	
+	Then answer the following question:
+	
+	What additional condition must be imposed on
+	\[
+	f(t+T)
+	\]
+	for it to become a periodicity statement?
+	
+	\subsection*{Part III: Operators on Functions}
+	
+	For each expression below, determine whether it is
+	
+	\begin{itemize}
+		\item a composition on the variable, or
+		\item an operator on functions.
+	\end{itemize}
+	
+	\begin{enumerate}
+		\item
+		\[
+		f(2t)
+		\]
+		\item
+		\[
+		T(f)=f'
+		\]
+		\item
+		\[
+		T(f)=2f
+		\]
+		\item
+		\[
+		f(t-\tau)
+		\]
+		\item
+		\[
+		T(f)=f''+f
+		\]
+	\end{enumerate}
+	
+	For each operator, describe in words what the operator does to the input function.
+	
+	\subsection*{Part IV: Preservation of Form}
+	
+	Let
+	\[
+	D(f)=f'
+	\]
+	denote the differentiation operator.
+	
+	Determine whether each of the following functions is an eigenfunction of \(D\). If it is, compute the corresponding eigenvalue. If it is not, explain clearly why it fails in structural terms.
+	
+	\begin{enumerate}
+		\item
+		\[
+		f(t)=e^{2t}
+		\]
+		\item
+		\[
+		f(t)=e^{-3t}
+		\]
+		\item
+		\[
+		f(t)=e^{i\omega t}
+		\]
+		\item
+		\[
+		f(t)=\cos(\omega t)
+		\]
+		\item
+		\[
+		f(t)=\sin(\omega t)
+		\]
+		\item
+		\[
+		f(t)=t^2
+		\]
+	\end{enumerate}
+	
+	\subsection*{Part V: Enlargement of the Codomain}
+	
+	For each real-valued sinusoidal function below, write a complex-valued representative \(\widetilde f\) such that
+	\[
+	f=\Re\circ \widetilde f.
+	\]
+	
+	\begin{enumerate}
+		\item
+		\[
+		f(t)=\cos(\omega t)
+		\]
+		\item
+		\[
+		f(t)=3\cos(2t+\phi)
+		\]
+		\item
+		\[
+		f(t)=A\cos(\omega t+\phi)
+		\]
+	\end{enumerate}
+	
+	Then choose one of the above examples and verify explicitly that
+	\[
+	f(t)=\Re(\widetilde f(t)).
+	\]
+	
+	\subsection*{Part VI: Short Proofs}
+	
+	Write short and clean arguments for each of the following statements.
+	
+	\begin{enumerate}
+		\item Show that if
+		\[
+		f(t)=e^{\mu t},
+		\]
+		then \(f\) is an eigenfunction of the differentiation operator.
+		
+		\item Let the translation operator \(S_\tau\) be defined by
+		\[
+		(S_\tau f)(t)=f(t+\tau).
+		\]
+		Show that if
+		\[
+		f(t)=e^{i\omega t},
+		\]
+		then \(f\) is an eigenfunction of \(S_\tau\).
+		
+		\item Show that if
+		\[
+		f(t+T)=f(t)\qquad \forall t,
+		\]
+		then
+		\[
+		f(t+nT)=f(t)\qquad \forall n\in\mathbb{Z}.
+		\]
+	\end{enumerate}
+	
+	\subsection*{Final Consolidation Task}
+	
+	Write a short final summary, preferably by hand, organized around the following four relations:
+	\[
+	F=f\circ g,
+	\qquad
+	f(t+T)=f(t),
+	\qquad
+	T:\mathcal{S}\to\mathcal{S},
+	\qquad
+	T(f)=\lambda f.
+	\]
+	For each one, explain in your own words what kind of mathematical object is acting, what object is being acted upon, and what structural property is being expressed.
+\end{document}

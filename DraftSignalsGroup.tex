@@ -1,0 +1,1398 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+	
+	\title{My Mathematics Notes}
+	\author{Ramon}
+	\date{\today}
+	
+	\maketitle
+	
+	\paragraph{Logical progression of the structure.}
+	The development follows a fixed structural order: one begins with the ambient framework, then identifies the elements that belong to it, then introduces the operations and maps acting on those elements, then states the axioms governing those operations, and finally defines the notions derived from them. In the present case, this progression may be organized as
+	$$
+	\text{ambient structure: field of scalars}
+	\;\to\;
+	\text{ambient structure: vector space}
+	\;\to\;
+	\text{elements: vectors, scalars, basis elements},
+	$$
+	$$
+	\text{operations/maps: addition, scalar multiplication, pairing}
+	\;\to\;
+	\text{axioms: vector-space axioms, bilinearity, symmetry, positivity},
+	$$
+	$$
+	\text{derived notions: coordinates, norm, inner product, orthogonality}.
+	$$
+	Thus, each concept is introduced only after the structural level on which it depends has been established.
+	
+	\section{Terminological Distinction}
+	
+	In these notes the word \emph{field} may occur in two different senses.
+	
+	In analysis, vector calculus, and mathematical physics, a \emph{field} is a function defined on a space. For example,
+	$$
+	f:\mathbb{R}^n\to\mathbb{R},
+	\qquad
+	F:\mathbb{R}^n\to\mathbb{R}^n.
+	$$
+	
+	In algebra, a \emph{field} is a set of scalars equipped with two binary operations, addition and multiplication, satisfying specific axioms.
+	
+	Whenever ambiguity may arise, we shall say \emph{algebraic field} for the latter. In the present chapter, the relevant meaning is the algebraic one.
+	
+	\paragraph{}
+	A scalar is an element of the base field. Thus, if the base field is $\mathbb{R}$, a scalar is simply a real number; if the base field is $\mathbb{C}$, a scalar is a complex number. Accordingly, if $u\in \mathbb{R}^n$, then its components are real scalars. More precisely, once a basis $\{e_1,\dots,e_n\}$ is fixed, every vector $u\in \mathbb{R}^n$ can be written in the form
+	$$
+	u=u_1e_1+\cdots+u_ne_n,
+	$$
+	where the coefficients $u_1,\dots,u_n\in\mathbb{R}$ are the components of $u$ relative to that basis. Thus, the components of a vector are the scalar coefficients appearing in its expansion with respect to a chosen basis.
+	
+	\section{The Algebraic Field of Scalars}
+	
+	\begin{definition}[Scalar]
+		Let $\mathbb{K}$ be an algebraic field. An element $\lambda\in\mathbb{K}$ is called a \emph{scalar}.
+	\end{definition}
+	
+	\begin{definition}[Field]
+		Let $\mathbb{K}$ be a set equipped with two binary operations
+		$$
+		+:\mathbb{K}\times\mathbb{K}\to\mathbb{K},
+		\qquad
+		\cdot:\mathbb{K}\times\mathbb{K}\to\mathbb{K}.
+		$$
+		Then $\mathbb{K}$ is called a \emph{field} if the following conditions hold:
+		
+		\begin{enumerate}
+			\item $(\mathbb{K},+)$ is an abelian group.
+			
+			\item $(\mathbb{K}^{\times},\cdot)$ is an abelian group, where
+			$$
+			\mathbb{K}^{\times}:=\mathbb{K}\setminus\{0\}.
+			$$
+			
+			\item Multiplication distributes over addition:
+			$$
+			a(b+c)=ab+ac
+			\qquad
+			\forall a,b,c\in\mathbb{K}.
+			$$
+			
+			\item
+			$$
+			0\neq 1.
+			$$
+		\end{enumerate}
+	\end{definition}
+	
+	\paragraph{Why $0\neq 1$.}
+	The condition
+	$$
+	0\neq 1
+	$$
+	prevents the structure from collapsing into the trivial one-element system. If $0=1$, then the additive and multiplicative identities would coincide, and the scalar structure would lose the distinction required for meaningful algebraic operations.
+	
+	\paragraph{Further meaning of the condition $0\neq 1$.}
+	The requirement
+	$$
+	0\neq 1
+	$$
+	is a non-degeneracy condition. If one had $0=1$, then for every $a\in\mathbb{K}$,
+	$$
+	a=a\cdot 1=a\cdot 0=0,
+	$$
+	so every element of $\mathbb{K}$ would coincide with $0$. Thus the whole structure would collapse to the trivial one-element set. The condition $0\neq 1$ ensures that the additive identity and the multiplicative identity remain distinct, and therefore that the scalar structure is nontrivial.
+	
+	\paragraph{Expanded form of the field axioms.}
+	Since $(\mathbb{K},+)$ is an abelian group, for all $a,b,c\in\mathbb{K}$,
+	$$
+	a+b=b+a,
+	$$
+	$$
+	(a+b)+c=a+(b+c),
+	$$
+	$$
+	\exists\,0\in\mathbb{K}\text{ such that }a+0=a,
+	$$
+	$$
+	\forall a\in\mathbb{K},\ \exists\,(-a)\in\mathbb{K}\text{ such that }a+(-a)=0.
+	$$
+	
+	Since $(\mathbb{K}^{\times},\cdot)$ is an abelian group, for all $a,b,c\in\mathbb{K}^{\times}$,
+	$$
+	ab=ba,
+	$$
+	$$
+	(ab)c=a(bc),
+	$$
+	$$
+	\exists\,1\in\mathbb{K}^{\times}\text{ such that }a\cdot 1=a,
+	$$
+	$$
+	\forall a\in\mathbb{K}^{\times},\ \exists\,a^{-1}\in\mathbb{K}^{\times}\text{ such that }aa^{-1}=1.
+	$$
+	
+	Finally, distributivity requires
+	$$
+	a(b+c)=ab+ac
+	\qquad
+	\forall a,b,c\in\mathbb{K}.
+	$$
+	
+	\paragraph{How the two group structures are combined.}
+	The field structure is not obtained by an arbitrary blending of the two groups
+	$$
+	(\mathbb{K},+)
+	\qquad\text{and}\qquad
+	(\mathbb{K}^{\times},\cdot).
+	$$
+	Rather, both group structures coexist on the same underlying set $\mathbb{K}$, with the multiplicative structure restricted to the nonzero elements, and they are tied together by the distributive law
+	$$
+	a(b+c)=ab+ac.
+	$$
+	
+	Thus, the field axioms consist of
+	$$
+	\text{additive group structure}
+	\;+\;
+	\text{multiplicative group structure}
+	\;+\;
+	\text{distributive compatibility}.
+	$$
+	
+	\paragraph{For the present development.}
+	In what follows, we take
+	$$
+	\mathbb{K}=\mathbb{R}.
+	$$
+	Hence all scalars are real numbers.
+	
+	\section{Vector Spaces over a Field}
+	
+	We now pass from the scalar structure to the vector structure.
+	
+	\begin{definition}[Vector Space]
+		Let $\mathbb{K}$ be a field and let $V$ be a set equipped with two operations
+		$$
+		+ : V\times V\to V,
+		\qquad
+		\mathbb{K}\times V\to V,\qquad (\lambda,v)\mapsto \lambda v.
+		$$
+		Then $V$ is called a \emph{vector space over $\mathbb{K}$} if the following conditions hold:
+		
+		\begin{enumerate}
+			\item $(V,+)$ is an abelian group.
+			
+			\item Scalar multiplication is compatible with the structures of $\mathbb{K}$ and $V$, that is, for all $\lambda,\mu\in\mathbb{K}$ and all $u,v\in V$,
+			$$
+			\lambda(u+v)=\lambda u+\lambda v,
+			$$
+			$$
+			(\lambda+\mu)v=\lambda v+\mu v,
+			$$
+			$$
+			(\lambda\mu)v=\lambda(\mu v),
+			$$
+			$$
+			1v=v.
+			$$
+		\end{enumerate}
+	\end{definition}
+	
+	\paragraph{Expanded form of the vector-space axioms.}
+	Since $(V,+)$ is an abelian group, for all $u,v,w\in V$,
+	$$
+	u+v=v+u,
+	$$
+	$$
+	(u+v)+w=u+(v+w),
+	$$
+	$$
+	\exists\,0_V\in V\text{ such that }v+0_V=v,
+	$$
+	$$
+	\forall v\in V,\ \exists\,(-v)\in V\text{ such that }v+(-v)=0_V.
+	$$
+	
+	The scalar action
+	$$
+	\mathbb{K}\times V\to V
+	$$
+	satisfies, for all $\lambda,\mu\in\mathbb{K}$ and all $u,v\in V$,
+	$$
+	\lambda(u+v)=\lambda u+\lambda v,
+	$$
+	$$
+	(\lambda+\mu)v=\lambda v+\mu v,
+	$$
+	$$
+	(\lambda\mu)v=\lambda(\mu v),
+	$$
+	$$
+	1v=v.
+	$$
+	
+	\paragraph{Structural distinction between $\mathbb{K}$ and $V$.}
+	The field $\mathbb{K}$ and the vector space $V$ are distinct structures. The elements of $\mathbb{K}$ are scalars, while the elements of $V$ are vectors. Their relation is given by the scalar multiplication map
+	$$
+	\mathbb{K}\times V\to V.
+	$$
+	Thus, the field governs the coefficients, while the vector space carries the objects determined by those coefficients.
+	
+	\section{Basis and Coordinate Representation}
+	
+	Let $V$ be a vector space over $\mathbb{K}$.
+	
+	\begin{definition}[Basis]
+		A family $\{e_i\}_{i\in I}\subseteq V$ is called a \emph{basis} of $V$ if every vector $v\in V$ can be written uniquely in the form
+		$$
+		v=\sum_{i\in I} a_i e_i,
+		\qquad
+		a_i\in\mathbb{K},
+		$$
+		with only finitely many coefficients $a_i$ nonzero.
+	\end{definition}
+	
+	In this expression, the basis elements $e_i$ belong to the vector space $V$, whereas the coefficients $a_i$ belong to the field $\mathbb{K}$.
+	
+	\paragraph{Coordinate model.}
+	In the standard case
+	$$
+	V=\mathbb{R}^n,
+	$$
+	a vector is an ordered $n$-tuple
+	$$
+	v=(x_1,\dots,x_n),
+	$$
+	and the standard basis is
+	$$
+	e_1=(1,0,\dots,0),\quad
+	e_2=(0,1,\dots,0),\quad \dots,\quad
+	e_n=(0,\dots,0,1).
+	$$
+	Hence every vector admits the unique representation
+	$$
+	v=x_1e_1+\cdots+x_ne_n.
+	$$
+	
+	\section{Scalar-Valued Pairings, Bilinear Forms, and Inner Products}
+	
+	The logical progression is the following: first one specifies the scalar field $\mathbb{K}$, then the vector space $V$ over $\mathbb{K}$, and then a scalar-valued pairing
+	$$
+	B:V\times V\to\mathbb{K}.
+	$$
+	If that pairing is bilinear, it is called a bilinear form; if it is also symmetric, it becomes a symmetric bilinear form; and in the real case, if it is moreover positive definite, it becomes an inner product. Orthogonality is then defined by the vanishing of this inner product.
+	
+	\begin{definition}[Scalar-Valued Pairing]
+		Let $V$ be a vector space over a field $\mathbb{K}$. A \emph{scalar-valued pairing} on $V$ is a map
+		$$
+		B:V\times V\to\mathbb{K}
+		$$
+		which assigns to each ordered pair $(u,v)\in V\times V$ a scalar $B(u,v)\in\mathbb{K}$.
+	\end{definition}
+	
+	\begin{definition}[Bilinear Form]
+		Let $V$ be a vector space over a field $\mathbb{K}$. A \emph{bilinear form} on $V$ is a scalar-valued pairing
+		$$
+		B:V\times V\to\mathbb{K}
+		$$
+		such that for all $u,v,w\in V$ and all $a,b\in\mathbb{K}$,
+		$$
+		B(au+bv,w)=aB(u,w)+bB(v,w),
+		$$
+		and
+		$$
+		B(w,au+bv)=aB(w,u)+bB(w,v).
+		$$
+		That is, $B$ is linear in each argument separately.
+	\end{definition}
+	
+	\begin{definition}[Symmetric Bilinear Form]
+		Let $V$ be a vector space over a field $\mathbb{K}$, and let
+		$$
+		B:V\times V\to\mathbb{K}
+		$$
+		be a bilinear form. Then $B$ is said to be \emph{symmetric} if
+		$$
+		B(u,v)=B(v,u)
+		\qquad
+		\text{for all }u,v\in V.
+		$$
+	\end{definition}
+	
+	\begin{definition}[Inner Product]
+		Let $V$ be a vector space over $\mathbb{R}$. An \emph{inner product} on $V$ is a map
+		$$
+		\langle\cdot,\cdot\rangle:V\times V\to\mathbb{R}
+		$$
+		such that, for all $u,v,w\in V$ and all $a,b\in\mathbb{R}$, the following conditions hold:
+		\begin{enumerate}
+			\item \emph{Bilinearity:}
+			$$
+			\langle au+bv,w\rangle=a\langle u,w\rangle+b\langle v,w\rangle,
+			$$
+			and
+			$$
+			\langle w,au+bv\rangle=a\langle w,u\rangle+b\langle w,v\rangle.
+			$$
+			
+			\item \emph{Symmetry:}
+			$$
+			\langle u,v\rangle=\langle v,u\rangle.
+			$$
+			
+			\item \emph{Positive definiteness:}
+			$$
+			\langle v,v\rangle\ge 0
+			\qquad
+			\text{for all }v\in V,
+			$$
+			and
+			$$
+			\langle v,v\rangle=0 \iff v=0.
+			$$
+		\end{enumerate}
+	\end{definition}
+	
+	\paragraph{Why bilinearity, and why multiplication.}
+	Once a vector space $V$ over a field $\mathbb{K}$ has been fixed, a scalar-valued pairing is sought in the form of a map
+	$$
+	B:V\times V\to \mathbb{K}.
+	$$
+	The natural structural requirement is that this pairing remain compatible with the linear structure already present on $V$. This leads to the condition of \emph{bilinearity}: for all $u,v,w,z\in V$ and all $a,b\in\mathbb{K}$,
+	$$
+	B(au+bv,w)=aB(u,w)+bB(v,w),
+	$$
+	$$
+	B(u,aw+bz)=aB(u,w)+bB(u,z).
+	$$
+	
+	\paragraph{}
+	The missing step is that linearity is not part of the field axioms themselves. The field provides the scalars and their algebraic operations, while the vector space provides vectors together with vector addition and scalar multiplication. Only after this environment has been established does one define the notion of a linear map. A map
+	$$
+	L:V\to W
+	$$
+	between vector spaces is called linear if it respects linear combinations:
+	$$
+	L(au+bv)=aL(u)+bL(v).
+	$$
+	Once this notion is in place, a map
+	$$
+	B:V\times V\to\mathbb{K}
+	$$
+	is called bilinear if it is linear in each input separately.
+	\paragraph{}
+	Once the vector-space structure has been fixed, the notion of linearity is defined relative to the operations already present in that structure. A vector space comes equipped with vector addition
+	$$
+	V\times V\to V
+	$$
+	and scalar multiplication
+	$$
+	\mathbb{K}\times V\to V,
+	$$
+	but not, in general, with any multiplication of vectors by vectors. Therefore, if
+	$$
+	L:V\to W
+	$$
+	is a map between vector spaces, the natural requirement is that it respect vector addition and scalar multiplication:
+	$$
+	L(u+v)=L(u)+L(v),
+	\qquad
+	L(au)=aL(u).
+	$$
+	Equivalently,
+	$$
+	L(au+bv)=aL(u)+bL(v).
+	$$
+	Thus, linearity is defined by compatibility with the native operations of the vector-space environment, defined from the vector-space operations, and those operations are built over the field of scalars.
+	
+	\paragraph{}
+	The expression
+	$$
+	au+bv
+	$$
+	is used because it is the general form of a linear combination in the varying input slot. Thus, when one writes
+	$$
+	B(au+bv,w),
+	$$
+	the purpose is not to say that the input itself is ``linear,'' but to test whether, with the second slot fixed, the map
+	$$
+	u\mapsto B(u,w)
+	$$
+	preserves linear combinations:
+	$$
+	B(au+bv,w)=aB(u,w)+bB(v,w).
+	$$
+	Hence linearity is tested by passing an arbitrary linear combination through the map and checking whether the same combination appears at the output.
+	
+	Thus, the pairing is linear in each argument separately. Equivalently, for each fixed $w\in V$, the map $u\mapsto B(u,w)$ is linear, and for each fixed $u\in V$, the map $w\mapsto B(u,w)$ is linear. In the coordinate model, this requirement forces the local interaction between two scalar entries to be an operation compatible with addition and scalar multiplication in each slot. Multiplication is selected because it has exactly this property: for scalars $\alpha,\beta,\gamma\in\mathbb{K}$,
+	$$
+	(\alpha+\beta)\gamma=\alpha\gamma+\beta\gamma,
+	\qquad
+	\alpha(\beta+\gamma)=\alpha\beta+\alpha\gamma,
+	$$
+	and
+	$$
+	(a\alpha)\beta=a(\alpha\beta),\qquad \alpha(a\beta)=a(\alpha\beta).
+	$$
+	Hence multiplication provides a bilinear local rule on the scalar level. It also has the decisive feature that self-pairing produces squares,
+	$$
+	\alpha\cdot\alpha=\alpha^2,
+	$$
+	which yields quadratic expressions when extended to vectors. By contrast, operations such as addition would merely combine separate contributions without producing a genuine mixed interaction, and operations such as division would fail to be bilinear and are not even always defined. For this reason, in the standard pairing on $\mathbb{R}^n$, one pairs corresponding coordinates multiplicatively and then accumulates the resulting local contributions:
+	$$
+	\langle u,v\rangle=\sum_{i=1}^n u_i v_i.
+	$$
+	In this sense, multiplication is the local mechanism of interaction, while summation is the global mechanism of accumulation.
+	\paragraph{Tiny proof: commutativity of scalars versus symmetry of the pairing.}
+	Let
+	$$
+	\langle u,v\rangle=\sum_{i=1}^n u_i v_i
+	$$
+	be the standard inner product on $\mathbb{R}^n$. Then
+	$$
+	\langle v,u\rangle=\sum_{i=1}^n v_i u_i.
+	$$
+	Since multiplication in $\mathbb{R}$ is commutative,
+	$$
+	v_i u_i=u_i v_i
+	\qquad
+	\text{for each }i,
+	$$
+	hence
+	$$
+	\langle v,u\rangle=\sum_{i=1}^n u_i v_i=\langle u,v\rangle.
+	$$
+	Thus, in this case the symmetry of the pairing is a consequence of the commutativity of scalar multiplication.
+	
+	However, bilinearity alone does not imply symmetry. Define
+	$$
+	B:\mathbb{R}^2\times\mathbb{R}^2\to\mathbb{R},
+	\qquad
+	B((x_1,x_2),(y_1,y_2)):=x_1y_2.
+	$$
+	This map is bilinear, since it is linear in each argument separately. But it is not symmetric, because
+	$$
+	B((1,0),(0,1))=1,
+	$$
+	whereas
+	$$
+	B((0,1),(1,0))=0.
+	$$
+	Therefore
+	$$
+	B((1,0),(0,1))\neq B((0,1),(1,0)).
+	$$
+	So commutativity of scalars and symmetry of a bilinear form are different notions: the first is a property of multiplication in the field, while the second is an additional property of the pairing.
+	
+	\begin{definition}[Orthogonality]
+		Let $V$ be a vector space over $\mathbb{R}$ equipped with an inner product
+		$$
+		\langle\cdot,\cdot\rangle:V\times V\to\mathbb{R}.
+		$$
+		Two vectors $u,v\in V$ are said to be \emph{orthogonal} if
+		$$
+		\langle u,v\rangle=0.
+		$$
+	\end{definition}
+	
+	\paragraph{Structural summary.}
+	Orthogonality is not introduced as a primitive notion. It is induced by the inner product: two vectors are orthogonal precisely when their scalar-valued pairing vanishes.
+	
+	\section{Condensed Structural Notes}
+	
+	\subsection*{1. Base scalar structure}
+	
+	Let
+	$$
+	F=\mathbb{R}.
+	$$
+	
+	We take $F$ as a field with operations
+	$$
+	+ : F\times F \to F,
+	\qquad
+	\cdot : F\times F \to F.
+	$$
+	
+	For all $a,b,c\in F$, the field axioms hold.
+	
+	\paragraph{Additive structure.}
+	$$
+	a+b=b+a,
+	$$
+	$$
+	(a+b)+c=a+(b+c),
+	$$
+	$$
+	\exists\,0\in F \text{ such that } a+0=a,
+	$$
+	$$
+	\forall a\in F,\ \exists\,(-a)\in F \text{ such that } a+(-a)=0.
+	$$
+	
+	\paragraph{Multiplicative structure.}
+	$$
+	ab=ba,
+	$$
+	$$
+	(ab)c=a(bc),
+	$$
+	$$
+	\exists\,1\in F,\ 1\neq 0,\ \text{such that } a1=a,
+	$$
+	$$
+	\forall a\neq 0,\ \exists\,a^{-1}\in F \text{ such that } aa^{-1}=1.
+	$$
+	
+	\paragraph{Compatibility.}
+	$$
+	a(b+c)=ab+ac.
+	$$
+	
+	Hence
+	$$
+	(F,+)\ \text{is an abelian group},
+	$$
+	$$
+	(F\setminus\{0\},\cdot)\ \text{is an abelian group},
+	$$
+	and multiplication distributes over addition.
+	
+	\subsection*{2. Vector space level}
+	
+	Let $V$ be a set together with operations
+	$$
+	+ : V\times V \to V,
+	\qquad
+	\cdot : F\times V \to V.
+	$$
+	
+	Write scalar multiplication as
+	$$
+	(a,u)\mapsto au.
+	$$
+	
+	Then $V$ is a vector space over $F$ if for all $u,v,w\in V$ and $a,b\in F$ the following hold.
+	
+	\paragraph{Additive axioms on $V$.}
+	$$
+	u+v=v+u,
+	$$
+	$$
+	(u+v)+w=u+(v+w),
+	$$
+	$$
+	\exists\,0_V\in V \text{ such that } u+0_V=u,
+	$$
+	$$
+	\forall u\in V,\ \exists\,(-u)\in V \text{ such that } u+(-u)=0_V.
+	$$
+	
+	Hence
+	$$
+	(V,+)\ \text{is an abelian group}.
+	$$
+	
+	\paragraph{Scalar compatibility axioms.}
+	$$
+	a(u+v)=au+av,
+	$$
+	$$
+	(a+b)u=au+bu,
+	$$
+	$$
+	a(bu)=(ab)u,
+	$$
+	$$
+	1u=u.
+	$$
+	
+	\subsection*{3. Coordinate model}
+	
+	Take
+	$$
+	V=\mathbb{R}^n.
+	$$
+	
+	An element is an ordered $n$-tuple
+	$$
+	u=(u_1,\dots,u_n).
+	$$
+	
+	Operations are defined componentwise:
+	$$
+	u+v=(u_1+v_1,\dots,u_n+v_n),
+	$$
+	$$
+	au=(au_1,\dots,au_n).
+	$$
+	
+	\subsection*{4. Basis structure}
+	
+	Define the standard basis
+	$$
+	e_1=(1,0,\dots,0),\quad
+	e_2=(0,1,\dots,0),\quad \dots,\quad
+	e_n=(0,\dots,0,1).
+	$$
+	
+	Every $u\in V$ has the unique expansion
+	$$
+	u=u_1e_1+\cdots+u_ne_n.
+	$$
+	
+	Thus $V$ is generated by
+	$$
+	\{e_1,\dots,e_n\}.
+	$$
+	
+	\subsection*{5. Need for a scalar-valued pairing}
+	
+	Up to now,
+	$$
+	u+v\in V,\qquad au\in V.
+	$$
+	
+	Now introduce a new operation of different type:
+	$$
+	B:V\times V\to F.
+	$$
+	
+	This is not an internal law on $V$; its output is scalar.
+	
+	Input type:
+	$$
+	(u,v)\in V\times V.
+	$$
+	
+	Output type:
+	$$
+	B(u,v)\in F.
+	$$
+	
+	\subsection*{6. Bilinearity as structural axiom}
+	
+	Require compatibility with the vector-space structure in each slot.
+	
+	For all $u,w,v,z\in V$ and $a,b\in F$,
+	$$
+	B(au+bw,v)=aB(u,v)+bB(w,v),
+	$$
+	$$
+	B(u,av+bz)=aB(u,v)+bB(u,z).
+	$$
+	
+	This is bilinearity.
+	
+	Equivalent sliced formulation:
+	
+	for fixed $v\in V$, the map
+	$$
+	u\mapsto B(u,v)
+	$$
+	is linear; for fixed $u\in V$, the map
+	$$
+	v\mapsto B(u,v)
+	$$
+	is linear.
+	
+	\subsection*{7. Expansion through basis}
+	
+	Let
+	$$
+	u=\sum_{i=1}^n u_i e_i,
+	\qquad
+	v=\sum_{j=1}^n v_j e_j.
+	$$
+	
+	By bilinearity,
+	$$
+	B(u,v)
+	=
+	B\!\left(\sum_{i=1}^n u_i e_i,\sum_{j=1}^n v_j e_j\right)
+	=
+	\sum_{i=1}^n\sum_{j=1}^n u_i v_j\, B(e_i,e_j).
+	$$
+	
+	Thus $B$ is completely determined by the scalars
+	$$
+	B(e_i,e_j).
+	$$
+	
+	\subsection*{8. Standard choice}
+	
+	Impose
+	$$
+	B(e_i,e_j)=\delta_{ij},
+	$$
+	where
+	$$
+	\delta_{ij}=
+	\begin{cases}
+		1,& i=j,\\
+		0,& i\neq j.
+	\end{cases}
+	$$
+	
+	Then
+	$$
+	B(u,v)
+	=
+	\sum_{i=1}^n\sum_{j=1}^n u_i v_j\,\delta_{ij}
+	=
+	\sum_{i=1}^n u_i v_i.
+	$$
+	
+	Thus the standard bilinear form is
+	$$
+	B(u,v)=\sum_{i=1}^n u_i v_i.
+	$$
+	
+	\subsection*{9. Symmetry and positivity}
+	
+	Add the conditions
+	$$
+	B(u,v)=B(v,u)
+	$$
+	and
+	$$
+	B(u,u)\ge 0,
+	\qquad
+	B(u,u)=0 \iff u=0.
+	$$
+	
+	Then $B$ is an inner product, and we write
+	$$
+	\langle u,v\rangle := B(u,v).
+	$$
+	
+	Hence
+	$$
+	\langle u,v\rangle=\sum_{i=1}^n u_i v_i.
+	$$
+	
+	\subsection*{10. Derived objects}
+	
+	\paragraph{Self-pairing.}
+	$$
+	\langle u,u\rangle=\sum_{i=1}^n u_i^2.
+	$$
+	
+	\paragraph{Norm.}
+	$$
+	\|u\|=\sqrt{\langle u,u\rangle}.
+	$$
+	
+	\paragraph{Orthogonality.}
+	$$
+	u\perp v \iff \langle u,v\rangle=0.
+	$$
+	
+	\subsection*{11. Compact structural chain}
+	
+	$$
+	\mathbb{R}\ \text{field}
+	$$
+	$$
+	\Downarrow
+	$$
+	$$
+	V\ \text{vector space over }\mathbb{R}
+	$$
+	$$
+	\Downarrow
+	$$
+	$$
+	B:V\times V\to\mathbb{R}\ \text{bilinear}
+	$$
+	$$
+	\Downarrow
+	$$
+	$$
+	B(e_i,e_j)=\delta_{ij}
+	$$
+	$$
+	\Downarrow
+	$$
+	$$
+	\langle u,v\rangle=\sum_{i=1}^n u_i v_i
+	$$
+	$$
+	\Downarrow
+	$$
+	$$
+	\langle u,u\rangle,\ \|u\|,\ u\perp v
+	$$
+	
+	\section{Worked Examples}
+	
+	\begin{example}[The field $\mathbb{R}$ and the vector space $\mathbb{R}^2$]
+		Let $\mathbb{K}=\mathbb{R}$ and let $V=\mathbb{R}^2$. Then $\mathbb{R}$ is a field under the usual addition and multiplication, and $V$ is a vector space over $\mathbb{R}$ under the usual vector addition and scalar multiplication
+		$$
+		\lambda(x,y)=(\lambda x,\lambda y).
+		$$
+		A basis of $V$ is given by
+		$$
+		e_1=(1,0),\qquad e_2=(0,1).
+		$$
+		Hence every vector $v\in V$ can be written uniquely in the form
+		$$
+		v=a_1e_1+a_2e_2,
+		\qquad a_1,a_2\in\mathbb{R}.
+		$$
+		For instance,
+		$$
+		(3,-2)=3e_1-2e_2.
+		$$
+		Define
+		$$
+		\langle (x_1,x_2),(y_1,y_2)\rangle=x_1y_1+x_2y_2.
+		$$
+		This is an inner product on $V$. Therefore two vectors are orthogonal precisely when their inner product is zero. For example,
+		$$
+		\langle (1,1),(1,-1)\rangle=1\cdot 1+1\cdot(-1)=0,
+		$$
+		so $(1,1)$ and $(1,-1)$ are orthogonal.
+	\end{example}
+	
+	\begin{example}[A vector space over the complex field]
+		Let $\mathbb{K}=\mathbb{C}$ and let $V=\mathbb{C}^2$. Then $V$ is a vector space over $\mathbb{C}$. A basis is
+		$$
+		e_1=(1,0),\qquad e_2=(0,1).
+		$$
+		Thus every vector $z\in \mathbb{C}^2$ has the form
+		$$
+		z=a_1e_1+a_2e_2,
+		\qquad a_1,a_2\in\mathbb{C}.
+		$$
+		For example,
+		$$
+		(1+i,\,2-i)=(1+i)e_1+(2-i)e_2.
+		$$
+		This example emphasizes the distinction between the field and the vector space: the coefficients belong to $\mathbb{C}$, whereas the vectors belong to $\mathbb{C}^2$.
+	\end{example}
+	
+	\begin{example}[A bilinear form that is symmetric but not an inner product]
+		Let $V=\mathbb{R}^2$ and define
+		$$
+		B((x_1,x_2),(y_1,y_2))=x_1y_1-x_2y_2.
+		$$
+		Then $B$ is bilinear and symmetric, because
+		$$
+		B(u,v)=B(v,u)
+		\qquad \text{for all }u,v\in V.
+		$$
+		However, $B$ is not an inner product, because it is not positive definite. Indeed,
+		$$
+		B((0,1),(0,1))=0\cdot 0-1\cdot 1=-1<0.
+		$$
+		Thus symmetry and bilinearity alone are not sufficient to produce an inner product.
+	\end{example}
+	
+	\begin{example}[A function space with an inner product]
+		Let $V=P_2(\mathbb{R})$, the vector space of all real polynomials of degree at most $2$. Then $V$ is a vector space over $\mathbb{R}$. A basis is given by
+		$$
+		e_0(x)=1,\qquad e_1(x)=x,\qquad e_2(x)=x^2.
+		$$
+		Hence every polynomial $p\in V$ has a unique expression
+		$$
+		p(x)=a_0e_0(x)+a_1e_1(x)+a_2e_2(x)
+		=a_0+a_1x+a_2x^2,
+		\qquad a_0,a_1,a_2\in\mathbb{R}.
+		$$
+		Define
+		$$
+		\langle p,q\rangle=\int_{0}^{1} p(x)q(x)\,dx.
+		$$
+		This is an inner product on $V$. For example, let
+		$$
+		p(x)=1,\qquad q(x)=x-\frac12.
+		$$
+		Then
+		$$
+		\langle p,q\rangle=\int_0^1 \left(x-\frac12\right)\,dx
+		=\left[\frac{x^2}{2}-\frac{x}{2}\right]_0^1
+		=\frac12-\frac12=0.
+		$$
+		Therefore $p$ and $q$ are orthogonal in this inner-product space.
+	\end{example}
+	
+	\begin{example}[Orthogonality in $\mathbb{R}^3$]
+		Let $V=\mathbb{R}^3$ with the usual inner product
+		$$
+		\langle (x_1,x_2,x_3),(y_1,y_2,y_3)\rangle=x_1y_1+x_2y_2+x_3y_3.
+		$$
+		Consider the vectors
+		$$
+		u=(1,2,1),\qquad v=(2,-1,0).
+		$$
+		Then
+		$$
+		\langle u,v\rangle=1\cdot 2+2\cdot(-1)+1\cdot 0=2-2+0=0.
+		$$
+		Hence $u$ and $v$ are orthogonal.
+	\end{example}
+	
+	\section{Exercises with Solutions}
+	
+	\begin{exercise}
+		Let $\mathbb{K}=\mathbb{R}$ and $V=\mathbb{R}^2$. Write the vector $(4,-3)$ as a linear combination of the standard basis vectors.
+	\end{exercise}
+	
+	\begin{solution}
+		The standard basis of $\mathbb{R}^2$ is
+		$$
+		e_1=(1,0),\qquad e_2=(0,1).
+		$$
+		Hence
+		$$
+		(4,-3)=4e_1-3e_2.
+		$$
+	\end{solution}
+	
+	\begin{exercise}
+		Explain why $\mathbb{R}$ and $\mathbb{R}^2$ are distinct sets, even though vectors in $\mathbb{R}^2$ use real numbers as coefficients.
+	\end{exercise}
+	
+	\begin{solution}
+		The set $\mathbb{R}$ consists of scalars, whereas $\mathbb{R}^2$ consists of ordered pairs of scalars:
+		$$
+		\mathbb{R}^2=\{(x,y):x,y\in\mathbb{R}\}.
+		$$
+		Thus an element of $\mathbb{R}$ is a single real number, while an element of $\mathbb{R}^2$ is a pair of real numbers.
+	\end{solution}
+	
+	\begin{exercise}
+		Let $V=\mathbb{R}^2$ and define
+		$$
+		B((x_1,x_2),(y_1,y_2))=2x_1y_1+3x_2y_2.
+		$$
+		Show that $B$ is bilinear.
+	\end{exercise}
+	
+	\begin{solution}
+		Let $u=(x_1,x_2)$, $v=(x_1',x_2')$, $w=(y_1,y_2)$, and let $a,b\in\mathbb{R}$. Then
+		$$
+		au+bv=(ax_1+bx_1',\,ax_2+bx_2').
+		$$
+		Hence
+		\begin{align*}
+			B(au+bv,w)
+			&=2(ax_1+bx_1')y_1+3(ax_2+bx_2')y_2\\
+			&=a(2x_1y_1+3x_2y_2)+b(2x_1'y_1+3x_2'y_2)\\
+			&=aB(u,w)+bB(v,w).
+		\end{align*}
+		A similar computation shows
+		$$
+		B(w,au+bv)=aB(w,u)+bB(w,v).
+		$$
+		Therefore $B$ is bilinear.
+	\end{solution}
+	
+	\begin{exercise}
+		Determine whether the bilinear form
+		$$
+		B((x_1,x_2),(y_1,y_2))=x_1y_2+x_2y_1
+		$$
+		on $\mathbb{R}^2$ is symmetric.
+	\end{exercise}
+	
+	\begin{solution}
+		We compute
+		$$
+		B((x_1,x_2),(y_1,y_2))=x_1y_2+x_2y_1
+		$$
+		and
+		$$
+		B((y_1,y_2),(x_1,x_2))=y_1x_2+y_2x_1.
+		$$
+		Since multiplication in $\mathbb{R}$ is commutative,
+		$$
+		y_1x_2=x_2y_1,\qquad y_2x_1=x_1y_2.
+		$$
+		Thus
+		$$
+		B((y_1,y_2),(x_1,x_2))=x_2y_1+x_1y_2=B((x_1,x_2),(y_1,y_2)).
+		$$
+		Therefore $B$ is symmetric.
+	\end{solution}
+	
+	\begin{exercise}
+		Show that the symmetric bilinear form
+		$$
+		B((x_1,x_2),(y_1,y_2))=x_1y_1-x_2y_2
+		$$
+		is not an inner product.
+	\end{exercise}
+	
+	\begin{solution}
+		Take
+		$$
+		v=(0,1).
+		$$
+		Then
+		$$
+		B(v,v)=0\cdot 0-1\cdot 1=-1<0.
+		$$
+		Thus $B$ is not positive definite, hence it is not an inner product.
+	\end{solution}
+	
+	\begin{exercise}
+		In $\mathbb{R}^2$ with the usual inner product, determine whether the vectors
+		$$
+		u=(2,1),\qquad v=(1,-2)
+		$$
+		are orthogonal.
+	\end{exercise}
+	
+	\begin{solution}
+		The usual inner product is
+		$$
+		\langle (x_1,x_2),(y_1,y_2)\rangle=x_1y_1+x_2y_2.
+		$$
+		Hence
+		$$
+		\langle u,v\rangle=2\cdot 1+1\cdot(-2)=2-2=0.
+		$$
+		Since the inner product is zero, the vectors are orthogonal.
+	\end{solution}
+	
+	\begin{exercise}
+		Let $V=P_1(\mathbb{R})$, the space of real polynomials of degree at most $1$, and define
+		$$
+		\langle p,q\rangle=\int_0^1 p(x)q(x)\,dx.
+		$$
+		Show that the polynomials
+		$$
+		p(x)=1,\qquad q(x)=x-\frac12
+		$$
+		are orthogonal.
+	\end{exercise}
+	
+	\begin{solution}
+		We compute
+		$$
+		\langle p,q\rangle=\int_0^1 \left(x-\frac12\right)\,dx
+		=\left[\frac{x^2}{2}-\frac{x}{2}\right]_0^1
+		=\frac12-\frac12=0.
+		$$
+		Hence
+		$$
+		\langle p,q\rangle=0,
+		$$
+		so $p$ and $q$ are orthogonal.
+	\end{solution}
+	
+	\begin{exercise}
+		Let $V=\mathbb{R}^3$. Express the vector
+		$$
+		v=(1,0,-2)
+		$$
+		as a linear combination of the standard basis vectors.
+	\end{exercise}
+	
+	\begin{solution}
+		The standard basis of $\mathbb{R}^3$ is
+		$$
+		e_1=(1,0,0),\qquad e_2=(0,1,0),\qquad e_3=(0,0,1).
+		$$
+		Therefore
+		$$
+		(1,0,-2)=1e_1+0e_2-2e_3=e_1-2e_3.
+		$$
+	\end{solution}
+	
+	\begin{exercise}
+		Let
+		$$
+		u=(1,1,1),\qquad v=(1,-1,0),\qquad w=(1,1,-2)
+		$$
+		in $\mathbb{R}^3$. Show that $u$ is orthogonal to both $v$ and $w$.
+	\end{exercise}
+	
+	\begin{solution}
+		We compute
+		$$
+		\langle u,v\rangle=1\cdot 1+1\cdot(-1)+1\cdot 0=0,
+		$$
+		and
+		$$
+		\langle u,w\rangle=1\cdot 1+1\cdot 1+1\cdot(-2)=0.
+		$$
+		Hence $u$ is orthogonal to both $v$ and $w$.
+	\end{solution}
+	
+	\begin{exercise}
+		Let $V=P_2(\mathbb{R})$ with basis
+		$$
+		e_0(x)=1,\qquad e_1(x)=x,\qquad e_2(x)=x^2.
+		$$
+		Write
+		$$
+		p(x)=2-3x+5x^2
+		$$
+		as a linear combination of the basis elements.
+	\end{exercise}
+	
+	\begin{solution}
+		By direct comparison,
+		$$
+		p(x)=2e_0(x)-3e_1(x)+5e_2(x).
+		$$
+	\end{solution}
+	
+	\paragraph{}
+	At the most general level, a scalar-valued pairing is simply a map
+	$$
+	B:V\times V\to \mathbb{K},
+	$$
+	and its defining rule may in principle be arbitrary. If one then imposes compatibility with the linear structure of the vector space, one requires bilinearity:
+	$$
+	B(au+bv,w)=aB(u,w)+bB(v,w),
+	$$
+	$$
+	B(w,au+bv)=aB(w,u)+bB(w,v).
+	$$
+	Only after these conditions are imposed does one arrive, in the finite-dimensional coordinate setting, at the matrix form
+	$$
+	B(u,v)=u^TAv.
+	$$
+	Thus the matrix expression does not impose bilinearity from outside; rather, it is the coordinate representation of a rule already known to be bilinear. Conversely, if one begins by defining
+	$$
+	B(u,v):=u^TAv
+	$$
+	for a fixed matrix $A$, then bilinearity follows immediately. In this sense, matrix form guarantees bilinearity, while bilinearity, once a basis is chosen, leads naturally to matrix form. It follows that not every scalar-valued rule can be written as $u^TAv$: only those rules whose algebraic shape is bilinear, namely of the form
+	$$
+	\sum_{i,j} a_{ij}x_i y_j,
+	$$
+	admit such a representation. Rules containing squares, nonlinear functions, or other terms outside this pattern do not belong to the bilinear setting and therefore cannot be treated by the same matrix method.
+	
+	\paragraph{Closure.}
+	Closure is the requirement that an operation remain inside its declared codomain. In its most basic form, if $S$ is a set and
+	$$
+	\star:S\times S\to S,
+	$$
+	then closure means that for all $a,b\in S$,
+	$$
+	a\star b\in S.
+	$$
+	Thus, the operation does not leave the ambient set. At the scalar level, the field operations
+	$$
+	+:\mathbb{K}\times\mathbb{K}\to\mathbb{K},
+	\qquad
+	\cdot:\mathbb{K}\times\mathbb{K}\to\mathbb{K}
+	$$
+	express closure of $\mathbb{K}$ under addition and multiplication. At the vector-space level,
+	$$
+	+:V\times V\to V
+	$$
+	expresses closure under vector addition, while
+	$$
+	\mathbb{K}\times V\to V
+	$$
+	expresses closure under scalar multiplication. More generally, if
+	$$
+	B:V\times V\to\mathbb{K},
+	$$
+	then for all $u,v\in V$ one has
+	$$
+	B(u,v)\in\mathbb{K},
+	$$
+	so the pairing is well-defined as a scalar-valued map. In this way, closure is the stability condition that keeps each operation inside the structure in which it is meant to act.
+	
+	\paragraph{Well-definedness and closure.}
+	A map
+	$$
+	f:A\to B
+	$$
+	is said to be \emph{well-defined} if for every input $x\in A$, the value $f(x)$ exists, is uniquely determined, and belongs to the codomain $B$. Thus, well-definedness means that the rule genuinely defines a function of the stated type. Closure is a more specific notion. If an operation has the form
+	$$
+	\star:S\times S\to S,
+	$$
+	then well-definedness implies that for all $a,b\in S$ one has
+	$$
+	a\star b\in S.
+	$$
+	In this case the operation is said to be \emph{closed} on $S$. Hence closure is the special case of well-definedness in which the codomain coincides with the set on which the operation acts.
+	
+	\paragraph{Constructing the matrix of a bilinear rule.}
+	Suppose
+	$$
+	u=\begin{pmatrix}x_1\\ \vdots \\ x_n\end{pmatrix},
+	\qquad
+	v=\begin{pmatrix}y_1\\ \vdots \\ y_n\end{pmatrix},
+	$$
+	and suppose the rule is written as a sum of mixed terms
+	$$
+	B(u,v)=\sum_{i,j} a_{ij}x_i y_j.
+	$$
+	To construct the matrix, one places the coefficient of each product $x_i y_j$ in row $i$ and column $j$. Thus, the row index is determined by the component of the first vector, the column index is determined by the component of the second vector, and any missing term is assigned coefficient $0$. The resulting matrix is
+	$$
+	A=(a_{ij}),
+	$$
+	so that
+	$$
+	B(u,v)=u^TAv.
+	$$
+	
+	For a $2\times 2$ case,
+	$$
+	u=\begin{pmatrix}x_1\\x_2\end{pmatrix},
+	\qquad
+	v=\begin{pmatrix}y_1\\y_2\end{pmatrix},
+	$$
+	and
+	$$
+	B(u,v)=2x_1y_1-3x_1y_2+x_2y_2,
+	$$
+	one first rewrites the rule as
+	$$
+	B(u,v)=2x_1y_1-3x_1y_2+0x_2y_1+1x_2y_2.
+	$$
+	Hence the coefficients are read in the order
+	$$
+	x_1y_1,\ x_1y_2,\ x_2y_1,\ x_2y_2,
+	$$
+	and the matrix is
+	$$
+	A=
+	\begin{pmatrix}
+		2 & -3\\
+		0 & 1
+	\end{pmatrix}.
+	$$
+	
+	For a $3\times 3$ case,
+	$$
+	u=\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix},
+	\qquad
+	v=\begin{pmatrix}y_1\\y_2\\y_3\end{pmatrix},
+	$$
+	and
+	$$
+	B(u,v)=2x_1y_1-x_1y_3+3x_2y_2+4x_3y_1-2x_3y_2,
+	$$
+	one rewrites this as
+	$$
+	B(u,v)=2x_1y_1+0x_1y_2-1x_1y_3+0x_2y_1+3x_2y_2+0x_2y_3+4x_3y_1-2x_3y_2+0x_3y_3.
+	$$
+	Thus the matrix is
+	$$
+	A=
+	\begin{pmatrix}
+		2 & 0 & -1\\
+		0 & 3 & 0\\
+		4 & -2 & 0
+	\end{pmatrix}.
+	$$
+	Its first row records the coefficients of
+	$$
+	x_1y_1,\ x_1y_2,\ x_1y_3,
+	$$
+	its second row records the coefficients of
+	$$
+	x_2y_1,\ x_2y_2,\ x_2y_3,
+	$$
+	and its third row records the coefficients of
+	$$
+	x_3y_1,\ x_3y_2,\ x_3y_3.
+	$$
+	
+	For a $4\times 4$ case,
+	$$
+	u=\begin{pmatrix}x_1\\x_2\\x_3\\x_4\end{pmatrix},
+	\qquad
+	v=\begin{pmatrix}y_1\\y_2\\y_3\\y_4\end{pmatrix},
+	$$
+	and
+	$$
+	B(u,v)=x_1y_1+2x_1y_4-3x_2y_2+x_2y_3+5x_3y_1-x_3y_4+4x_4y_2,
+	$$
+	one inserts the missing terms with coefficient $0$ and obtains
+	$$
+	A=
+	\begin{pmatrix}
+		1 & 0 & 0 & 2\\
+		0 & -3 & 1 & 0\\
+		5 & 0 & 0 & -1\\
+		0 & 4 & 0 & 0
+	\end{pmatrix}.
+	$$
+	Again, row $i$ records all coefficients multiplying $x_i$, and column $j$ records the position corresponding to $y_j$.
+	
+	In general, if
+	$$
+	B(u,v)=\sum_{i=1}^n\sum_{j=1}^n a_{ij}x_i y_j,
+	$$
+	then the associated matrix is explicitly
+	$$
+	A=
+	\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n}\\
+		a_{21} & a_{22} & \cdots & a_{2n}\\
+		\vdots & \vdots & \ddots & \vdots\\
+		a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{pmatrix},
+	$$
+	where each entry $a_{ij}$ is exactly the coefficient of the term $x_i y_j$.
+	
+	\paragraph{}
+	Structurally, a norm is a scalar-valued unary map on a vector space. If $V$ is a vector space, then a norm is a map
+	$$
+	\|\cdot\|:V\to\mathbb{R}
+	$$
+	such that each vector $u\in V$ is assigned a nonnegative real number $\|u\|$. Thus, at the level of type, the input is a single vector and the output is a single scalar. This already distinguishes the norm from the inner product, which is a two-input scalar-valued pairing
+	$$
+	\langle\cdot,\cdot\rangle:V\times V\to\mathbb{R}.
+	$$
+	Hence one may say: the inner product compares two vectors, whereas the norm measures one vector.
+	
+	\paragraph{}
+	Functionally, the norm acts as a size extractor. It takes a vector, suppresses most of its internal coordinate information, and returns a single scalar representing its magnitude within the given structure. Thus, if
+	$$
+	u\mapsto \|u\|,
+	$$
+	the map compresses a whole vector into one scalar quantity retaining only size information. This is the functional role of the norm.
+	
+	\paragraph{}
+	The motivation for introducing a norm is that, once vectors exist and may be added and scaled, one naturally wants a way to speak about the magnitude of a single vector. The vector-space operations tell us how vectors combine and how they rescale, but they do not by themselves provide a notion of how large one vector is. A pairing such as
+	$$
+	\langle u,v\rangle
+	$$
+	compares two vectors, but does not yet directly yield a single-vector size unless one specializes to the case of self-pairing. Thus the norm is introduced to make the notion of size explicit and axiomatic.
+	
+	\paragraph{}
+	At the purely structural level, this means that vector addition gives composition inside the space, scalar multiplication gives rescaling, and the norm gives a scalar measurement compatible with that same linear environment. This compatibility is encoded in the norm axioms. A norm must satisfy
+	$$
+	\|u\|\ge 0,
+	$$
+	$$
+	\|u\|=0 \iff u=0,
+	$$
+	$$
+	\|au\|=|a|\,\|u\|,
+	$$
+	$$
+	\|u+v\|\le \|u\|+\|v\|.
+	$$
+	These conditions say, respectively, that size is never negative, that only the zero vector has zero size, that scaling a vector scales its size in the expected way, and that the size of a sum cannot exceed the sum of the sizes.
+	
+	\paragraph{}
+	Thus, structurally, the norm is not an arbitrary scalar-valued map. It is a scalar-valued map designed to behave coherently with the linear structure of the space. In the setting of an inner-product space, the norm is often not introduced independently but derived from self-pairing:
+	$$
+	\|u\|=\sqrt{\langle u,u\rangle}.
+	$$
+	This shows the deeper link between the two notions: the inner product gives a scalar interaction of two vectors, while self-interaction produces a scalar that can be converted into size. The square root is necessary because
+	$$
+	\langle u,u\rangle
+	$$
+	is quadratic in scaling, whereas a norm must scale linearly with $|a|$.
+	
+	\paragraph{}
+	The full conceptual picture is therefore the following: the norm is the scalar map that extracts the magnitude of a single vector, either introduced axiomatically or induced from self-pairing by an inner product.
+	
+\end{document}

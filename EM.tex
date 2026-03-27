@@ -1,0 +1,140 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+	
+	\title{My Mathematics Notes}
+	\author{Ramon}
+	\date{\today}
+	
+	\maketitle
+	
+	\section{Introduction}
+		In this context it is useful to distinguish clearly between the notions of \emph{space} and \emph{field}. A \emph{space} is a set of elements equipped with some structure, for example $\mathbb{R}^n$, whose elements are tuples $(x_1,\dots,x_n)$. The space serves as the domain in which objects are defined. A \emph{field} in vector calculus and mathematical physics is simply a function whose domain is such a space. For instance, a scalar field is a mapping $f:\mathbb{R}^n\to\mathbb{R}$, while a vector field is a mapping $F:\mathbb{R}^n\to\mathbb{R}^n$. Thus, the space provides the inputs, and the field is the rule that assigns values to those inputs. This notion should not be confused with the term \emph{field} in algebra, where sets such as $\mathbb{R}$ and $\mathbb{Q}$ are called \emph{algebraic fields} because they are equipped with addition and multiplication satisfying specific axioms. In the present discussion, the word \emph{field} refers only to functions defined on a space.
+	
+	\section{Scalar Fields and Parametric Mappings}
+	
+	   Let $A$ and $B$ be sets. A function (or mapping) is a rule
+	   \[
+	      f : A \to B
+	    \]
+	that assigns to every element $a \in A$ exactly one element $f(a) \in B$. When the sets involved are Euclidean spaces, such mappings describe relationships between points of different dimensions. A \emph{scalar field} is a function
+	\[
+	f : \mathbb{R}^n \to \mathbb{R},
+	\]
+	which assigns a single scalar value to each point of an $n$--dimensional space. In this sense, a scalar field can be interpreted as measuring a quantity at every point in space. For example, a function $f(x,y)=x^2+y^2$ assigns to each point $(x,y)\in\mathbb{R}^2$ a real number. 
+	
+	In contrast, a \emph{parametric mapping} is a vector--valued function
+	\[
+	r : \mathbb{R}^m \to \mathbb{R}^n,
+	\]
+	which assigns a point in $\mathbb{R}^n$ to each parameter vector $u \in \mathbb{R}^m$. Such a mapping can be written in component form as
+	\[
+	r(u) = (r_1(u), \dots, r_n(u)),
+	\]
+	where each component $r_i : \mathbb{R}^m \to \mathbb{R}$ is a scalar function. The space $\mathbb{R}^m$ is called the \emph{parameter space}, while $\mathbb{R}^n$ is the \emph{target space}. A parametric mapping therefore generates points in space through parameters, whereas a scalar field measures a quantity at points of space. These two concepts naturally interact through composition: if $r : \mathbb{R}^m \to \mathbb{R}^n$ is a parametric mapping and $f : \mathbb{R}^n \to \mathbb{R}$ is a scalar field, then the composition $f(r(u))$ produces a scalar function defined on the parameter space.
+	
+	\section{Basis of a Vector Space}
+	
+	Let $F$ denote a vector space over $\mathbb{R}$. A \emph{basis} of $F$ is a finite collection of elements
+	\[
+	\{e_1,e_2,\dots,e_n\}\subset F
+	\]
+	such that every element $v\in F$ can be written uniquely as a linear combination of these elements,
+	\[
+	v = a_1 e_1 + a_2 e_2 + \dots + a_n e_n,
+	\]
+	where $a_1,a_2,\dots,a_n\in\mathbb{R}$. The set $\{e_1,\dots,e_n\}$ therefore provides a representation system for the elements of the space: each $v\in F$ corresponds to a unique tuple of coefficients $(a_1,\dots,a_n)\in\mathbb{R}^n$. In this way, the basis establishes a coordinate representation of elements of the vector space, allowing any element of $F$ to be described through its scalar coefficients relative to the basis.
+	
+	\section{Vector Field}
+	
+	Let the base space be $\mathbb{R}^n$, whose elements are tuples $x=(x_1,\dots,x_n)$ and has the operation \textbf{vector adition} and \textbf{scalar multiplicantion}. Consider scalar fields $P_i:\mathbb{R}^n\to\mathbb{R}$ for $i=1,\dots,n$, and let $\{e_1,\dots,e_n\}$ be a basis of the vector space $\mathbb{R}^n$. Using the basis representation of vectors, a mapping $F:\mathbb{R}^n\to\mathbb{R}^n$ can be constructed by combining the scalar fields with the basis elements,
+	\[
+	F(x)=P_1(x)e_1+P_2(x)e_2+\dots+P_n(x)e_n=\sum_{i=1}^{n}P_i(x)e_i.
+	\]
+	Such a mapping is called a \emph{vector field}. In this representation the scalar fields $P_i$ determine the coefficients associated with each basis element, while the basis $\{e_1,\dots,e_n\}$ provides the representation system of the vector space. Thus, a vector field assigns to each element of the space $\mathbb{R}^n$ a vector expressed through its scalar components relative to the chosen basis.
+	
+	\section{Derivative Operator}
+	
+	Let 
+	\[
+	r:\mathbb{R}\to\mathbb{R}^n
+	\]
+	be a parametric mapping, written componentwise as
+	\[
+	r(t)=(x_1(t),\dots,x_n(t)).
+	\]
+	Define the \emph{derivative operator}
+	\[
+	D=\frac{d}{dt}
+	\]
+	which acts on such mappings. The action of $D$ on $r$ produces a new mapping
+	\[
+	D(r):\mathbb{R}\to\mathbb{R}^n
+	\]
+	defined componentwise by
+	\[
+	D(r)(t)=\left(\frac{dx_1}{dt}(t),\dots,\frac{dx_n}{dt}(t)\right).
+	\]
+	Thus the derivative operator transforms a parametric mapping into another mapping with the same codomain $\mathbb{R}^n$. In this way the operator $D$ acts on mappings $r:\mathbb{R}\to\mathbb{R}^n$ to produce vector-valued functions whose components are the derivatives of the corresponding scalar component functions. Conceptually, the derivative operator measures the local variation of the mapping with respect to its parameter: while $r(t)$ assigns an element of $\mathbb{R}^n$ to each value of $t$, the mapping $D(r)(t)$ describes how that value changes for infinitesimal variations of the parameter.
+	
+	\subsection{Example}
+	
+	Let the base space be $\mathbb{R}^2$ with basis $\{e_1,e_2\}$. Let $P,Q:\mathbb{R}^2\to\mathbb{R}$ be scalar fields and define the vector field
+	\[
+	F:\mathbb{R}^2\to\mathbb{R}^2, \qquad F(x,y)=P(x,y)e_1+Q(x,y)e_2.
+	\]
+	Consider a mapping
+	\[
+	r:\mathbb{R}\to\mathbb{R}^2, \qquad r(x)=xe_1+y(x)e_2,
+	\]
+	which assigns to each parameter $x$ the point $(x,y(x))$ in the space. Applying the derivative operator $D=\frac{d}{dx}$ gives
+	\[
+	D(r)(x)=e_1+y'(x)e_2.
+	\]
+	Evaluating the vector field along the mapping $r$ yields
+	\[
+	(F\circ r)(x)=F(r(x))=P(x,y(x))e_1+Q(x,y(x))e_2.
+	\]
+    A field line is obtained when the vector produced by the derivative of the mapping and the vector produced by the field evaluation are parallel at each point. Thus, for the mapping $r(x)=xe_1+y(x)e_2$ and the vector field $F(x,y)=P(x,y)e_1+Q(x,y)e_2$, the vectors $D(r)(x)=e_1+y'(x)e_2$ and $F(r(x))=P(x,y(x))e_1+Q(x,y(x))e_2$ must be parallel for every value of $x$. Since $\{e_1,e_2\}$ forms a basis of $\mathbb{R}^2$, this condition implies that the ratio of the second component to the first component must be the same for both vectors. Hence,
+    \[
+    y'(x)=\frac{Q(x,y(x))}{P(x,y(x))},
+    \]
+    which shows that the field lines $y=y(x)$ of the vector field $F(x,y)=P(x,y)e_1+Q(x,y)e_2$ are precisely the solutions of the differential equation
+    \[
+    \frac{dy}{dx}=\frac{Q(x,y)}{P(x,y)}.
+    \]
+    
+    \section{General Model}
+    
+    Let the base space be $\mathbb{R}^n$, whose elements $x=(x_1,\dots,x_n)$ represent locations in space. In many physical phenomena it is observed that at each location there exists an influence characterized by both magnitude and direction. This situation can be modeled mathematically by introducing a mapping
+    \[
+    F:\mathbb{R}^n \to \mathbb{R}^n,
+    \]
+    called a vector field. The mapping assigns to every point $x\in\mathbb{R}^n$ a vector $F(x)$, which encodes how the influence acts locally at that position. Using a basis $\{e_1,\dots,e_n\}$ of the vector space $\mathbb{R}^n$, the field can be expressed in component form as
+    \[
+    F(x)=P_1(x)e_1+\dots+P_n(x)e_n,
+    \]
+    where each $P_i:\mathbb{R}^n\to\mathbb{R}$ is a scalar field representing the component of the influence along the corresponding basis direction. In this representation the vector field describes a rule that associates to every location in the space a vector specifying the direction and magnitude of the influence acting there. The field therefore models the spatial structure of the environment independently of any particular object moving within it. Once such a rule is defined, it can be evaluated along any mapping $r:\mathbb{R}\to\mathbb{R}^n$ describing a trajectory in the space by considering the composition $F(r(t))$, which gives the influence experienced along that trajectory. This general mathematical model is widely used across many areas of physics and engineering, including electromagnetism, gravitational fields, fluid flow, and dynamical systems, where vector fields represent the fundamental mechanism by which influences are distributed throughout space.
+    
+    \section{Mathematical Laboratory}
+    
+    The purpose of this section is to apply the structural concepts introduced previously—scalar fields, vector fields, parametric mappings, and derivatives—in a direct computational setting in order to observe how the mappings operate. Consider first the scalar field $f:\mathbb{R}^3\to\mathbb{R}$ defined by $f(x,y,z)=x^2+yz$. Evaluate the field at several points such as $(1,2,3)$ and $(-1,0,4)$ and interpret the result as the value assigned by the function to a location in the space. Next define three scalar fields $P(x,y,z)=x^2$, $Q(x,y,z)=yz$, and $R(x,y,z)=x+y$ and construct from them the vector field $F:\mathbb{R}^3\to\mathbb{R}^3$ given by
+    \[
+    F(x,y,z)=P(x,y,z)e_1+Q(x,y,z)e_2+R(x,y,z)e_3.
+    \]
+    Evaluate $F(1,2,3)$ and express the result in the basis $\{e_1,e_2,e_3\}$. Now introduce the parametric mapping $r:\mathbb{R}\to\mathbb{R}^3$ defined by $r(t)=(t,t^2,2t)$ and compute several points on the path such as $r(1)$, $r(2)$, and $r(-1)$ in order to observe how the parameter generates points in the space. Using this mapping, evaluate the composition $F(r(t))$ to determine how the vector field acts along the path. Finally compute the derivative $r'(t)$ by differentiating each component of the mapping and compare the resulting vector with the vector obtained from $F(r(t))$. Through these computations one observes explicitly how scalar fields assign values to points, how vector fields are constructed from scalar components, how parametric mappings generate paths in space, and how the derivative and field evaluation describe vectors associated with those points.
+    
+    \subsection*{Homework: Master Exercise}
+    
+    Consider the scalar field $f:\mathbb{R}^3\to\mathbb{R}$ defined by $f(x,y,z)=x^2+yz$ and the vector field
+    \[
+    F(x,y,z)=x^2e_1+yz\,e_2+(x+y)e_3.
+    \]
+    Let the parametric mapping $r:\mathbb{R}\to\mathbb{R}^3$ be given by
+    \[
+    r(t)=(t,t^2,2t).
+    \]
+    Perform the following tasks: determine the domain and codomain of each mapping; evaluate $f$ and $F$ at the point $r(1)$; compute the composition $F(r(t))$; compute the derivative $r'(t)$; and compare the vectors $r'(t)$ and $F(r(t))$. Conclude whether the path defined by $r(t)$ follows the vector field in the sense that $r'(t)=F(r(t))$, or determine whether the vectors are parallel or unrelated. The goal of the exercise is to observe how scalar fields, vector fields, parametric mappings, derivatives, and compositions interact within the same structural framework.
+\end{document}

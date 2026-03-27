@@ -1,0 +1,505 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+
+\title{My Mathematics Notes}
+\author{Ramon}
+\date{\today}
+
+\maketitle
+
+\paragraph{Logical progression of the structure.}
+The development follows a fixed structural order: one begins with the ambient framework, then identifies the elements that belong to it, then introduces the operations and maps acting on those elements, then states the axioms governing those operations, and finally defines the notions derived from them. In the present case, this progression may be organized as
+$$
+\text{ambient structure: field of scalars}
+\;\to\;
+\text{ambient structure: vector space}
+\;\to\;
+\text{elements: scalars, vectors, basis elements},
+$$
+$$
+\text{operations/maps: addition, scalar multiplication, linear maps, pairings}
+\;\to\;
+\text{axioms: field axioms, vector-space axioms, bilinearity, symmetry, positivity},
+$$
+$$
+\text{derived notions: coordinates, norm, inner product, orthogonality}.
+$$
+Thus, each concept is introduced only after the structural level on which it depends has been established.
+
+\section{Terminological Distinction}
+
+In these notes the word \emph{field} may occur in two different senses.
+
+In analysis, vector calculus, and mathematical physics, a \emph{field} is a function defined on a space. For example,
+$$
+f:\mathbb{R}^n\to\mathbb{R},
+\qquad
+F:\mathbb{R}^n\to\mathbb{R}^n.
+$$
+
+In algebra, a \emph{field} is a set of scalars equipped with two binary operations, addition and multiplication, satisfying specific axioms.
+
+Whenever ambiguity may arise, we shall say \emph{algebraic field} for the latter. In the present chapter, the relevant meaning is the algebraic one.
+
+\section{The Algebraic Field of Scalars}
+
+\begin{definition}[Scalar]
+Let $\mathbb{K}$ be a field. An element $\lambda\in\mathbb{K}$ is called a \emph{scalar}.
+\end{definition}
+
+\begin{definition}[Field]
+Let $\mathbb{K}$ be a set equipped with two binary operations
+$$
++:\mathbb{K}\times\mathbb{K}\to\mathbb{K},
+\qquad
+\cdot:\mathbb{K}\times\mathbb{K}\to\mathbb{K}.
+$$
+Then $\mathbb{K}$ is called a \emph{field} if the following conditions hold:
+\begin{enumerate}
+    \item $(\mathbb{K},+)$ is an abelian group.
+    \item $(\mathbb{K}^{\times},\cdot)$ is an abelian group, where
+    $$
+    \mathbb{K}^{\times}:=\mathbb{K}\setminus\{0\}.
+    $$
+    \item Multiplication distributes over addition:
+    $$
+    a(b+c)=ab+ac
+    \qquad
+    \forall a,b,c\in\mathbb{K}.
+    $$
+    \item
+    $$
+    0\neq 1.
+    $$
+\end{enumerate}
+\end{definition}
+
+\paragraph{Expanded form of the field axioms.}
+Since $(\mathbb{K},+)$ is an abelian group, for all $a,b,c\in\mathbb{K}$,
+$$
+a+b=b+a,
+$$
+$$
+(a+b)+c=a+(b+c),
+$$
+$$
+\exists\,0\in\mathbb{K}\text{ such that }a+0=a,
+$$
+$$
+\forall a\in\mathbb{K},\ \exists\,(-a)\in\mathbb{K}\text{ such that }a+(-a)=0.
+$$
+Since $(\mathbb{K}^{\times},\cdot)$ is an abelian group, for all $a,b,c\in\mathbb{K}^{\times}$,
+$$
+ab=ba,
+$$
+$$
+(ab)c=a(bc),
+$$
+$$
+\exists\,1\in\mathbb{K}^{\times}\text{ such that }a\cdot 1=a,
+$$
+$$
+\forall a\in\mathbb{K}^{\times},\ \exists\,a^{-1}\in\mathbb{K}^{\times}\text{ such that }aa^{-1}=1.
+$$
+Finally,
+$$
+a(b+c)=ab+ac
+\qquad
+\forall a,b,c\in\mathbb{K}.
+$$
+
+\paragraph{Why $0\neq 1$.}
+The condition
+$$
+0\neq 1
+$$
+prevents the scalar structure from collapsing into the trivial one-element system. If $0=1$, then for every $a\in\mathbb{K}$,
+$$
+a=a\cdot 1=a\cdot 0=0,
+$$
+so every element would coincide with $0$. Thus the additive identity and the multiplicative identity must remain distinct in order for the scalar structure to be nontrivial.
+
+\paragraph{How the two group structures are combined.}
+The field structure is not obtained by an arbitrary blending of the two groups
+$$
+(\mathbb{K},+)
+\qquad\text{and}\qquad
+(\mathbb{K}^{\times},\cdot).
+$$
+Rather, both group structures coexist on the same underlying set $\mathbb{K}$, with the multiplicative structure restricted to the nonzero elements, and they are tied together by the distributive law
+$$
+a(b+c)=ab+ac.
+$$
+Thus, the field axioms consist of
+$$
+\text{additive group structure}
+\;+\;
+\text{multiplicative group structure}
+\;+\;
+\text{distributive compatibility}.
+$$
+
+\paragraph{For the present development.}
+In what follows, we take
+$$
+\mathbb{K}=\mathbb{R}.
+$$
+Hence all scalars are real numbers.
+
+\section{Vector Spaces over a Field}
+
+\begin{definition}[Vector Space]
+Let $\mathbb{K}$ be a field and let $V$ be a set equipped with two operations
+$$
++ : V\times V\to V,
+\qquad
+\mathbb{K}\times V\to V,\qquad (\lambda,v)\mapsto \lambda v.
+$$
+Then $V$ is called a \emph{vector space over $\mathbb{K}$} if the following conditions hold:
+\begin{enumerate}
+    \item $(V,+)$ is an abelian group.
+    \item For all $\lambda,\mu\in\mathbb{K}$ and all $u,v\in V$,
+    $$
+    \lambda(u+v)=\lambda u+\lambda v,
+    $$
+    $$
+    (\lambda+\mu)v=\lambda v+\mu v,
+    $$
+    $$
+    (\lambda\mu)v=\lambda(\mu v),
+    $$
+    $$
+    1v=v.
+    $$
+\end{enumerate}
+\end{definition}
+
+\paragraph{Expanded form of the vector-space axioms.}
+Since $(V,+)$ is an abelian group, for all $u,v,w\in V$,
+$$
+u+v=v+u,
+$$
+$$
+(u+v)+w=u+(v+w),
+$$
+$$
+\exists\,0_V\in V\text{ such that }v+0_V=v,
+$$
+$$
+\forall v\in V,\ \exists\,(-v)\in V\text{ such that }v+(-v)=0_V.
+$$
+The scalar action
+$$
+\mathbb{K}\times V\to V
+$$
+satisfies, for all $\lambda,\mu\in\mathbb{K}$ and all $u,v\in V$,
+$$
+\lambda(u+v)=\lambda u+\lambda v,
+$$
+$$
+(\lambda+\mu)v=\lambda v+\mu v,
+$$
+$$
+(\lambda\mu)v=\lambda(\mu v),
+$$
+$$
+1v=v.
+$$
+
+\paragraph{Structural distinction between $\mathbb{K}$ and $V$.}
+The field $\mathbb{K}$ and the vector space $V$ are distinct structures. The elements of $\mathbb{K}$ are scalars, while the elements of $V$ are vectors. Their relation is given by the scalar multiplication map
+$$
+\mathbb{K}\times V\to V.
+$$
+Thus, the field governs the coefficients, while the vector space carries the objects determined by those coefficients.
+
+\paragraph{}
+A scalar is an element of the base field. Thus, if the base field is $\mathbb{R}$, a scalar is simply a real number; if the base field is $\mathbb{C}$, a scalar is a complex number. Accordingly, if $u\in \mathbb{R}^n$, then its components are real scalars. More precisely, once a basis $\{e_1,\dots,e_n\}$ is fixed, every vector $u\in \mathbb{R}^n$ can be written in the form
+$$
+u=u_1e_1+\cdots+u_ne_n,
+$$
+where the coefficients $u_1,\dots,u_n\in\mathbb{R}$ are the components of $u$ relative to that basis. Thus, the components of a vector are the scalar coefficients appearing in its expansion with respect to a chosen basis.
+
+\section{Basis and Coordinate Representation}
+
+\begin{definition}[Basis]
+Let $V$ be a vector space over $\mathbb{K}$. A family $\{e_i\}_{i\in I}\subseteq V$ is called a \emph{basis} of $V$ if every vector $v\in V$ can be written uniquely in the form
+$$
+v=\sum_{i\in I} a_i e_i,
+\qquad
+ a_i\in\mathbb{K},
+$$
+with only finitely many coefficients $a_i$ nonzero.
+\end{definition}
+
+In this expression, the basis elements $e_i$ belong to the vector space $V$, whereas the coefficients $a_i$ belong to the field $\mathbb{K}$.
+
+\paragraph{Coordinate model.}
+In the standard case
+$$
+V=\mathbb{R}^n,
+$$
+a vector is an ordered $n$-tuple
+$$
+v=(x_1,\dots,x_n),
+$$
+and the standard basis is
+$$
+e_1=(1,0,\dots,0),\quad
+e_2=(0,1,\dots,0),\quad \dots,\quad
+e_n=(0,\dots,0,1).
+$$
+Hence every vector admits the unique representation
+$$
+v=x_1e_1+\cdots+x_ne_n.
+$$
+
+\section{Linear Maps}
+
+\begin{definition}[Linear Map]
+Let $V$ and $W$ be vector spaces over the same field $\mathbb{K}$. A map
+$$
+L:V\to W
+$$
+is called \emph{linear} if for all $u,v\in V$ and all $a,b\in\mathbb{K}$,
+$$
+L(au+bv)=aL(u)+bL(v).
+$$
+Equivalently,
+$$
+L(u+v)=L(u)+L(v),
+\qquad
+L(au)=aL(u).
+$$
+\end{definition}
+
+\paragraph{Compatibility with the environment.}
+Once the vector-space structure has been fixed, the notion of linearity is defined relative to the operations already present in that structure. A vector space comes equipped with vector addition
+$$
+V\times V\to V
+$$
+and scalar multiplication
+$$
+\mathbb{K}\times V\to V,
+$$
+but not, in general, with any multiplication of vectors by vectors. Therefore linearity means compatibility with the native operations of the vector-space environment.
+
+\section{Scalar-Valued Pairings, Bilinear Forms, and Inner Products}
+
+\paragraph{}
+Having fixed the scalar field $\mathbb{K}$ and the vector space $V$ over $\mathbb{K}$, one may introduce a scalar-valued pairing
+$$
+B:V\times V\to\mathbb{K}.
+$$
+This map assigns to each ordered pair of vectors a scalar. At this level the defining rule of $B$ may be arbitrary. If one then requires compatibility with the linear structure of the vector space, one arrives at bilinearity.
+
+\begin{definition}[Scalar-Valued Pairing]
+Let $V$ be a vector space over a field $\mathbb{K}$. A \emph{scalar-valued pairing} on $V$ is a map
+$$
+B:V\times V\to\mathbb{K}
+$$
+which assigns to each ordered pair $(u,v)\in V\times V$ a scalar $B(u,v)\in\mathbb{K}$.
+\end{definition}
+
+\begin{definition}[Bilinear Form]
+Let $V$ be a vector space over a field $\mathbb{K}$. A \emph{bilinear form} on $V$ is a scalar-valued pairing
+$$
+B:V\times V\to\mathbb{K}
+$$
+such that for all $u,v,w,z\in V$ and all $a,b\in\mathbb{K}$,
+$$
+B(au+bv,w)=aB(u,w)+bB(v,w),
+$$
+$$
+B(w,au+bz)=aB(w,u)+bB(w,z).
+$$
+That is, $B$ is linear in each argument separately.
+\end{definition}
+
+\paragraph{Why bilinearity, and why multiplication.}
+Since the environment is linear, the natural structural requirement is that the pairing respect vector addition and scalar multiplication in each input slot. Equivalently, for each fixed $w\in V$, the map $u\mapsto B(u,w)$ is linear, and for each fixed $u\in V$, the map $w\mapsto B(u,w)$ is linear. In the coordinate model, this requirement leads to local scalar interactions that are compatible with addition and scalar multiplication in each slot. Multiplication is selected because it has exactly this property and because self-pairing produces squares. For this reason, in the standard pairing on $\mathbb{R}^n$, one pairs corresponding coordinates multiplicatively and then accumulates the resulting local contributions:
+$$
+\langle u,v\rangle=\sum_{i=1}^n u_i v_i.
+$$
+In this sense, multiplication is the local mechanism of interaction, while summation is the global mechanism of accumulation.
+
+\paragraph{Matrix form in the bilinear setting.}
+At the most general level, a scalar-valued pairing is simply a map
+$$
+B:V\times V\to \mathbb{K},
+$$
+and its defining rule may in principle be arbitrary. If one then imposes compatibility with the linear structure of the vector space, one requires bilinearity. Only after these conditions are imposed does one arrive, in the finite-dimensional coordinate setting, at the matrix form
+$$
+B(u,v)=u^TAv.
+$$
+Thus the matrix expression does not impose bilinearity from outside; rather, it is the coordinate representation of a rule already known to be bilinear. Conversely, if one begins by defining
+$$
+B(u,v):=u^TAv
+$$
+for a fixed matrix $A$, then bilinearity follows immediately. In this sense, matrix form guarantees bilinearity, while bilinearity, once a basis is chosen, leads naturally to matrix form. It follows that not every scalar-valued rule can be written as $u^TAv$: only those rules whose algebraic shape is bilinear, namely of the form
+$$
+\sum_{i,j} a_{ij}x_i y_j,
+$$
+admit such a representation.
+
+\begin{definition}[Symmetric Bilinear Form]
+Let $V$ be a vector space over a field $\mathbb{K}$, and let
+$$
+B:V\times V\to\mathbb{K}
+$$
+be a bilinear form. Then $B$ is said to be \emph{symmetric} if
+$$
+B(u,v)=B(v,u)
+\qquad
+\text{for all }u,v\in V.
+$$
+\end{definition}
+
+\paragraph{Symmetry and commutativity.}
+Symmetry in a bilinear form may be viewed as a higher-level analogue of commutativity. For scalars, commutativity means
+$$
+ab=ba.
+$$
+For a bilinear form
+$$
+B:V\times V\to\mathbb{K},
+$$
+symmetry means
+$$
+B(u,v)=B(v,u).
+$$
+Thus, symmetry says that exchanging the two vector inputs does not change the scalar output. In the standard inner product
+$$
+\langle u,v\rangle=\sum_{i=1}^n u_i v_i,
+$$
+this symmetry is realized through the commutativity of scalar multiplication in each coordinate. However, symmetry is still an additional condition on the pairing and is not automatic for every bilinear form.
+
+\begin{definition}[Inner Product]
+Let $V$ be a vector space over $\mathbb{R}$. An \emph{inner product} on $V$ is a map
+$$
+\langle\cdot,\cdot\rangle:V\times V\to\mathbb{R}
+$$
+such that, for all $u,v,w\in V$ and all $a,b\in\mathbb{R}$, the following conditions hold:
+\begin{enumerate}
+    \item \emph{Bilinearity:}
+    $$
+    \langle au+bv,w\rangle=a\langle u,w\rangle+b\langle v,w\rangle,
+    $$
+    $$
+    \langle w,au+bv\rangle=a\langle w,u\rangle+b\langle w,v\rangle.
+    $$
+    \item \emph{Symmetry:}
+    $$
+    \langle u,v\rangle=\langle v,u\rangle.
+    $$
+    \item \emph{Positive definiteness:}
+    $$
+    \langle v,v\rangle\ge 0
+    \qquad
+    \text{for all }v\in V,
+    $$
+    and
+    $$
+    \langle v,v\rangle=0 \iff v=0.
+    $$
+\end{enumerate}
+\end{definition}
+
+\section{Norm and Orthogonality}
+
+\begin{definition}[Norm]
+Let $V$ be a vector space over $\mathbb{R}$ or $\mathbb{C}$. A \emph{norm} on $V$ is a map
+$$
+\|\cdot\|:V\to\mathbb{R}
+$$
+such that for all $u,v\in V$ and all scalars $a$,
+$$
+\|u\|\ge 0,
+\qquad
+\|u\|=0 \iff u=0,
+$$
+$$
+\|au\|=|a|\,\|u\|,
+$$
+$$
+\|u+v\|\le \|u\|+\|v\|.
+$$
+\end{definition}
+
+\paragraph{Norm induced by an inner product.}
+In an inner-product space, the norm is induced by self-pairing:
+$$
+\|u\|=\sqrt{\langle u,u\rangle}.
+$$
+Thus the norm is a scalar-valued unary map assigning a nonnegative size to each vector.
+
+\begin{definition}[Orthogonality]
+Let $V$ be a vector space over $\mathbb{R}$ equipped with an inner product
+$$
+\langle\cdot,\cdot\rangle:V\times V\to\mathbb{R}.
+$$
+Two vectors $u,v\in V$ are said to be \emph{orthogonal} if
+$$
+\langle u,v\rangle=0.
+$$
+\end{definition}
+
+\paragraph{Structural summary.}
+Orthogonality is not introduced as a primitive notion. It is induced by the inner product: two vectors are orthogonal precisely when their scalar-valued pairing vanishes.
+
+\section{Summary}
+
+$$
+\mathbb{R}\ \text{field}
+$$
+$$
+\Downarrow
+$$
+$$
+V\ \text{vector space over }\mathbb{R}
+$$
+$$
+\Downarrow
+$$
+$$
+L:V\to W\ \text{linear map}
+$$
+$$
+\Downarrow
+$$
+$$
+B:V\times V\to\mathbb{R}\ \text{scalar-valued pairing}
+$$
+$$
+\Downarrow
+$$
+$$
+B\ \text{bilinear}
+$$
+$$
+\Downarrow
+$$
+$$
+B\ \text{symmetric and positive definite}
+$$
+$$
+\Downarrow
+$$
+$$
+\langle u,v\rangle
+$$
+$$
+\Downarrow
+$$
+$$
+\langle u,u\rangle,
+\qquad
+\|u\|=\sqrt{\langle u,u\rangle},
+\qquad
+u\perp v\iff \langle u,v\rangle=0.
+$$
+
+\end{document}

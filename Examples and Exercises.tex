@@ -1,0 +1,325 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+
+\title{Examples and Exercises}
+\author{Ramon}
+\date{\today}
+
+\maketitle
+
+\section{Worked Examples}
+
+\begin{example}[The field $\mathbb{R}$ and the vector space $\mathbb{R}^2$]
+Let $\mathbb{K}=\mathbb{R}$ and let $V=\mathbb{R}^2$. Then $\mathbb{R}$ is a field under the usual addition and multiplication, and $V$ is a vector space over $\mathbb{R}$ under the usual vector addition and scalar multiplication
+$$
+\lambda(x,y)=(\lambda x,\lambda y).
+$$
+A basis of $V$ is given by
+$$
+e_1=(1,0),\qquad e_2=(0,1).
+$$
+Hence every vector $v\in V$ can be written uniquely in the form
+$$
+v=a_1e_1+a_2e_2,
+\qquad a_1,a_2\in\mathbb{R}.
+$$
+For instance,
+$$
+(3,-2)=3e_1-2e_2.
+$$
+Define
+$$
+\langle (x_1,x_2),(y_1,y_2)\rangle=x_1y_1+x_2y_2.
+$$
+This is an inner product on $V$. Therefore two vectors are orthogonal precisely when their inner product is zero. For example,
+$$
+\langle (1,1),(1,-1)\rangle=1\cdot 1+1\cdot(-1)=0,
+$$
+so $(1,1)$ and $(1,-1)$ are orthogonal.
+\end{example}
+
+\begin{example}[A vector space over the complex field]
+Let $\mathbb{K}=\mathbb{C}$ and let $V=\mathbb{C}^2$. Then $V$ is a vector space over $\mathbb{C}$. A basis is
+$$
+e_1=(1,0),\qquad e_2=(0,1).
+$$
+Thus every vector $z\in \mathbb{C}^2$ has the form
+$$
+z=a_1e_1+a_2e_2,
+\qquad a_1,a_2\in\mathbb{C}.
+$$
+For example,
+$$
+(1+i,\,2-i)=(1+i)e_1+(2-i)e_2.
+$$
+This example emphasizes the distinction between the field and the vector space: the coefficients belong to $\mathbb{C}$, whereas the vectors belong to $\mathbb{C}^2$.
+\end{example}
+
+\begin{example}[A bilinear form that is symmetric but not an inner product]
+Let $V=\mathbb{R}^2$ and define
+$$
+B((x_1,x_2),(y_1,y_2))=x_1y_1-x_2y_2.
+$$
+Then $B$ is bilinear and symmetric. However, $B$ is not an inner product, because it is not positive definite. Indeed,
+$$
+B((0,1),(0,1))=0\cdot 0-1\cdot 1=-1<0.
+$$
+Thus symmetry and bilinearity alone are not sufficient to produce an inner product.
+\end{example}
+
+\begin{example}[A function space with an inner product]
+Let $V=P_2(\mathbb{R})$, the vector space of all real polynomials of degree at most $2$. Then $V$ is a vector space over $\mathbb{R}$. A basis is given by
+$$
+e_0(x)=1,\qquad e_1(x)=x,\qquad e_2(x)=x^2.
+$$
+Hence every polynomial $p\in V$ has a unique expression
+$$
+p(x)=a_0e_0(x)+a_1e_1(x)+a_2e_2(x)
+=a_0+a_1x+a_2x^2,
+\qquad a_0,a_1,a_2\in\mathbb{R}.
+$$
+Define
+$$
+\langle p,q\rangle=\int_{0}^{1} p(x)q(x)\,dx.
+$$
+This is an inner product on $V$. For example, let
+$$
+p(x)=1,\qquad q(x)=x-\frac12.
+$$
+Then
+$$
+\langle p,q\rangle=\int_0^1 \left(x-\frac12\right)\,dx
+=\left[\frac{x^2}{2}-\frac{x}{2}\right]_0^1
+=\frac12-\frac12=0.
+$$
+Therefore $p$ and $q$ are orthogonal in this inner-product space.
+\end{example}
+
+\begin{example}[Orthogonality in $\mathbb{R}^3$]
+Let $V=\mathbb{R}^3$ with the usual inner product
+$$
+\langle (x_1,x_2,x_3),(y_1,y_2,y_3)\rangle=x_1y_1+x_2y_2+x_3y_3.
+$$
+Consider the vectors
+$$
+u=(1,2,1),\qquad v=(2,-1,0).
+$$
+Then
+$$
+\langle u,v\rangle=1\cdot 2+2\cdot(-1)+1\cdot 0=2-2+0=0.
+$$
+Hence $u$ and $v$ are orthogonal.
+\end{example}
+
+\section{Exercises with Solutions}
+
+\begin{exercise}
+Let $\mathbb{K}=\mathbb{R}$ and $V=\mathbb{R}^2$. Write the vector $(4,-3)$ as a linear combination of the standard basis vectors.
+\end{exercise}
+
+\begin{solution}
+The standard basis of $\mathbb{R}^2$ is
+$$
+e_1=(1,0),\qquad e_2=(0,1).
+$$
+Hence
+$$
+(4,-3)=4e_1-3e_2.
+$$
+\end{solution}
+
+\begin{exercise}
+Explain why $\mathbb{R}$ and $\mathbb{R}^2$ are distinct sets, even though vectors in $\mathbb{R}^2$ use real numbers as coefficients.
+\end{exercise}
+
+\begin{solution}
+The set $\mathbb{R}$ consists of scalars, whereas $\mathbb{R}^2$ consists of ordered pairs of scalars:
+$$
+\mathbb{R}^2=\{(x,y):x,y\in\mathbb{R}\}.
+$$
+Thus an element of $\mathbb{R}$ is a single real number, while an element of $\mathbb{R}^2$ is a pair of real numbers.
+\end{solution}
+
+\begin{exercise}
+Let $V=\mathbb{R}^2$ and define
+$$
+B((x_1,x_2),(y_1,y_2))=2x_1y_1+3x_2y_2.
+$$
+Show that $B$ is bilinear.
+\end{exercise}
+
+\begin{solution}
+Let $u=(x_1,x_2)$, $v=(x_1',x_2')$, $w=(y_1,y_2)$, and let $a,b\in\mathbb{R}$. Then
+$$
+au+bv=(ax_1+bx_1',\,ax_2+bx_2').
+$$
+Hence
+\begin{align*}
+B(au+bv,w)
+&=2(ax_1+bx_1')y_1+3(ax_2+bx_2')y_2\\
+&=a(2x_1y_1+3x_2y_2)+b(2x_1'y_1+3x_2'y_2)\\
+&=aB(u,w)+bB(v,w).
+\end{align*}
+A similar computation shows
+$$
+B(w,au+bv)=aB(w,u)+bB(w,v).
+$$
+Therefore $B$ is bilinear.
+\end{solution}
+
+\begin{exercise}
+Determine whether the bilinear form
+$$
+B((x_1,x_2),(y_1,y_2))=x_1y_2+x_2y_1
+$$
+on $\mathbb{R}^2$ is symmetric.
+\end{exercise}
+
+\begin{solution}
+We compute
+$$
+B((x_1,x_2),(y_1,y_2))=x_1y_2+x_2y_1
+$$
+and
+$$
+B((y_1,y_2),(x_1,x_2))=y_1x_2+y_2x_1.
+$$
+Since multiplication in $\mathbb{R}$ is commutative,
+$$
+y_1x_2=x_2y_1,\qquad y_2x_1=x_1y_2.
+$$
+Thus
+$$
+B((y_1,y_2),(x_1,x_2))=x_2y_1+x_1y_2=B((x_1,x_2),(y_1,y_2)).
+$$
+Therefore $B$ is symmetric.
+\end{solution}
+
+\begin{exercise}
+Show that the symmetric bilinear form
+$$
+B((x_1,x_2),(y_1,y_2))=x_1y_1-x_2y_2
+$$
+is not an inner product.
+\end{exercise}
+
+\begin{solution}
+Take
+$$
+v=(0,1).
+$$
+Then
+$$
+B(v,v)=0\cdot 0-1\cdot 1=-1<0.
+$$
+Thus $B$ is not positive definite, hence it is not an inner product.
+\end{solution}
+
+\begin{exercise}
+In $\mathbb{R}^2$ with the usual inner product, determine whether the vectors
+$$
+u=(2,1),\qquad v=(1,-2)
+$$
+are orthogonal.
+\end{exercise}
+
+\begin{solution}
+The usual inner product is
+$$
+\langle (x_1,x_2),(y_1,y_2)\rangle=x_1y_1+x_2y_2.
+$$
+Hence
+$$
+\langle u,v\rangle=2\cdot 1+1\cdot(-2)=2-2=0.
+$$
+Since the inner product is zero, the vectors are orthogonal.
+\end{solution}
+
+\begin{exercise}
+Let $V=P_1(\mathbb{R})$, the space of real polynomials of degree at most $1$, and define
+$$
+\langle p,q\rangle=\int_0^1 p(x)q(x)\,dx.
+$$
+Show that the polynomials
+$$
+p(x)=1,\qquad q(x)=x-\frac12
+$$
+are orthogonal.
+\end{exercise}
+
+\begin{solution}
+We compute
+$$
+\langle p,q\rangle=\int_0^1 \left(x-\frac12\right)\,dx
+=\left[\frac{x^2}{2}-\frac{x}{2}\right]_0^1
+=\frac12-\frac12=0.
+$$
+Hence
+$$
+\langle p,q\rangle=0,
+$$
+so $p$ and $q$ are orthogonal.
+\end{solution}
+
+\begin{exercise}
+Let $V=\mathbb{R}^3$. Express the vector
+$$
+v=(1,0,-2)
+$$
+as a linear combination of the standard basis vectors.
+\end{exercise}
+
+\begin{solution}
+The standard basis of $\mathbb{R}^3$ is
+$$
+e_1=(1,0,0),\qquad e_2=(0,1,0),\qquad e_3=(0,0,1).
+$$
+Therefore
+$$
+(1,0,-2)=1e_1+0e_2-2e_3=e_1-2e_3.
+$$
+\end{solution}
+
+\begin{exercise}
+Let
+$$
+u=(1,1,1),\qquad v=(1,-1,0),\qquad w=(1,1,-2)
+$$
+in $\mathbb{R}^3$. Show that $u$ is orthogonal to both $v$ and $w$.
+\end{exercise}
+
+\begin{solution}
+We compute
+$$
+\langle u,v\rangle=1\cdot 1+1\cdot(-1)+1\cdot 0=0,
+$$
+and
+$$
+\langle u,w\rangle=1\cdot 1+1\cdot 1+1\cdot(-2)=0.
+$$
+Hence $u$ is orthogonal to both $v$ and $w$.
+\end{solution}
+
+\begin{exercise}
+Let $V=P_2(\mathbb{R})$ with basis
+$$
+e_0(x)=1,\qquad e_1(x)=x,\qquad e_2(x)=x^2.
+$$
+Write
+$$
+p(x)=2-3x+5x^2
+$$
+as a linear combination of the basis elements.
+\end{exercise}
+
+\begin{solution}
+By direct comparison,
+$$
+p(x)=2e_0(x)-3e_1(x)+5e_2(x).
+$$
+\end{solution}
+
+\end{document}

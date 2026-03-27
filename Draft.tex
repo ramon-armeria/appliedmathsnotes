@@ -1,0 +1,133 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+	
+	\title{My Mathematics Notes}
+	\author{Ramon}
+	\date{\today}
+	
+	\maketitle
+	\section{General Mappings Between Vector Spaces}
+	
+	Let $V$ and $W$ be real vector spaces over the field $\mathbb{R}$.
+	A mapping
+	\[
+	s : V \to W
+	\]
+	assigns to each element $u \in V$ a unique element $s(u) \in W$.
+	
+	When $V = \mathbb{R}^m$ and $W = \mathbb{R}^n$, the mapping
+	\[
+	s : \mathbb{R}^m \to \mathbb{R}^n
+	\]
+	is called a vector-valued function. Any such mapping can be written in component form
+	\[
+	s(u) = (s_1(u), \dots, s_n(u)),
+	\]
+	where each component
+	\[
+	s_i : \mathbb{R}^m \to \mathbb{R}
+	\]
+	is a scalar-valued function.
+	
+	The domain $\mathbb{R}^m$ will be referred to as the \emph{base space}, while $\mathbb{R}^n$ will be called the \emph{value space}. Elements of $\mathbb{R}^n$ admit a decomposition with respect to the canonical basis $\{e_1,\dots,e_n\}$,
+	\[
+	x = x_1 e_1 + \dots + x_n e_n.
+	\]
+	
+	Thus the mapping $s$ may also be expressed as
+	\[
+	s(u) = s_1(u)e_1 + \dots + s_n(u)e_n.
+	\]
+	
+	Different mathematical objects arise from this general mapping by restricting the dimensions of the spaces involved.
+	
+	If $m = n$, the mapping
+	\[
+	F : \mathbb{R}^n \to \mathbb{R}^n
+	\]
+	maps the space into itself.
+	
+	If $n = 1$, the mapping
+	\[
+	f : \mathbb{R}^m \to \mathbb{R}
+	\]
+	is a scalar-valued function, often called a scalar field on $\mathbb{R}^m$.
+	
+	If $m = 1$, the mapping
+	\[
+	r : \mathbb{R} \to \mathbb{R}^n
+	\]
+	is a one-parameter vector-valued function.
+	
+	Signals correspond to the special case
+	\[
+	x : \mathbb{R} \to \mathbb{R}
+	\]
+	or more generally
+	\[
+	x : \mathbb{R} \to \mathbb{R}^n.
+	\]
+	
+	A vector-valued mapping
+	\[
+	r : \mathbb{R} \to \mathbb{R}^n
+	\]
+	is constructed from a family of scalar functions
+	\[
+	r_i : \mathbb{R} \to \mathbb{R}, \qquad i=1,\dots,n.
+	\]
+	These scalar mappings are assembled into a single mapping by defining
+	\[
+	r(t) = (r_1(t), r_2(t), \dots, r_n(t)).
+	\]
+	Thus the vector-valued function is simply the tuple of its component functions. Since the codomain is the vector space $\mathbb{R}^n$, its canonical basis $\{e_1,\dots,e_n\}$ allows the output vector to be written as
+	\[
+	r(t) = r_1(t)e_1 + r_2(t)e_2 + \dots + r_n(t)e_n.
+	\]
+	The basis does not create the mapping; it only provides a coordinate representation of the output vector. Hence a vector-valued mapping can be understood structurally as a bundle of scalar functions sharing the same parameter and interpreted as coordinates in the vector space $\mathbb{R}^n$.
+	
+	The derivative operator acts on differentiable mappings
+	\[
+	s : \mathbb{R}^m \to \mathbb{R}^n
+	\]
+	and produces a linear mapping
+	\[
+	Ds(u) : \mathbb{R}^m \to \mathbb{R}^n.
+	\]
+	
+	In coordinates this linear mapping is represented by the Jacobian matrix
+	\[
+	Ds(u) =
+	\begin{pmatrix}
+		\frac{\partial s_1}{\partial u_1} & \dots & \frac{\partial s_1}{\partial u_m} \\
+		\vdots & & \vdots \\
+		\frac{\partial s_n}{\partial u_1} & \dots & \frac{\partial s_n}{\partial u_m}
+	\end{pmatrix}.
+	\]
+	
+	Thus the derivative introduces a local linear structure that describes how the mapping varies with respect to the base variables.
+	
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Mapping & Domain $\rightarrow$ Codomain & Interpretation \\
+			\hline
+			$f$ & $\mathbb{R}^n \rightarrow \mathbb{R}$ & Scalar field \\
+			\hline
+			$x$ & $\mathbb{R} \rightarrow \mathbb{R}$ & Scalar signal \\
+			\hline
+			$x$ & $\mathbb{R} \rightarrow \mathbb{R}^n$ & Vector signal / one--parameter vector function \\
+			\hline
+			$r$ & $\mathbb{R}^m \rightarrow \mathbb{R}^n$ & General vector--valued mapping (parametric mapping) \\
+			\hline
+			$F$ & $\mathbb{R}^n \rightarrow \mathbb{R}^n$ & Vector field \\
+			\hline
+			$Ds$ & $\mathbb{R}^m \rightarrow \mathbb{R}^n$ & Derivative (linear map / Jacobian) \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+\end{document}
