@@ -363,4 +363,20 @@
 	\qquad a_k\in\mathbb{C},\ i_k\in I.
 	\]
 	Since \(B\) is also linearly independent, this representation is unique. Thus a basis provides a coordinate description of each vector: the vector itself remains an abstract element of \(V\), while the coefficients \(a_k\) describe that vector relative to the chosen basis.
+	
+	Let \(V\) and \(W\) be vector spaces over \(\mathbb{C}\). A map
+	\[
+	T:V\to W
+	\]
+	is called a \textbf{linear map} if, for all \(u,v\in V\) and all \(a\in\mathbb{C}\),
+	\[
+	T(u+v)=T(u)+T(v),
+	\qquad
+	T(av)=aT(v).
+	\]
+	Thus a linear map preserves the operations that define the vector-space structure: vector addition and multiplication by coefficients. Equivalently, for all \(u,v\in V\) and all \(a,b\in\mathbb{C}\),
+	\[
+	T(au+bv)=aT(u)+bT(v).
+	\]
+	Hence a linear map sends linear combinations in \(V\) to the corresponding linear combinations in \(W\).
 \end{document}
