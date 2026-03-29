@@ -22,7 +22,19 @@
 	\]
 	is called \textbf{field}
 	
-	Let $S$ be a field. A \textbf{vector space} over $S$ is a set $V$ equipped with maps
+	Let $S$ be a field. The field $S$ already governs how scalars interact with scalars through its own addition and multiplication. Separately, let $V$ be a set equipped with an addition
+	\[
+	+ : V\times V \to V
+	\]
+	such that $(V,+)$ is an abelian group. Thus $V$ provides the abstract vectors together with their internal additive structure.
+	
+	To connect the scalar structure of $S$ with the vector structure of $V$, one imposes an external operation
+	\[
+	\cdot : S\times V \to V,
+	\]
+	usually written $(a,v)\mapsto av$, which tells how a scalar acts on a vector.
+	
+	A \textbf{vector space} over $S$ is therefore a set $V$ equipped with maps
 	\[
 	+ : V\times V \to V,
 	\qquad
@@ -32,5 +44,323 @@
 	\[
 	a(u+v)=au+av,\qquad (a+b)v=av+bv,\qquad (ab)v=a(bv),\qquad 1v=v.
 	\]
-	The \textbf{vector space} are about linear combinations of vectors not \textbf{scalars}
+	A \textbf{linear combination} of vectors \(v_1,\dots,v_n\in V\) is an expression of the form
+	\[
+	a_1v_1+\cdots+a_nv_n,
+	\qquad a_1,\dots,a_n\in S.
+	\]
+	It is formed by first scaling each vector \(v_i\) by a coefficient \(a_i\), and then adding the resulting vectors in \(V\).
+	
+	Unlike the ordinary sum
+	\[
+	v_1+\cdots+v_n,
+	\]
+	which corresponds to taking every coefficient equal to \(1\), a linear combination allows one not only to combine vectors, but also to control the contribution of each vector through its coefficient. In this way, scalar multiplication together with vector addition gives rise to the basic structure of a linear combination.
+	Thus a vector space is the structure in which scalars from $S$ act coherently on vectors in $V$, making possible expressions of the form
+	\[
+	a_1v_1+\cdots+a_nv_n.
+	\]
+	Hence vector spaces are about \textbf{linear combinations of vectors with scalar coefficients}, not about combining scalars alone. In the expression
+	\[
+	a_1v_1+\cdots+a_nv_n,
+	\]
+	each $v_i\in V$ provides a vector, and each scalar $a_i\in S$ provides its coefficient. The role of $a_i$ is to determine the scaled contribution of $v_i$ to the total combination. Thus $v_i$ selects the vector, while $a_i$ determines its weight in the sum.
+	
+	Once linear combinations
+	\[
+	a_1v_1+\cdots+a_nv_n
+	\]
+	are available, one may choose a family of vectors
+	\[
+	v_1,\dots,v_n\in V
+	\]
+	and ask whether this family contains redundancy. Redundancy means that one of the vectors adds no genuinely new linear contribution because it can already be obtained from the others by a linear combination.
+	
+	This leads to the notion of linear dependence. The family $v_1,\dots,v_n$ is said to be \textbf{linearly dependent} if there exist scalars $a_1,\dots,a_n\in S$, not all zero, such that
+	\[
+	a_1v_1+\cdots+a_nv_n=0.
+	\]
+	Such a relation is called a nontrivial linear relation among the vectors. It shows that the family contains redundancy.
+	
+	Equivalently, if one of the coefficients, say $a_k$, is nonzero, then one may solve for $v_k$ as a linear combination of the remaining vectors. Hence one of the vectors is already determined by the others and does not contribute a new independent direction.
+	
+	By contrast, the family $v_1,\dots,v_n$ is \textbf{linearly independent} if
+	\[
+	a_1v_1+\cdots+a_nv_n=0
+	\quad\Longrightarrow\quad
+	a_1=\cdots=a_n=0.
+	\]
+	Thus linear independence means that the only linear combination of the chosen vectors which gives the zero vector is the trivial one. In this case, the family contains no linear redundancy.
+	
+	Once the vector space structure has been established and linear combinations are available, one may choose a family of vectors in \(V\). To organize this family, one introduces an index set \(I\) and writes
+	\[
+	\{v_i\}_{i\in I}\subseteq V.
+	\]
+	This indexed family simply labels the chosen vectors of \(V\); to refer to them cleanly 
+	
+	Given a family of vectors
+	\[
+	\{v_i\}_{i\in I}\subseteq V,
+	\]
+	one may ask whether every vector in the family is genuinely needed. The family is said to contain \textbf{redundancy} if one of its vectors can be expressed as a linear combination of the others. In that case, that vector adds no new linear contribution, since the same generated vectors could be obtained without it. This idea leads to the formal notion of linear dependence.
+	
+	A family of vectors
+	\[
+	\{v_i\}_{i\in I}\subseteq V
+	\]
+	is said to be \textbf{linearly dependent} if there exist finitely many indices
+	\[
+	i_1,\dots,i_n\in I
+	\]
+	and coefficients
+	\[
+	a_1,\dots,a_n\in S,
+	\]
+	not all zero, such that
+	\[
+	a_1v_{i_1}+\cdots+a_nv_{i_n}=0.
+	\]
+	Thus linear dependence means that the family satisfies a nontrivial linear relation. Equivalently, at least one vector of the family can be expressed as a linear combination of the others, and hence the family contains redundancy.
+	
+	As an illustration, consider the vector space \(\mathbb{R}^2\).
+	
+	First, let
+	\[
+	u_1=(1,0),\qquad u_2=(0,1),\qquad u_3=(1,1).
+	\]
+	This family contains redundancy, since
+	\[
+	u_3=u_1+u_2.
+	\]
+	Equivalently,
+	\[
+	u_1+u_2-u_3=0,
+	\]
+	and the coefficients \(1,1,-1\) are not all zero. Hence the family
+	\[
+	\{u_1,u_2,u_3\}
+	\]
+	is linearly dependent. The vector \(u_3\) contributes no new linear information, since it can already be obtained from the others.
+	
+	Now consider instead the family
+	\[
+	e_1=(1,0),\qquad e_2=(0,1).
+	\]
+	Suppose
+	\[
+	a_1e_1+a_2e_2=0.
+	\]
+	Then
+	\[
+	a_1(1,0)+a_2(0,1)=(0,0),
+	\]
+	so
+	\[
+	(a_1,a_2)=(0,0),
+	\]
+	which implies
+	\[
+	a_1=0,\qquad a_2=0.
+	\]
+	Therefore the family
+	\[
+	\{e_1,e_2\}
+	\]
+	is linearly independent.
+	
+	Thus the first family is linearly dependent because it contains redundancy, whereas the second is linearly independent because no vector in it can be obtained as a linear combination of the others.
+	
+	Given a family of vectors
+	\[
+	\{v_i\}_{i\in I}\subseteq V,
+	\]
+	the \textbf{span} of this family is the set of all finite linear combinations of its vectors:
+	\[
+	\operatorname{Span}\{v_i\}_{i\in I}
+	=
+	\left\{
+	a_1v_{i_1}+\cdots+a_nv_{i_n}
+	\;\middle|\;
+	n\geq 1,\;
+	i_1,\dots,i_n\in I,\;
+	a_1,\dots,a_n\in S
+	\right\}.
+	\]
+	Thus the span of a family is the set of all vectors that can be generated from it by scalar multiplication and vector addition. If
+	\[
+	\operatorname{Span}\{v_i\}_{i\in I}=V,
+	\]
+	then the family is said to \textbf{span} the vector space \(V\). The notion of span does not require linear independence. Any family of vectors has a span, namely the set of all finite linear combinations of its elements. Linear independence is an additional condition which excludes redundancy. A basis is therefore a family of vectors which spans the space and is also linearly independent.
+	
+	Let \(V\) be a vector space over \(S\), and let
+	\[
+	\{v_i\}_{i\in I}\subseteq V
+	\]
+	be a family of vectors. This family is called a \textbf{basis} of \(V\) if it satisfies the following two conditions:
+	
+	\[
+	\operatorname{Span}\{v_i\}_{i\in I}=V,
+	\]
+	that is, every vector in \(V\) can be expressed as a finite linear combination of elements of the family; and
+	
+	\[
+	\{v_i\}_{i\in I}\text{ is linearly independent},
+	\]
+	that is, the only linear combination of its elements equal to \(0\) is the trivial one.
+	
+	Thus a basis is a family of vectors that generates the whole space without redundancy. Equivalently, a basis is a linearly independent spanning family of \(V\).
+	
+	Consider the vector space
+	\[
+	V=\mathbb{R}^2
+	\]
+	over the field
+	\[
+	S=\mathbb{R}.
+	\]
+	Its elements are vectors
+	\[
+	v=(x,y)\in V.
+	\]
+	
+	Let us choose the family
+	\[
+	u_1=(1,0),\qquad u_2=(0,1),\qquad u_3=(1,1).
+	\]
+	This may be written as an indexed family
+	\[
+	\{u_i\}_{i=1}^3\subseteq V.
+	\]
+	
+	A general linear combination of these vectors has the form
+	\[
+	a_1u_1+a_2u_2+a_3u_3,
+	\qquad a_1,a_2,a_3\in\mathbb{R}.
+	\]
+	Substituting the vectors gives
+	\[
+	a_1(1,0)+a_2(0,1)+a_3(1,1)
+	=
+	(a_1+a_3,\; a_2+a_3).
+	\]
+	Thus the coefficients determine how much each vector contributes to the final combination.
+	
+	Now observe that
+	\[
+	u_3=u_1+u_2.
+	\]
+	Equivalently,
+	\[
+	u_1+u_2-u_3=0.
+	\]
+	Since the coefficients \(1,1,-1\) are not all zero, this is a nontrivial linear relation. Therefore the family
+	\[
+	\{u_1,u_2,u_3\}
+	\]
+	is linearly dependent. This shows that the family contains redundancy: the vector \(u_3\) adds no new linear information, because it can already be obtained from \(u_1\) and \(u_2\).
+	
+	Let us now compute its span. By definition,
+	\[
+	\operatorname{Span}\{u_1,u_2,u_3\}
+	\]
+	is the set of all vectors of the form
+	\[
+	a_1u_1+a_2u_2+a_3u_3.
+	\]
+	But we have already seen that every such combination is
+	\[
+	(a_1+a_3,\; a_2+a_3).
+	\]
+	Conversely, given any vector \((x,y)\in\mathbb{R}^2\), one may choose
+	\[
+	a_1=x,\qquad a_2=y,\qquad a_3=0,
+	\]
+	so that
+	\[
+	(x,y)=xu_1+yu_2.
+	\]
+	Hence every vector in \(\mathbb{R}^2\) belongs to the span, and therefore
+	\[
+	\operatorname{Span}\{u_1,u_2,u_3\}=\mathbb{R}^2.
+	\]
+	So this family spans the whole space, but it is not a basis, because it is linearly dependent.
+	
+	Now remove the redundant vector \(u_3\), and consider the family
+	\[
+	e_1=(1,0),\qquad e_2=(0,1).
+	\]
+	Then
+	\[
+	\{e_1,e_2\}\subseteq \mathbb{R}^2.
+	\]
+	
+	Its span is again all of \(\mathbb{R}^2\), because every vector \((x,y)\in\mathbb{R}^2\) may be written as
+	\[
+	(x,y)=xe_1+ye_2.
+	\]
+	Thus
+	\[
+	\operatorname{Span}\{e_1,e_2\}=\mathbb{R}^2.
+	\]
+	
+	We now check linear independence. Suppose
+	\[
+	a_1e_1+a_2e_2=0.
+	\]
+	Then
+	\[
+	a_1(1,0)+a_2(0,1)=(0,0),
+	\]
+	so
+	\[
+	(a_1,a_2)=(0,0).
+	\]
+	Hence
+	\[
+	a_1=0,\qquad a_2=0.
+	\]
+	Therefore the family \(\{e_1,e_2\}\) is linearly independent.
+	
+	We conclude that
+	\[
+	\{e_1,e_2\}
+	\]
+	is a basis of \(\mathbb{R}^2\), because it spans the whole space and contains no redundancy.
+	
+	This example shows the full chain of ideas:
+	\[
+	\text{family of vectors}
+	\;\to\;
+	\text{linear combinations}
+	\;\to\;
+	\text{redundancy}
+	\;\to\;
+	\text{linear dependence}
+	\;\to\;
+	\text{span}
+	\;\to\;
+	\text{basis}.
+	\]
+	
+	Let \(V\) be a vector space over \(\mathbb{C}\), and let
+	\[
+	B=\{e_i\}_{i\in I}
+	\]
+	be a basis of \(V\). Since \(B\) spans \(V\), every vector \(v\in V\) can be written as a finite linear combination of basis vectors:
+	\[
+	v=a_1e_{i_1}+\cdots+a_ne_{i_n},
+	\qquad a_1,\dots,a_n\in\mathbb{C}.
+	\]
+	Since \(B\) is also linearly independent, this representation is unique. Thus a basis provides a coordinate description of each vector: the vector itself remains an abstract element of \(V\), while the coefficients \(a_1,\dots,a_n\) describe that vector relative to the chosen basis.
+	
+	Let \(V\) be a vector space over \(\mathbb{C}\), and let
+	\[
+	B=\{e_i\}_{i\in I}
+	\]
+	be a basis of \(V\). Since \(B\) spans \(V\), every vector \(v\in V\) can be written as a finite linear combination of basis vectors:
+	\[
+	v=\sum_{k=1}^{n} a_k e_{i_k},
+	\qquad a_k\in\mathbb{C},\ i_k\in I.
+	\]
+	Since \(B\) is also linearly independent, this representation is unique. Thus a basis provides a coordinate description of each vector: the vector itself remains an abstract element of \(V\), while the coefficients \(a_k\) describe that vector relative to the chosen basis.
 \end{document}
