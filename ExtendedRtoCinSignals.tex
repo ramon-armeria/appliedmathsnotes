@@ -1,0 +1,36 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+	
+	\title{My Mathematics Notes}
+	\author{Ramon}
+	\date{\today}
+	
+	\maketitle
+	The ring $(S,+,\cdot)$ with 
+	\[
+	1 \neq 0,
+	\]
+	\[
+	ab=ba \qquad \forall a,b \in S,
+	\]
+	and
+	\[
+	\forall a \in S,\quad a \neq 0 \implies \exists a^{-1} \in S \text{ such that } aa^{-1}=a^{-1}a=1.
+	\]
+	is called \textbf{field}
+	
+	Let $S$ be a field. A \textbf{vector space} over $S$ is a set $V$ equipped with maps
+	\[
+	+ : V\times V \to V,
+	\qquad
+	\cdot : S\times V \to V,
+	\]
+	such that $(V,+)$ is an abelian group and, for all $a,b\in S$ and $u,v\in V$,
+	\[
+	a(u+v)=au+av,\qquad (a+b)v=av+bv,\qquad (ab)v=a(bv),\qquad 1v=v.
+	\]
+	The \textbf{vector space} are about linear combinations of vectors not \textbf{scalars}
+\end{document}
