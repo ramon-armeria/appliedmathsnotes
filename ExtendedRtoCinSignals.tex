@@ -379,4 +379,149 @@
 	T(au+bv)=aT(u)+bT(v).
 	\]
 	Hence a linear map sends linear combinations in \(V\) to the corresponding linear combinations in \(W\).
+	
+	You start with two elements
+	\[
+	a,b\in G.
+	\]
+	
+	There are then two possible routes.
+	
+	\medskip
+	
+	\textbf{Route 1: combine first in \(G\), then map.}
+	
+	First use the operation of \(G\):
+	\[
+	a\ast b\in G.
+	\]
+	
+	Then apply \(\varphi\):
+	\[
+	\varphi(a\ast b)\in H.
+	\]
+	
+	\medskip
+	
+	\textbf{Route 2: map first to \(H\), then combine in \(H\).}
+	
+	First apply \(\varphi\) separately:
+	\[
+	\varphi(a),\varphi(b)\in H.
+	\]
+	
+	Then use the operation of \(H\):
+	\[
+	\varphi(a)\cdot\varphi(b)\in H.
+	\]
+	
+	\medskip
+	
+	The homomorphism condition says that these two routes give the same result:
+	\[
+	\varphi(a\ast b)=\varphi(a)\cdot\varphi(b).
+	\]
+	
+	You start with two rings
+	\[
+	(R,+,\cdot)\qquad\text{and}\qquad(S,\oplus,\otimes).
+	\]
+	
+	A ring homomorphism is a function
+	\[
+	\varphi:R\to S
+	\]
+	such that it is compatible with both ring operations.
+	
+	\medskip
+	
+	\textbf{Addition.}
+	
+	You start with two elements
+	\[
+	a,b\in R.
+	\]
+	
+	There are then two possible routes.
+	
+	\medskip
+	
+	\textbf{Route 1: add first in \(R\), then map.}
+	
+	First use the addition in \(R\):
+	\[
+	a+b\in R.
+	\]
+	
+	Then apply \(\varphi\):
+	\[
+	\varphi(a+b)\in S.
+	\]
+	
+	\medskip
+	
+	\textbf{Route 2: map first to \(S\), then add in \(S\).}
+	
+	First apply \(\varphi\) separately:
+	\[
+	\varphi(a),\varphi(b)\in S.
+	\]
+	
+	Then use the addition in \(S\):
+	\[
+	\varphi(a)\oplus\varphi(b)\in S.
+	\]
+	
+	\medskip
+	
+	The homomorphism condition for addition says that these two routes give the same result:
+	\[
+	\varphi(a+b)=\varphi(a)\oplus\varphi(b).
+	\]
+	
+	\bigskip
+	
+	\textbf{Multiplication.}
+	
+	Again start with
+	\[
+	a,b\in R.
+	\]
+	
+	There are two possible routes.
+	
+	\medskip
+	
+	\textbf{Route 1: multiply first in \(R\), then map.}
+	
+	First use the multiplication in \(R\):
+	\[
+	ab\in R.
+	\]
+	
+	Then apply \(\varphi\):
+	\[
+	\varphi(ab)\in S.
+	\]
+	
+	\medskip
+	
+	\textbf{Route 2: map first to \(S\), then multiply in \(S\).}
+	
+	First apply \(\varphi\) separately:
+	\[
+	\varphi(a),\varphi(b)\in S.
+	\]
+	
+	Then use the multiplication in \(S\):
+	\[
+	\varphi(a)\otimes\varphi(b)\in S.
+	\]
+	
+	\medskip
+	
+	The homomorphism condition for multiplication says that these two routes give the same result:
+	\[
+	\varphi(ab)=\varphi(a)\otimes\varphi(b).
+	\]
 \end{document}
