@@ -524,4 +524,143 @@
 	\[
 	\varphi(ab)=\varphi(a)\otimes\varphi(b).
 	\]
+	
+	Thus, from the ring perspective, a homomorphism is a function that preserves both operations defining the ring structure: addition and multiplication.
+	
+	A ring homomorphism is a map
+	\[
+	\varphi:R\to S
+	\]
+	such that for all \(a,b\in R\),
+	\[
+	\varphi(a+b)=\varphi(a)+\varphi(b)
+	\qquad\text{and}\qquad
+	\varphi(ab)=\varphi(a)\varphi(b).
+	\]
+	
+	Although a ring has two operations, a ring homomorphism has only one kernel:
+	\[
+	\ker(\varphi)=\{r\in R:\varphi(r)=0\}.
+	\]
+	
+	This kernel is defined with respect to the additive structure, because every ring is, in particular, an abelian group under addition, and
+	\[
+	\varphi:(R,+)\to(S,+)
+	\]
+	is a group homomorphism.
+	
+	There is no second kernel coming from multiplication. Multiplication does not produce an independent kernel notion here, since the multiplicative structure is not, in general, a group structure on all of \(R\). Its role is different: it does not define another collapse, but rather imposes extra stability on the usual kernel.
+	
+	Thus multiplication has no separate kernel effect; instead, it forces
+	\[
+	\ker(\varphi)
+	\]
+	to be closed under multiplication by arbitrary elements of \(R\), which is exactly why the kernel is an ideal.
+	
+	\paragraph{Kernel and injectivity.}
+	Suppose
+	\[
+	\varphi:A\to B
+	\]
+	is a homomorphism between algebraic structures. Then, in general, the kernel is defined by
+	\[
+	\ker(\varphi)=\{a\in A:\varphi(a)=e_B\},
+	\]
+	where \(e_B\) denotes the neutral element in the codomain with respect to the operation being preserved. Thus the symbol depends on the structure: in groups written multiplicatively the identity is \(1\) or \(e\); in groups written additively the identity is \(0\); in vector spaces or modules under addition the identity is \(0\); and in rings, when a ring homomorphism is viewed through its additive group structure, the relevant identity for the kernel is again \(0\). Hence the kernel is always about collapse to the identity, not about the particular symbol \(0\) in itself.
+	
+	For a linear map
+	\[
+	T:V\to W,
+	\]
+	the underlying operation in \(W\) is vector addition, whose neutral element is the zero vector. Therefore
+	\[
+	\ker(T)=\{v\in V:T(v)=0\}.
+	\]
+	Here \(0\) means the additive identity of \(W\), not an arbitrary number. That is why in linear algebra the kernel is naturally described as the set of vectors sent to zero. These are exactly the elements that become invisible under the map.
+	
+	If
+	\[
+	\varphi:G\to H
+	\]
+	is a group homomorphism, then
+	\[
+	\ker(\varphi)=\{g\in G:\varphi(g)=e_H\}.
+	\]
+	If \(H\) is written multiplicatively, this becomes
+	\[
+	\ker(\varphi)=\{g\in G:\varphi(g)=1\},
+	\]
+	whereas if \(H\) is written additively, it becomes
+	\[
+	\ker(\varphi)=\{g\in G:\varphi(g)=0\}.
+	\]
+	So the image of the kernel may be written as \(e\), \(1\), or \(0\), depending on how the codomain operation is expressed.
+	
+	The kernel controls injectivity because, for a homomorphism, the condition
+	\[
+	\varphi(a)=\varphi(b)
+	\]
+	means that the map cannot distinguish \(a\) from \(b\). In the group setting,
+	\[
+	\varphi(a)=\varphi(b)
+	\iff \varphi(a)\varphi(b)^{-1}=e
+	\iff \varphi(ab^{-1})=e
+	\iff ab^{-1}\in\ker(\varphi).
+	\]
+	Thus two elements have the same image exactly when they differ by an element of the kernel. In this precise sense, the kernel measures the failure of injectivity. If the only element sent to the identity is the identity itself, then no nontrivial collapse occurs. Hence
+	\[
+	\varphi \text{ is injective } \iff \ker(\varphi)=\{e_A\}.
+	\]
+	
+	For a linear map
+	\[
+	T:V\to W,
+	\]
+	one has
+	\[
+	T(u)=T(v)
+	\iff T(u-v)=0
+	\iff u-v\in\ker(T).
+	\]
+	Therefore, if
+	\[
+	\ker(T)=\{0\},
+	\]
+	then
+	\[
+	T(u)=T(v)\implies u-v=0\implies u=v,
+	\]
+	so \(T\) is injective. Conversely, if \(T\) is injective and \(T(v)=0\), then also
+	\[
+	T(v)=T(0),
+	\]
+	and injectivity implies
+	\[
+	v=0.
+	\]
+	Therefore
+	\[
+	\ker(T)=\{0\}.
+	\]
+	
+	A clean formulation is the following: the kernel of a homomorphism is the set of domain elements sent to the identity element of the codomain; therefore it records exactly which elements are collapsed by the map, and hence it measures injectivity. So the more exact version of the intuition is not simply that the kernel consists of elements that collapse to \(0\), but rather that it consists of elements sent to the codomain identity, that is, those elements that become indistinguishable from the neutral element under the map. In linear algebra this means collapse to \(0\); in multiplicative groups it means collapse to \(e\) or \(1\); and in additive groups it means collapse to \(0\). The final structural point is therefore that the kernel is not specifically about \(0\), but about the neutral element of the codomain structure. In linear maps that neutral element is \(0\), while in group homomorphisms it may be \(e\) or \(1\). This is the general algebraic idea behind the notion of kernel.
+	
+	We need the kernel because, once a map \(T:V\to W\) is established, we want to understand what structural information the map preserves and what it destroys. The kernel records precisely the part of the domain that the map cannot detect. More explicitly, it serves several fundamental purposes. First, it determines whether the map is injective, since
+	\[
+	T(u)=T(v)\iff T(u-v)=0\iff u-v\in\ker(T).
+	\]
+	Thus, if
+	\[
+	\ker(T)=\{0\},
+	\]
+	then the only vector sent to zero is the zero vector, and therefore distinct inputs cannot collapse to the same output; in this case, \(T\) is injective. In this sense, the kernel measures the failure of injectivity. Second, it describes which directions in the domain are collapsed by the map: if \(k\in\ker(T)\), then for every \(u\in V\),
+	\[
+	T(u+k)=T(u),
+	\]
+	so moving along a kernel direction changes the input without changing the output. Hence the map identifies whole families of vectors as equivalent from the point of view of the codomain. Third, the kernel describes the effective content of the map: a map may be defined on a large space, but if a large subspace lies in the kernel, then much of the domain structure is lost under the mapping. Fourth, together with the image, it provides the main structural decomposition of the map: the kernel records what is lost, while the image records what is reached. In finite-dimensional linear algebra, this is expressed by the rank--nullity formula
+	\[
+	\dim(V)=\dim(\ker(T))+\dim(\operatorname{Im}(T)).
+	\]
+	Thus, the dimension of the domain splits into the dimension of what is annihilated and the dimension of what effectively passes through the map. Fifth, the kernel leads naturally to quotient spaces: since vectors differing by a kernel element have the same image, the map depends not on each vector individually, but on its class modulo the kernel. In this sense, the kernel indicates exactly what must be quotiented out in order to obtain the essential injective form of the map. Therefore, the deepest structural role of the kernel is to identify the ambiguity introduced by the map, measure its loss of information, test injectivity, and prepare the passage to quotient structures. In compact form: once a map between two vector spaces is established, the kernel tells us which inputs become indistinguishable under the map.
+	
 \end{document}
