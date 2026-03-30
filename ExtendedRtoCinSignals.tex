@@ -663,4 +663,251 @@
 	\]
 	Thus, the dimension of the domain splits into the dimension of what is annihilated and the dimension of what effectively passes through the map. Fifth, the kernel leads naturally to quotient spaces: since vectors differing by a kernel element have the same image, the map depends not on each vector individually, but on its class modulo the kernel. In this sense, the kernel indicates exactly what must be quotiented out in order to obtain the essential injective form of the map. Therefore, the deepest structural role of the kernel is to identify the ambiguity introduced by the map, measure its loss of information, test injectivity, and prepare the passage to quotient structures. In compact form: once a map between two vector spaces is established, the kernel tells us which inputs become indistinguishable under the map.
 	
+	To see the role of the kernel in relation to injectivity, consider first the linear map
+	\[
+	T:\mathbb{R}^2\to\mathbb{R},\qquad T(x,y)=x+y.
+	\]
+	We compute its kernel:
+	\[
+	\ker(T)=\{(x,y)\in\mathbb{R}^2\mid T(x,y)=0\}.
+	\]
+	Since \(T(x,y)=x+y\), the condition for membership in the kernel is
+	\[
+	x+y=0,
+	\]
+	and therefore
+	\[
+	\ker(T)=\{(t,-t):t\in\mathbb{R}\}.
+	\]
+	Thus the kernel is not trivial; it is an entire line through the origin. This already indicates that \(T\) cannot be injective. Indeed, take
+	\[
+	u=(2,3), \qquad k=(1,-1)\in\ker(T),
+	\]
+	since
+	\[
+	T(1,-1)=1+(-1)=0.
+	\]
+	Then
+	\[
+	u+k=(2,3)+(1,-1)=(3,2),
+	\]
+	so the two inputs are distinct:
+	\[
+	(2,3)\neq(3,2).
+	\]
+	However,
+	\[
+	T(2,3)=2+3=5,
+	\qquad
+	T(3,2)=3+2=5.
+	\]
+	Hence two different vectors are sent to the same output, so \(T\) is not injective. More generally, if \(k\in\ker(T)\), then for every \(u\in\mathbb{R}^2\),
+	\[
+	T(u+k)=T(u)+T(k)=T(u)+0=T(u),
+	\]
+	which shows that every nonzero kernel vector produces ambiguity in the input without affecting the output.
+	
+	Now consider the identity map
+	\[
+	S:\mathbb{R}^2\to\mathbb{R}^2,\qquad S(x,y)=(x,y).
+	\]
+	Its kernel is
+	\[
+	\ker(S)=\{(x,y)\in\mathbb{R}^2\mid S(x,y)=(0,0)\}.
+	\]
+	Since \(S(x,y)=(x,y)\), the condition \(S(x,y)=(0,0)\) means exactly that
+	\[
+	(x,y)=(0,0).
+	\]
+	Thus
+	\[
+	\ker(S)=\{(0,0)\}.
+	\]
+	So the kernel is trivial. To see how this implies injectivity, suppose
+	\[
+	S(u)=S(v).
+	\]
+	Then
+	\[
+	S(u)-S(v)=0.
+	\]
+	Because \(S\) is linear,
+	\[
+	S(u-v)=0,
+	\]
+	hence
+	\[
+	u-v\in\ker(S).
+	\]
+	But since
+	\[
+	\ker(S)=\{(0,0)\},
+	\]
+	it follows that
+	\[
+	u-v=(0,0),
+	\]
+	and therefore
+	\[
+	u=v.
+	\]
+	So different inputs cannot have the same output, and \(S\) is injective. Structurally, this means that the map collapses no nonzero direction: nothing is lost, and every vector remains distinguishable in the codomain.
+	
+	As a less trivial injective example, consider
+	\[
+	L:\mathbb{R}^2\to\mathbb{R}^2,\qquad L(x,y)=(x+y,x-y).
+	\]
+	To compute the kernel, solve
+	\[
+	L(x,y)=(0,0).
+	\]
+	This gives the system
+	\[
+	x+y=0,\qquad x-y=0.
+	\]
+	Adding the two equations yields
+	\[
+	2x=0,
+	\]
+	so \(x=0\). Substituting into either equation gives
+	\[
+	y=0.
+	\]
+	Hence
+	\[
+	\ker(L)=\{(0,0)\}.
+	\]
+	Again the kernel is trivial, so \(L\) is injective. Indeed, if
+	\[
+	L(u)=L(v),
+	\]
+	then by linearity
+	\[
+	L(u-v)=0,
+	\]
+	which implies
+	\[
+	u-v\in\ker(L)=\{(0,0)\}.
+	\]
+	Therefore
+	\[
+	u=v.
+	\]
+	This example shows that the map need not be the identity in order to be injective; what matters is that the only vector sent to zero is the zero vector itself.
+	
+	These examples illustrate the general principle:
+	\[
+	T \text{ is injective } \iff \ker(T)=\{0\}.
+	\]
+	If the kernel contains nonzero vectors, then the map identifies different inputs and injectivity fails; if the kernel is trivial, then no nonzero vector is collapsed, and the map is injective.
+	
+	The most direct way to determine the kernel of a linear map is to treat it as a zero-output problem. If
+	\[
+	T:V\to W,
+	\]
+	then, by definition,
+	\[
+	\ker(T)=\{v\in V\mid T(v)=0\}.
+	\]
+	Thus, to find the kernel, one proceeds as follows: first write the equation
+	\[
+	T(v)=0;
+	\]
+	then substitute the explicit rule defining the map; next solve for all inputs \(v\in V\) satisfying that equation; finally describe the full set of solutions. In other words, the kernel is precisely the set of all inputs annihilated by the mapping rule. Conceptually, one asks: which vectors in the domain are sent to the zero vector of the codomain?
+	
+	As a first example, consider
+	\[
+	T:\mathbb{R}^3\to\mathbb{R},\qquad T(x,y,z)=x+2y-z.
+	\]
+	To determine the kernel, impose the condition
+	\[
+	T(x,y,z)=0.
+	\]
+	This gives
+	\[
+	x+2y-z=0.
+	\]
+	Solving for \(x\), we obtain
+	\[
+	x=-2y+z.
+	\]
+	Hence every vector in the kernel has the form
+	\[
+	(x,y,z)=(-2y+z,y,z).
+	\]
+	If we let \(y=s\) and \(z=t\), then
+	\[
+	(x,y,z)=(-2s+t,s,t),
+	\]
+	and therefore
+	\[
+	\ker(T)=\{(-2s+t,s,t):s,t\in\mathbb{R}\}.
+	\]
+	So in this case the kernel is a plane through the origin in \(\mathbb{R}^3\). This means that every vector lying in that plane is annihilated by the rule \(x+2y-z\).
+	
+	As a second example, consider
+	\[
+	S:\mathbb{R}^3\to\mathbb{R}^2,\qquad S(x,y,z)=(x-y,\;y-z).
+	\]
+	Again, we determine the kernel by solving
+	\[
+	S(x,y,z)=(0,0).
+	\]
+	This yields the system
+	\[
+	x-y=0,\qquad y-z=0.
+	\]
+	From the first equation we get
+	\[
+	x=y,
+	\]
+	and from the second,
+	\[
+	y=z.
+	\]
+	Hence
+	\[
+	x=y=z.
+	\]
+	So every vector in the kernel has the form
+	\[
+	(t,t,t),\qquad t\in\mathbb{R}.
+	\]
+	Therefore
+	\[
+	\ker(S)=\{(t,t,t):t\in\mathbb{R}\}.
+	\]
+	Thus the kernel is a line through the origin. Structurally, this tells us that the map cannot distinguish vectors lying along the direction \((1,1,1)\), because along that direction both coordinate differences vanish.
+	
+	As a third example, consider
+	\[
+	L:\mathbb{R}[x]\to\mathbb{R},\qquad L(p(x))=p(1).
+	\]
+	Here the domain is the vector space of polynomials with real coefficients, and the map sends each polynomial to its value at \(x=1\). To find the kernel, impose
+	\[
+	L(p(x))=0.
+	\]
+	This means
+	\[
+	p(1)=0.
+	\]
+	Thus the kernel consists of all polynomials that vanish at \(x=1\):
+	\[
+	\ker(L)=\{p(x)\in\mathbb{R}[x]\mid p(1)=0\}.
+	\]
+	By the factor theorem, this is equivalent to saying that \(x-1\) divides \(p(x)\). Hence
+	\[
+	\ker(L)=\{(x-1)q(x):q(x)\in\mathbb{R}[x]\}.
+	\]
+	This is a very instructive example because it shows that the kernel need not be a line or plane in finite-dimensional Euclidean space; it may also be a large subspace in a function space. The same principle remains unchanged: the kernel is always the set of all inputs sent to zero.
+	
+	These examples illustrate the general method clearly. To find the kernel of a linear map, one always begins with
+	\[
+	T(v)=0,
+	\]
+	then solves this condition using the rule defining the map, and finally describes the complete set of solutions. In compact form: the kernel is found by solving the equation \(T(v)=0\).
+	
+	\textbf{Exercises.} For each of the following linear maps, determine the kernel and use it to decide whether the map is injective: (1) \(T_1:\mathbb{R}^2\to\mathbb{R}\), \(T_1(x,y)=2x-y\); (2) \(T_2:\mathbb{R}^2\to\mathbb{R}^2\), \(T_2(x,y)=(x+y,x-y)\); (3) \(T_3:\mathbb{R}^3\to\mathbb{R}^2\), \(T_3(x,y,z)=(x+z,y+z)\); (4) \(T_4:\mathbb{R}^3\to\mathbb{R}\), \(T_4(x,y,z)=x-y+2z\); (5) \(T_5:\mathbb{R}[x]\to\mathbb{R}\), \(T_5(p(x))=p(0)\); (6) \(T_6:\mathbb{R}[x]\to\mathbb{R}\), \(T_6(p(x))=p(1)-p(0)\). In each case, solve the equation \(T(v)=0\), describe the full kernel, and conclude from the kernel whether the map is injective.
+	
+	\textbf{Solutions.} (1) For \(T_1(x,y)=2x-y\), the kernel is determined by \(2x-y=0\), so \(y=2x\), and hence \(\ker(T_1)=\{(t,2t):t\in\mathbb{R}\}\); since the kernel contains nonzero vectors, \(T_1\) is not injective. (2) For \(T_2(x,y)=(x+y,x-y)\), the kernel is found by solving \((x+y,x-y)=(0,0)\), that is, \(x+y=0\) and \(x-y=0\); adding and subtracting gives \(x=0\) and \(y=0\), so \(\ker(T_2)=\{(0,0)\}\), and therefore \(T_2\) is injective. (3) For \(T_3(x,y,z)=(x+z,y+z)\), solve \((x+z,y+z)=(0,0)\), which gives \(x=-z\) and \(y=-z\); writing \(z=t\), we obtain \(\ker(T_3)=\{(-t,-t,t):t\in\mathbb{R}\}\), so the kernel is nontrivial and \(T_3\) is not injective. (4) For \(T_4(x,y,z)=x-y+2z\), solve \(x-y+2z=0\); letting \(y=s\) and \(z=t\), we get \(x=s-2t\), so \(\ker(T_4)=\{(s-2t,s,t):s,t\in\mathbb{R}\}\); again the kernel is nontrivial, hence \(T_4\) is not injective. (5) For \(T_5(p(x))=p(0)\), the kernel consists of all polynomials satisfying \(p(0)=0\), that is, all polynomials with zero constant term; equivalently, \(\ker(T_5)=\{xq(x):q(x)\in\mathbb{R}[x]\}\), so \(T_5\) is not injective. (6) For \(T_6(p(x))=p(1)-p(0)\), the kernel is given by \(p(1)-p(0)=0\), or \(p(1)=p(0)\); thus \(\ker(T_6)=\{p(x)\in\mathbb{R}[x]:p(1)=p(0)\}\), which certainly contains nonzero polynomials such as the constant polynomials and also \(x^2-x\), so the kernel is nontrivial and \(T_6\) is not injective. In summary, among these examples only \(T_2\) is injective, because it is the only one whose kernel is exactly \(\{0\}\).
 \end{document}
