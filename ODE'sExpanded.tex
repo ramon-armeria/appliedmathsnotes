@@ -1,0 +1,663 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+	
+	
+	We consider a general first-order ordinary differential equation written in the compact form
+	$$
+	\frac{dy}{dx} = F(x,y).
+	$$
+	Here $y=y(x)$ is the unknown function, and $F$ is a mapping
+	$$
+	F : D \subseteq \mathbb{R}^2 \to \mathbb{R}, \qquad (x,y) \mapsto F(x,y),
+	$$
+	that assigns to each point $(x,y)$ a real number representing the slope of $y$ at that point.
+	
+	The use of a capital $F$ is conventional to emphasize that the function may depend on two variables.  
+	Special cases occur when the right-hand side depends only on $x$ or only on $y$:
+	$$
+	\frac{dy}{dx} = f(x) \quad \text{or} \quad \frac{dy}{dx} = f(y),
+	$$
+	where $f$ is a single-variable function. The general notation $F(x,y)$ unifies all possibilities.
+	
+	Examples:
+	
+	1. If
+	$$
+	\frac{dy}{dx} = \frac{k}{x},
+	$$
+	then
+	$$
+	F(x,y) = \frac{k}{x},
+	$$
+	a case where $F$ depends only on $x$. The solution is
+	$$
+	y(x) = k \ln |x| + C.
+	$$
+	
+	2. If
+	$$
+	\frac{dy}{dx} = \frac{y}{x},
+	$$
+	then
+	$$
+	F(x,y) = \frac{y}{x},
+	$$
+	which depends on both variables. This equation is separable:
+	$$
+	\frac{dy}{y} = \frac{dx}{x},
+	$$
+	leading to
+	$$
+	y(x) = Cx.
+	$$
+	
+	3. More generally, if
+	$$
+	\frac{dy}{dx} = y^2 + \sin(x),
+	$$
+	then
+	$$
+	F(x,y) = y^2 + \sin(x),
+	$$
+	with genuine dependence on both $x$ and $y$.
+	
+	Thus the notation
+	$$
+	y' = F(x,y)
+	$$
+	is a compact template for all first-order differential equations. In any specific case, $F$ is simply the concrete expression on the right-hand side of the given equation.
+	
+	In applications, the notation
+	$$
+	\frac{dy}{dx} = F(x,y)
+	$$
+	appears naturally. The variable $x$ represents the independent variable (often time or position), and $y$ the dependent variable (the quantity evolving).
+	
+	1. Example where $F$ depends only on $x$ (independent forcing):
+	$$
+	\frac{dT}{dt} = -k\,(T - T_{\text{env}}(t)),
+	$$
+	where $T$ is the temperature of an object and $T_{\text{env}}(t)$ is the ambient temperature.  
+	Here
+	$$
+	F(t,T) = -k\,(T - T_{\text{env}}(t)),
+	$$
+	and the right-hand side depends explicitly on $t$ through $T_{\text{env}}(t)$.
+	
+	2. Example where $F$ depends on both $x$ and $y$ (population growth with resources):
+	$$
+	\frac{dP}{dt} = r P\left(1 - \frac{P}{K(t)}\right),
+	$$
+	where $P$ is the population, $r$ is the growth rate, and $K(t)$ is a carrying capacity depending on time $t$.  
+	Here
+	$$
+	F(t,P) = r P\left(1 - \frac{P}{K(t)}\right),
+	$$
+	and the right-hand side depends both on the independent variable $t$ and on the dependent variable $P$.
+	
+	Thus, in practice the function $F(x,y)$ encodes the physical law or rule that prescribes how $y$ changes with respect to $x$.
+	
+	
+	\subsection*{Common Derivative Notations in Differential Equations}
+	
+	For an unknown function $y = y(x)$, the derivative with respect to $x$ can be written in several equivalent ways:
+	
+	\begin{itemize}
+		\item Leibniz notation:
+		$$
+		\frac{dy}{dx}
+		$$
+		emphasizes the rate of change of $y$ with respect to $x$.
+		
+		\item Lagrange notation:
+		$$
+		y'
+		$$
+		is a compact form widely used in ODEs.
+		
+		\item Newton notation (common in physics, when $x$ represents time $t$):
+		$$
+		\dot{y}
+		$$
+		denotes $\dfrac{dy}{dt}$.
+	\end{itemize}
+	
+	\paragraph{Example.}  
+	The differential equation
+	$$
+	y' = f(x,y)
+	$$
+	is equivalently written as
+	$$
+	\frac{dy}{dx} = f(x,y),
+	$$
+	or, if $x=t$ represents time,
+	$$
+	\dot{y} = f(t,y).
+	$$
+	
+	All three forms describe the same relationship: a rule for the derivative of the unknown function $y$ in terms of the variables $(x,y)$.
+	
+	
+	\subsection*{Normal Notation for a Differential Equation}
+	
+	In common notation a first--order ODE is written as
+	$$
+	y' = f(x,y).
+	$$
+	
+	Formally:
+	\begin{itemize}
+		\item $y = y(x)$ is the unknown function (solution).
+		\item $y' = \dfrac{dy}{dx}$ is its derivative with respect to the independent variable $x$.
+		\item $f : D \subseteq \mathbb{R}^2 \;\longrightarrow\; \mathbb{R}$ in the real case, or 
+		$$f : D \subseteq \mathbb{R} \times \mathbb{C} \;\longrightarrow\; \mathbb{C}$$
+		in the complex case.
+		\item $D$ is the domain of $f$, i.e.\ the set of all pairs $(x,y)$ where $f(x,y)$ is defined.
+	\end{itemize}
+	
+	Thus the equation
+	$$
+	y' = f(x,y)
+	$$
+	means: \emph{find a function $y : I \to \mathbb{C}$ such that for every $x \in I$, the derivative $y'(x)$ equals $f(x,y(x))$, where $(x,y(x)) \in D$.}
+	
+	
+	\section*{Complex--Valued Functions and ODE Notation}
+	
+	\subsection*{Pedantic Notation}
+	
+	Let $I \subseteq \mathbb{R}$ be an interval.  
+	A \emph{complex--valued function of a real variable} is a mapping
+	$$
+	\theta : I \longrightarrow \mathbb{C}.
+	$$
+	Every such function can be decomposed as
+	$$
+	\theta(x) = u(x) + i v(x), \qquad u,v : I \to \mathbb{R}.
+	$$
+	
+	\paragraph{Examples.}
+	\begin{itemize}
+		\item Purely real:  
+		$$
+		\theta(x) = x^2 = x^2 + i \cdot 0.
+		$$
+		\item Purely imaginary:  
+		$$
+		\theta(x) = i e^x = 0 + i e^x.
+		$$
+		\item General case:  
+		$$
+		\theta(x) = e^{ix} = \cos x + i \sin x.
+		$$
+	\end{itemize}
+	
+	\subsection*{Pedantic Notation for Differential Equations}
+	
+	A first--order ordinary differential equation is formally written as
+	$$
+	\theta'(x) = f\bigl(x, \theta(x)\bigr), \qquad x \in I,
+	$$
+	where
+	$$
+	f : D \subseteq I \times \mathbb{C} \;\longrightarrow\; \mathbb{C}.
+	$$
+	
+	Here:
+	\begin{itemize}
+		\item $I \subseteq \mathbb{R}$ is the interval of the independent variable.
+		\item $D \subseteq I \times \mathbb{C}$ is the domain of $f$, consisting of all ordered pairs $(x,y)$ with $x \in I$ and $y \in \mathbb{C}$.
+		\item $f(x,y) \in \mathbb{C}$ gives the derivative at the point where $\theta(x) = y$.
+	\end{itemize}
+	
+	Thus, $D$ can be visualized as the set of all possible states $(x,y)$ where the equation is defined.
+	
+	\paragraph{Example.}  
+	If $I = \mathbb{R}$ and
+	$$
+	f(x,y) = xy,
+	$$
+	then
+	$$
+	D = \mathbb{R} \times \mathbb{C}, \qquad f : D \to \mathbb{C},
+	$$
+	and the differential equation reads
+	$$
+	\theta'(x) = x \, \theta(x).
+	$$
+	
+	\subsection*{Equivalence with Standard Notation}
+	
+	In practice, the same relation is usually written in the shorthand form
+	$$
+	y' = f(x,y),
+	$$
+	with the understanding that
+	$$
+	y = y(x), \qquad y'(x) = \frac{dy}{dx}, \qquad y(x) \in \mathbb{C}.
+	$$
+	
+	Thus, the pedantic formulation
+	$$
+	\theta'(x) = f(x,\theta(x))
+	$$
+	is entirely equivalent to the standard shorthand
+	$$
+	y' = f(x,y).
+	$$
+	
+	The difference lies only in notation:
+	\begin{itemize}
+		\item Pedantic form emphasizes $\theta$ as a mapping $I \to \mathbb{C}$.
+		\item Standard form suppresses this, using $y$ for the function and its values.
+	\end{itemize}
+	
+	\section*{Pedantic vs. Normal ODE Notation}
+	
+	\subsection*{Pedantic Formulation}
+	
+	Let $I \subseteq \mathbb{R}$ be an interval.  
+	A first--order ODE is written as
+	$$
+	\theta'(x) = f\bigl(x,\theta(x)\bigr), \qquad x \in I,
+	$$
+	where
+	$$
+	f : D \subseteq I \times \mathbb{C} \;\longrightarrow\; \mathbb{C}.
+	$$
+	
+	Here:
+	\begin{itemize}
+		\item $I$ is the interval of the independent variable $x$.
+		\item $D$ is a subset of $I \times \mathbb{C}$, consisting of pairs $(x,y)$ where the formula for $f(x,y)$ is defined.
+		\item $\theta : I \to \mathbb{C}$ is the unknown function to be determined.
+	\end{itemize}
+	
+	\paragraph{Example (Pedantic).}  
+	$$
+	I = \mathbb{R}, \quad 
+	D = I \times \mathbb{C}, \quad
+	f(x,y) = x y,
+	$$
+	so the equation is
+	$$
+	\theta'(x) = x \, \theta(x).
+	$$
+	
+	\subsection*{Normal Shorthand Formulation}
+	
+	The same ODE is usually written as
+	$$
+	y' = f(x,y),
+	$$
+	with the understanding that
+	$$
+	y = y(x), \qquad y'(x) = \frac{dy}{dx}.
+	$$
+	
+	In this shorthand,
+	\begin{itemize}
+		\item $f$ is viewed simply as a function of two variables,
+		$$
+		f : D \subseteq \mathbb{R}^2 \;\longrightarrow\; \mathbb{R}
+		$$
+		in the purely real case, or
+		$$
+		f : D \subseteq \mathbb{R} \times \mathbb{C} \;\longrightarrow\; \mathbb{C}
+		$$
+		in the complex case.
+		\item $D$ is the domain of definition of $f(x,y)$, i.e. the set of all pairs $(x,y)$ where $f$ is defined.
+	\end{itemize}
+	
+	\paragraph{Example (Shorthand).}  
+	$$
+	y' = xy, \qquad f(x,y) = xy,
+	$$
+	with
+	$$
+	D = \mathbb{R}^2.
+	$$
+	
+	\subsection*{Equivalence}
+	
+	Thus:
+	\begin{align*}
+		\text{Pedantic: } & \theta'(x) = f\bigl(x,\theta(x)\bigr), 
+		\quad f : D \subseteq I \times \mathbb{C} \to \mathbb{C}, \\[6pt]
+		\text{Normal: } & y' = f(x,y), 
+		\quad f : D \subseteq \mathbb{R}^2 \to \mathbb{R} \; \text{ or } \; f : D \subseteq \mathbb{R} \times \mathbb{C} \to \mathbb{C}.
+	\end{align*}
+	
+	Both notations describe the same situation.  
+	The difference is that the pedantic version highlights $\theta$ as a function $I \to \mathbb{C}$ and makes $D \subseteq I \times \mathbb{C}$ explicit, while the shorthand suppresses these details.
+	
+	\subsection*{Role of the Domain $D$}
+	
+	In the differential equation
+	$$
+	\theta'(x) = f\bigl(x,\theta(x)\bigr),
+	$$
+	the right--hand side $f$ depends on two variables: the independent variable $x \in I$ and the dependent variable $y = \theta(x) \in \mathbb{C}$.  
+	Therefore we write
+	$$
+	f : D \subseteq I \times \mathbb{C} \;\longrightarrow\; \mathbb{C},
+	$$
+	where $D$ is the set of all pairs $(x,y)$ for which $f(x,y)$ is defined.  
+	In this way, $D$ specifies the valid region of the $(x,y)$--plane on which the ODE is meaningful.
+	
+	\paragraph{Example.}
+	If
+	$$
+	f(x,y) = \frac{y}{x},
+	$$
+	then $x$ cannot be zero. Hence the domain is
+	$$
+	D = \{(x,y) \in \mathbb{R} \times \mathbb{C} : x \neq 0 \}.
+	$$
+	The ODE reads
+	$$
+	\theta'(x) = \frac{\theta(x)}{x}, \qquad x \neq 0.
+	$$
+	Thus, $D$ excludes the vertical line $x=0$ in the $(x,y)$--plane, and the differential equation is only defined on regions where $x \neq 0$.
+	\subsection*{Examples in Both Notations}
+	
+	\paragraph{Example 1: Linear Growth.}
+	
+	\emph{Pedantic notation:}
+	$$
+	\theta'(x) = f\bigl(x,\theta(x)\bigr), \qquad 
+	f(x,y) = y, \quad D = \mathbb{R} \times \mathbb{C}.
+	$$
+	That is,
+	$$
+	\theta'(x) = \theta(x).
+	$$
+	The solution is
+	$$
+	\theta(x) = C e^x, \qquad C \in \mathbb{C}.
+	$$
+	
+	\emph{Normal shorthand:}
+	$$
+	y' = f(x,y) = y, \qquad D = \mathbb{R}^2,
+	$$
+	with the same solution
+	$$
+	y(x) = C e^x.
+	$$
+	
+	\bigskip
+	
+	\paragraph{Example 2: Division by $x$.}
+	
+	\emph{Pedantic notation:}
+	$$
+	\theta'(x) = f\bigl(x,\theta(x)\bigr), \qquad 
+	f(x,y) = \frac{y}{x}, \quad D = \{ (x,y) \in \mathbb{R} \times \mathbb{C} : x \neq 0 \}.
+	$$
+	That is,
+	$$
+	\theta'(x) = \frac{\theta(x)}{x}, \qquad x \neq 0.
+	$$
+	The solution is
+	$$
+	\theta(x) = Cx, \qquad C \in \mathbb{C}.
+	$$
+	
+	\emph{Normal shorthand:}
+	$$
+	y' = f(x,y) = \frac{y}{x}, \qquad D = \{(x,y) \in \mathbb{R}^2 : x \neq 0\},
+	$$
+	with the same solution
+	$$
+	y(x) = Cx.
+	$$
+	\section*{First-Order Ordinary Differential Equations: Main Classes}
+	
+	A first-order ODE has the general form
+	$$
+	\frac{dy}{dx} = F(x,y).
+	$$
+	
+	Different solution methods apply depending on the structure of $F(x,y)$.
+	
+	---
+	
+	\subsection*{1. Separable Equations}
+	
+	An equation is \textbf{separable} if it can be written as
+	$$
+	\frac{dy}{dx} = f(x)\,g(y).
+	$$
+	
+	\textbf{Method:}
+	\[
+	\frac{dy}{g(y)} = f(x)\,dx,
+	\]
+	integrate both sides.
+	
+	\textbf{Example:}
+	\[
+	y' = 3y, \qquad y(0) = 5.7.
+	\]
+	Separate:
+	\[
+	\frac{dy}{y} = 3\,dx \quad \Rightarrow \quad \ln|y| = 3x + C.
+	\]
+	Hence
+	\[
+	y(x) = Ce^{3x}, \qquad y(0)=5.7 \implies C=5.7.
+	\]
+	\textbf{Solution:} $y(x) = 5.7e^{3x}$.
+	
+	---
+	
+	\subsection*{2. Linear Equations}
+	
+	A first-order ODE is \textbf{linear} if it has the form
+	$$
+	y' + P(x)y = Q(x).
+	$$
+	
+	\textbf{Method:} Use the \textbf{integrating factor}
+	\[
+	\mu(x) = e^{\int P(x)\,dx}.
+	\]
+	Then
+	\[
+	\frac{d}{dx}\big( \mu(x)y \big) = \mu(x) Q(x).
+	\]
+	
+	\textbf{Example:}
+	\[
+	y' + y = e^x.
+	\]
+	Here $P(x)=1$, $Q(x)=e^x$, so $\mu(x) = e^{\int 1 dx} = e^x$.
+	\[
+	\frac{d}{dx}\!\left(e^x y\right) = e^x e^x = e^{2x}.
+	\]
+	Integrate:
+	\[
+	e^x y = \tfrac{1}{2} e^{2x} + C \quad \Rightarrow \quad y(x) = \tfrac{1}{2} e^x + C e^{-x}.
+	\]
+	
+	---
+	
+	\subsection*{3. Exact Equations}
+	
+	An equation of the form
+	$$
+	M(x,y)\,dx + N(x,y)\,dy = 0
+	$$
+	is \textbf{exact} if
+	$$
+	\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}.
+	$$
+	
+	\textbf{Method:} Find a potential function $\Phi(x,y)$ such that
+	\[
+	\frac{\partial \Phi}{\partial x} = M(x,y), \qquad \frac{\partial \Phi}{\partial y} = N(x,y).
+	\]
+	Then the solution is $\Phi(x,y) = C$.
+	
+	\textbf{Example:}
+	\[
+	(2xy)\,dx + (x^2)\,dy = 0.
+	\]
+	Here $M=2xy$, $N=x^2$.
+	Check:
+	\[
+	\frac{\partial M}{\partial y} = 2x, \quad \frac{\partial N}{\partial x} = 2x.
+	\]
+	Exact! Integrate $M$:
+	\[
+	\Phi(x,y) = \int 2xy\,dx = x^2 y + h(y).
+	\]
+	Differentiate wrt $y$:
+	\[
+	\frac{\partial \Phi}{\partial y} = x^2 + h'(y).
+	\]
+	This must equal $N = x^2$, so $h'(y)=0$, hence $h(y)=C$.
+	\[
+	\textbf{Solution: } x^2 y = C.
+	\]
+	
+	---
+	
+	\subsection*{4. Bernoulli Equations}
+	
+	A Bernoulli equation has the form
+	$$
+	y' + P(x)y = Q(x)y^n, \qquad n \neq 0,1.
+	$$
+	
+	\textbf{Method:} Use substitution $z = y^{1-n}$, which reduces it to a linear equation in $z$.
+	
+	\textbf{Example:}
+	\[
+	y' + y = y^2.
+	\]
+	Divide by $y^2$:
+	\[
+	\frac{y'}{y^2} + \frac{1}{y} = 1.
+	\]
+	Let $z = 1/y \implies z' = -y'/y^2$.
+	So
+	\[
+	-z' + z = 1 \quad \Rightarrow \quad z' - z = -1.
+	\]
+	This is linear; solve with integrating factor $e^{-\int 1 dx}=e^{-x}$:
+	\[
+	\frac{d}{dx}(e^{-x} z) = -e^{-x}.
+	\]
+	Integrate:
+	\[
+	e^{-x} z = e^{-x} + C \quad \Rightarrow \quad z = 1 + Ce^x.
+	\]
+	Recall $z=1/y$:
+	\[
+	y(x) = \frac{1}{1+Ce^x}.
+	\]
+	
+	---
+	
+	\section*{Summary Table}
+	
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Class} & \textbf{Form} & \textbf{Method} \\
+		\hline
+		Separable & $y' = f(x)g(y)$ & Separate and integrate \\
+		Linear & $y' + P(x)y = Q(x)$ & Integrating factor $\mu(x)$ \\
+		Exact & $M(x,y)dx+N(x,y)dy=0$ & Potential function $\Phi(x,y)=C$ \\
+		Bernoulli & $y' + P(x)y = Q(x)y^n$ & Substitution $z=y^{1-n}$ \\
+		\hline
+	\end{tabular}
+	
+	\section*{Integrating Factor Method}
+	
+	The integrating factor method is used to solve \textbf{first-order linear ODEs} of the form
+	$$
+	\frac{dy}{dx} + P(x)y = Q(x).
+	$$
+	
+	\subsection*{Conditions for Use}
+	- The equation must be \textbf{linear in $y$ and $y'$}:  
+	$y$ and $y'$ appear only to the first power.  
+	- $P(x)$ and $Q(x)$ are functions of $x$ only.  
+	
+	\textbf{Examples where it applies:}
+	$$
+	y' + 3y = \cos x, \qquad y' + \tfrac{1}{x}y = x^2.
+	$$
+	
+	\textbf{Examples where it does not apply:}
+	$$
+	y' + y^2 = x, \qquad y' + e^y = \sin x, \qquad y'y + x = 0.
+	$$
+	
+	\subsection*{Method}
+	1. Write the ODE in the standard form
+	$$
+	\frac{dy}{dx} + P(x)y = Q(x).
+	$$
+	2. Define the \textbf{integrating factor}
+	$$
+	\mu(x) = e^{\int P(x)\,dx}.
+	$$
+	3. Multiply the entire equation by $\mu(x)$:
+	$$
+	\mu(x)\frac{dy}{dx} + \mu(x)P(x)y = \mu(x)Q(x).
+	$$
+	The left-hand side becomes
+	$$
+	\frac{d}{dx}\big(\mu(x)y\big).
+	$$
+	4. Integrate both sides:
+	$$
+	\mu(x)y = \int \mu(x)Q(x)\,dx + C.
+	$$
+	5. Solve for $y(x)$:
+	$$
+	y(x) = \frac{1}{\mu(x)}\left(\int \mu(x)Q(x)\,dx + C\right).
+	$$
+	
+	\subsection*{Worked Example}
+	Solve
+	$$
+	\frac{dy}{dx} + 2y = e^{-x}.
+	$$
+	
+	\textbf{Step 1:} Identify $P(x) = 2$, $Q(x) = e^{-x}$.  
+	
+	\textbf{Step 2:} Compute the integrating factor
+	$$
+	\mu(x) = e^{\int 2\,dx} = e^{2x}.
+	$$
+	
+	\textbf{Step 3:} Multiply the equation by $e^{2x}$:
+	$$
+	e^{2x}\frac{dy}{dx} + 2e^{2x}y = e^x.
+	$$
+	This is
+	$$
+	\frac{d}{dx}(e^{2x}y) = e^x.
+	$$
+	
+	\textbf{Step 4:} Integrate both sides:
+	$$
+	e^{2x}y = \int e^x\,dx = e^x + C.
+	$$
+	
+	\textbf{Step 5:} Solve for $y$:
+	$$
+	y(x) = e^{-2x}(e^x + C) = e^{-x} + Ce^{-2x}.
+	$$
+	
+	\subsection*{Summary}
+	The integrating factor method works because multiplication by $\mu(x) = e^{\int P(x)\,dx}$ transforms the equation into an exact derivative. This relies on the equation being linear in $y$ and $y'$.  
+	
+\end{document}

@@ -1,0 +1,969 @@
+\documentclass[12pt]{article}
+
+\input{preamble}
+
+
+\begin{document}
+	
+	\begin{center}
+		\Large\textbf{General Complex Form of a First--Order Ordinary Differential Equation}\\[0.5em]
+		\normalsize (after Coddington)
+	\end{center}
+	
+	\section*{Definition}
+	
+	Let \( I \subset \mathbb{R} \) be an interval and \( S \subset \mathbb{C} \) a region in the complex plane.  
+	A \emph{first--order ordinary differential equation} is an expression of the form
+	\[
+	\boxed{\frac{dy}{dx} = f(x,y)},
+	\]
+	where
+	\[
+	f : I \times S \longrightarrow \mathbb{C}, \qquad y : I \longrightarrow S.
+	\]
+	Here
+	\begin{itemize}
+		\item \(x \in I\) is the \textbf{independent variable} (real);
+		\item \(y(x)\) is the \textbf{dependent variable} (possibly complex--valued);
+		\item \(f(x,y)\) prescribes the \textbf{rate of change} of \(y\) with respect to \(x\).
+	\end{itemize}
+	
+	\section*{Complex Representation}
+	
+	If \(y\) is complex--valued, write
+	\[
+	y(x) = w(x) + i\,z(x),
+	\]
+	with \(w,z : I \to \mathbb{R}\).
+	Then the defining function can also be written as
+	\[
+	f(x,y) = f\big(x,\,w(x) + i\,z(x)\big)
+	= U(x,w,z) + i\,V(x,w,z),
+	\]
+	where \(U,V : I \times \mathbb{R}^2 \to \mathbb{R}\) denote the real and imaginary parts of \(f\).
+	
+	Substituting into the differential equation gives
+	\[
+	\boxed{
+		\begin{aligned}
+			w'(x) &= U\big(x,w(x),z(x)\big),\\
+			z'(x) &= V\big(x,w(x),z(x)\big).
+		\end{aligned}
+	}
+	\]
+	Thus the single complex equation \(y'(x)=f(x,y(x))\) is equivalent to a coupled system of two real equations for \(w\) and \(z\).
+	
+	\section*{Conceptual Summary}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Symbol} & \textbf{Meaning} & \textbf{Type}\\
+			\hline
+			\(x\) & independent variable & real\\
+			\(y(x)\) & dependent variable & complex function \(I\!\to\!\mathbb{C}\)\\
+			\(f(x,y)\) & defining function (vector field) & \(I\times S\!\to\!\mathbb{C}\)\\
+			\(\dfrac{dy}{dx}=f(x,y)\) & ordinary differential equation & first order\\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\section*{Summary Formula}
+	
+	\[
+	\boxed{
+		\frac{dy}{dx} = f(x,y)
+		= f\big(x,\,w(x)+i\,z(x)\big)
+		= y'(x), \qquad f(x,y)\in\mathbb{C}.
+	}
+	\]
+	
+	\begin{center}
+		{\Large \textbf{Coddington-Style ODE Setup: RC Circuit and Mechanical Analogue}}
+	\end{center}
+	
+	\section*{1. Electrical model (RC low-pass)}
+	
+	\subsection*{1.1 Circuit and variables}
+	Series $R$–$C$ with input voltage $u(t)$ at the resistor, and output $y(t)=v_C(t)$ across the capacitor $C$. Kirchhoff and constitutive laws give:
+	$$
+	i_R(t) \;=\; \frac{u(t)-y(t)}{R}, 
+	\qquad
+	i_C(t) \;=\; C\,\frac{dy}{dt},
+	\qquad
+	i_R=i_C.
+	$$
+	Hence
+	$$
+	C\,\frac{dy}{dt} \;=\; \frac{u(t)-y(t)}{R}
+	\;\;\Longleftrightarrow\;\;
+	\frac{dy}{dt} \;=\; -\frac{1}{RC}\,y(t) \;+\; \frac{1}{RC}\,u(t).
+	$$
+	
+	\subsection*{1.2 Coddington mapping}
+	Take the independent variable $x:=t\in I\subset\mathbb{R}$ and the state $y:I\to S\subset\mathbb{C}$ (allowing complex signals, e.g.\ phasors). Define
+	$$
+	f(x,y)\;:=\; -\frac{1}{RC}\,y \;+\; \frac{1}{RC}\,u(x),
+	\qquad
+	f: I\times S \to \mathbb{C}.
+	$$
+	Then the ODE is exactly
+	$$
+	\boxed{\; y'(x)=f(x,y(x)) \;}.
+	$$
+	If you write $y=w+iz$ and $u=p+iq$ (real parts $w,p$ and imaginary parts $z,q$), the single complex equation is equivalent to the coupled real system
+	$$
+	\begin{aligned}
+		w'(x) &= -\frac{1}{RC}\,w(x) + \frac{1}{RC}\,p(x),\\
+		z'(x) &= -\frac{1}{RC}\,z(x) + \frac{1}{RC}\,q(x).
+	\end{aligned}
+	$$
+	
+	\subsection*{1.3 Special cases}
+	\begin{itemize}
+		\item \textbf{Real signals.} If $u$ is real-valued, $q\equiv 0$, the imaginary channel decouples and $z\equiv 0$ is invariant.
+		\item \textbf{Sinusoidal steady state (phasor).} If $u(t)=\Re\{U e^{i\omega t}\}$, one may treat $u$ and $y$ as complex exponentials; the same first-order law holds since $f: I\times S\to\mathbb{C}$.
+	\end{itemize}
+	
+	\section*{2. Mechanical analogue (spring–dashpot, no mass)}
+	
+	Using the standard force–voltage analogy:
+	\begin{center}
+		\begin{tabular}{c|c}
+			Electrical & Mechanical (translational)\\ \hline
+			Voltage $v$ & Force $F$\\
+			Current $i$ & Velocity $\dot{x}$\\
+			Resistor $R$ & Dashpot $b$ (viscous damper)\\
+			Capacitor $C$ & Spring with stiffness $k$ (compliance $1/k$)
+		\end{tabular}
+	\end{center}
+	
+	\subsection*{2.1 Model and variables}
+	A spring ($k$) in parallel with a dashpot ($b$), driven by an external force $F(t)$. Let the output be displacement $y(t):=x(t)$. Constitutive laws:
+	$$
+	F_{\text{spring}}=k\,y, 
+	\qquad
+	F_{\text{dashpot}}=b\,\dot{y},
+	\qquad
+	F(t)=F_{\text{spring}}+F_{\text{dashpot}}.
+	$$
+	Therefore
+	$$
+	b\,\frac{dy}{dt}+k\,y(t)=F(t)
+	\;\;\Longleftrightarrow\;\;
+	\frac{dy}{dt} \;=\; -\frac{k}{b}\,y(t) \;+\; \frac{1}{b}\,F(t).
+	$$
+	
+	\subsection*{2.2 Coddington mapping}
+	Again $x:=t\in I\subset\mathbb{R}$, $y:I\to S\subset\mathbb{C}$ (allow complex driving). Define
+	$$
+	f(x,y)\;:=\; -\frac{k}{b}\,y \;+\; \frac{1}{b}\,F(x),
+	\qquad
+	f: I\times S \to \mathbb{C}.
+	$$
+	Then
+	$$
+	\boxed{\; y'(x)=f(x,y(x)) \;}.
+	$$
+	With $y=w+iz$ and $F=P+iQ$,
+	$$
+	\begin{aligned}
+		w'(x) &= -\frac{k}{b}\,w(x) + \frac{1}{b}\,P(x),\\
+		z'(x) &= -\frac{k}{b}\,z(x) + \frac{1}{b}\,Q(x).
+	\end{aligned}
+	$$
+	
+	\section*{3. Parameter correspondence}
+	
+	Matching the electrical and mechanical first-order laws:
+	$$
+	\underbrace{\frac{1}{RC}}_{\text{electrical decay rate}} 
+	\;\longleftrightarrow\;
+	\underbrace{\frac{k}{b}}_{\text{mechanical decay rate}},
+	\qquad
+	\underbrace{\frac{1}{RC}\,u(t)}_{\text{input term}}
+	\;\longleftrightarrow\;
+	\underbrace{\frac{1}{b}\,F(t)}_{\text{input term}}.
+	$$
+	Thus the Coddington-style definition $y'(x)=f(x,y)$ captures both systems with the same affine vector field:
+	$$
+	f(x,y)= -a\,y + b\,\nu(x),
+	\quad
+	\text{where}\;\; 
+	\begin{cases}
+		a=\dfrac{1}{RC}, \; b=\dfrac{1}{RC}, \; \nu=u & \text{(RC)}\\[0.5em]
+		a=\dfrac{k}{b}, \; b=\dfrac{1}{b}, \; \nu=F & \text{(spring–dashpot)}
+	\end{cases}
+	$$
+	
+	\section*{4. Initial-value formulation (both cases)}
+	Given $x_0\in I$ and $y_0\in S$,
+	$$
+	\boxed{\; 
+		\begin{cases}
+			y'(x)=f(x,y(x)),\\
+			y(x_0)=y_0,
+		\end{cases}
+		\;}
+	$$
+	with $f$ as defined above. Under standard continuity/Lipschitz hypotheses on $f$ in $y$ over $I\times S$, the existence–uniqueness theorem applies in the same way for both the electrical and mechanical systems.
+	
+	\section*{Solution, Initial Value Problem, and Structural Interpretation}
+	
+	Given a function
+	$$
+	f : I \times S \to \mathbb{C},
+	$$
+	with \(I \subset \mathbb{R}\) an interval and \(S \subset \mathbb{C}\), a \emph{solution} of the first--order ordinary differential equation
+	$$
+	\frac{dy}{dx} = f(x,y)
+	$$
+	is a differentiable function
+	$$
+	y : J \to S,
+	$$
+	defined on some interval \(J \subset I\), such that
+	$$
+	y'(x)=f(x,y(x))
+	\qquad \text{for all } x\in J.
+	$$
+	
+	If, in addition, one prescribes a point
+	$$
+	x_0 \in I, \qquad y_0 \in S,
+	$$
+	then one obtains the \emph{initial value problem}
+	$$
+	\begin{cases}
+		y'(x)=f(x,y(x)),\\
+		y(x_0)=y_0.
+	\end{cases}
+	$$
+	
+	The \emph{existence} of a solution means that there is at least one differentiable function \(y\) satisfying both the differential equation and the initial condition. The \emph{uniqueness} of a solution means that if \(y_1\) and \(y_2\) are two solutions satisfying
+	$$
+	y_1(x_0)=y_2(x_0)=y_0,
+	$$
+	then
+	$$
+	y_1(x)=y_2(x)
+	$$
+	for all \(x\) in the common interval on which both are defined.
+	
+	Structurally, the equation
+	$$
+	y'(x)=f(x,y(x))
+	$$
+	is not an arbitrary mixture of objects. If
+	$$
+	y:I\to S,
+	$$
+	then the derivative defines another function
+	$$
+	Dy=y' : I \to \mathbb{C}.
+	$$
+	On the other hand, from \(y\) one may form the map
+	$$
+	(\operatorname{id},y): I \to I\times S,
+	\qquad
+	x \mapsto (x,y(x)).
+	$$
+	Composing with \(f\) gives the function
+	$$
+	f\circ (\operatorname{id},y): I\to\mathbb{C},
+	\qquad
+	x \mapsto f(x,y(x)).
+	$$
+	Therefore the ordinary differential equation can be written in the compact structural form
+	$$
+	D[y] = f \circ (\operatorname{id},y).
+	$$
+	
+	This shows that an ordinary differential equation compares two functions of the same variable \(x\): the actual derivative \(y'(x)\) of the unknown trajectory, and the derivative prescribed by the law \(f\) at the point \((x,y(x))\). In this sense, the equation describes a law of evolution: the present rate of change is determined by the present state.
+	
+	Structurally, the unknown of a first--order ordinary differential equation is a function
+	$$
+	y:I\to S.
+	$$
+	The derivative operator
+	$$
+	D
+	$$
+	acts on this unknown function and produces another function
+	$$
+	D[y]=y' : I\to\mathbb{C}.
+	$$
+	On the other hand, the defining map
+	$$
+	f:I\times S\to\mathbb{C}
+	$$
+	is composed with the map
+	$$
+	(\operatorname{id},y):I\to I\times S,\qquad x\mapsto (x,y(x)),
+	$$
+	to produce the function
+	$$
+	f\circ(\operatorname{id},y):I\to\mathbb{C},\qquad x\mapsto f(x,y(x)).
+	$$
+	Thus the differential equation
+	$$
+	y'(x)=f(x,y(x))
+	$$
+	is, structurally, the identity
+	$$
+	D[y]=f\circ(\operatorname{id},y).
+	$$
+	
+	The symbol \(\operatorname{id}_I\) denotes the identity map on the interval \(I\), that is,
+	$$
+	\operatorname{id}_I : I \to I, \qquad \operatorname{id}_I(x)=x
+	\quad \text{for every } x\in I.
+	$$
+	It is needed because the defining function of the differential equation,
+	$$
+	f : I\times S \to \mathbb{C},
+	$$
+	expects as input a pair \((x,s)\) with first component in \(I\) and second component in \(S\). Since the unknown function is
+	$$
+	y:I\to S,
+	$$
+	we must construct from \(x\) a pair of the form \((x,y(x))\). This is achieved by combining the identity map on \(I\) with the function \(y\), obtaining
+	$$
+	(\operatorname{id}_I,y): I \to I\times S, \qquad x\mapsto (x,y(x)).
+	$$
+	Thus the identity map is needed to preserve the first coordinate \(x\) while pairing it with the current value \(y(x)\), so that the composition with \(f\) becomes well defined:
+	$$
+	f\circ(\operatorname{id}_I,y): I \to \mathbb{C}, \qquad x\mapsto f(x,y(x)).
+	$$
+	
+	\section*{RC Circuit in Structural Form}
+	
+	We now examine the RC equation purely from the structural point of view, that is, by identifying the maps involved, their domains and codomains, and the way they combine into the abstract form
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	
+	\subsection*{1. The unknown function}
+	
+	We begin by declaring the unknown map
+	$$
+	y:I\to S,
+	$$
+	where \(I\subset\mathbb{R}\) is an interval and \(S\subset\mathbb{C}\) (or \(S\subset\mathbb{R}\) in the real case) is the set in which the values of the solution lie. Thus, structurally, \(y\) is the function to be determined, with domain \(I\) and codomain \(S\).
+	
+	\subsection*{2. The derivative operator}
+	
+	The left--hand side of the differential equation is obtained by applying the derivative operator \(D\) to the unknown function \(y\):
+	$$
+	D[y]=y'.
+	$$
+	This produces another function
+	$$
+	y' : I\to \mathbb{C},
+	$$
+	or \(I\to\mathbb{R}\) in the real setting. At this stage, no law has yet been imposed; one has only passed from the unknown map \(y\) to its derivative \(y'\).
+	
+	\subsection*{3. The given input function}
+	
+	In the RC model there is also a given function
+	$$
+	u:I\to \mathbb{C},
+	$$
+	or \(u:I\to\mathbb{R}\) in the real case. This function is prescribed in advance and is not part of the unknown. Hence the structural setting already contains two maps:
+	$$
+	y:I\to S
+	\qquad \text{and} \qquad
+	u:I\to\mathbb{C}.
+	$$
+	
+	\subsection*{4. The differential law}
+	
+	The RC equation has the explicit form
+	$$
+	y'(x)=-\frac{1}{RC}y(x)+\frac{1}{RC}u(x).
+	$$
+	Ignoring for the moment the physical origin of this formula, its structural content is that the derivative of the unknown function is determined by a rule depending on the independent variable \(x\) and on the current value \(y(x)\). This motivates the definition of a map
+	$$
+	f(x,s)=-\frac{1}{RC}s+\frac{1}{RC}u(x),
+	$$
+	where \(s\in S\) is a generic element of the state space.
+	
+	\subsection*{5. Type of the defining map}
+	
+	The defining map of the RC equation is therefore
+	$$
+	f:I\times S\to\mathbb{C},
+	$$
+	given by
+	$$
+	f(x,s)= -\frac{1}{RC}s+\frac{1}{RC}u(x).
+	$$
+	It is important here to distinguish the symbol \(s\) from the unknown function \(y\). The function \(f\) is first defined on arbitrary pairs \((x,s)\in I\times S\); only afterwards is the second variable specialized to the actual value \(s=y(x)\).
+	
+	\subsection*{6. The graph map}
+	
+	Since \(f\) expects an input in \(I\times S\), one must construct from the unknown function \(y\) a map whose values are such pairs. This is achieved through the map
+	$$
+	(\operatorname{id}_I,y):I\to I\times S,
+	\qquad
+	x\mapsto (x,y(x)).
+	$$
+	Here \(\operatorname{id}_I\) is the identity map on \(I\), so that the first coordinate is preserved while the second coordinate is filled by the current value of the function \(y\).
+	
+	\subsection*{7. Composition with the defining map}
+	
+	Composing the graph map with \(f\) gives a function
+	$$
+	f\circ(\operatorname{id}_I,y):I\to\mathbb{C},
+	$$
+	and explicitly
+	$$
+	\bigl(f\circ(\operatorname{id}_I,y)\bigr)(x)=f(x,y(x)).
+	$$
+	Substituting the definition of \(f\), one obtains
+	$$
+	f(x,y(x))= -\frac{1}{RC}y(x)+\frac{1}{RC}u(x).
+	$$
+	Thus the right--hand side of the RC equation is itself a function of the variable \(x\).
+	
+	\subsection*{8. Structural form of the equation}
+	
+	At this point both sides of the equation are functions from \(I\) into \(\mathbb{C}\). The RC equation can therefore be written in the compact structural form
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	Written pointwise, this is exactly
+	$$
+	y'(x)= -\frac{1}{RC}y(x)+\frac{1}{RC}u(x).
+	$$
+	
+	\subsection*{9. Conceptual interpretation}
+	
+	The structural meaning of the equation is now clear. On the left, the operator \(D\) acts on the unknown function \(y\) and produces its derivative:
+	$$
+	y\mapsto y'.
+	$$
+	On the right, the map \(f\) takes a pair \((x,s)\) and assigns the value
+	$$
+	-\frac{1}{RC}s+\frac{1}{RC}u(x).
+	$$
+	The graph map \(x\mapsto (x,y(x))\) then inserts the actual current value of the unknown function into this rule. The differential equation states that the derivative produced by the operator \(D\) must coincide with the value prescribed by the law \(f\) at each point of the graph of \(y\).
+	
+	\subsection*{10. Affine structure}
+	
+	The RC law is affine in the state variable. Indeed,
+	$$
+	f(x,s)=a\,s+b(x),
+	$$
+	with
+	$$
+	a=-\frac{1}{RC},
+	\qquad
+	b(x)=\frac{1}{RC}u(x).
+	$$
+	Thus the equation belongs to the general first--order affine class
+	$$
+	y'(x)=a\,y(x)+b(x).
+	$$
+	The RC equation is a specific realization of this structural form.
+	
+	\subsection*{11. Initial value problem}
+	
+	To specify a particular solution, one adds an initial condition
+	$$
+	y(x_0)=y_0.
+	$$
+	The full problem then becomes
+	$$
+	\begin{cases}
+		y'(x)= -\dfrac{1}{RC}y(x)+\dfrac{1}{RC}u(x),\\[0.5em]
+		y(x_0)=y_0.
+	\end{cases}
+	$$
+	Structurally, this means that one seeks a function \(y\) whose derivative satisfies the defining law and which passes through the prescribed point \((x_0,y_0)\).
+	
+	\subsection*{12. Summary}
+	
+	The RC equation fits the abstract Coddington framework through the following choices:
+	$$
+	y:I\to S,
+	\qquad
+	u:I\to\mathbb{C},
+	\qquad
+	f:I\times S\to\mathbb{C},
+	\qquad
+	f(x,s)= -\frac{1}{RC}s+\frac{1}{RC}u(x),
+	$$
+	so that the equation takes the form
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	
+	A curve is any map
+	$$
+	\gamma:I\to S.
+	$$
+	A trajectory is a curve that satisfies a prescribed differential law, for example
+	$$
+	\gamma'(x)=F(x,\gamma(x))
+	\quad \text{or} \quad
+	\gamma'(x)=F(\gamma(x)).
+	$$
+	Thus every trajectory is a curve, but a trajectory carries the additional meaning of evolution determined by a vector field or differential equation.
+	
+	\[
+	\text{trajectory} = \text{solution, viewed dynamically}.
+	\]
+	
+	\section*{Identification of Structure: Explanatory Examples and Exercises}
+	
+	The purpose of the following examples and exercises is not to solve differential equations, but to identify their structural components. In each case, the goal is to recognize the unknown map, the independent variable, the state space, the defining map \(f\), and the general structural form
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	One should also determine whether the equation is autonomous or non-autonomous, and whether it is linear, affine, or nonlinear.
+	
+	\subsection*{Explanatory Example 1: RC-type first-order law}
+	
+	Consider
+	$$
+	y'(t)=-\frac{1}{RC}y(t)+\frac{1}{RC}u(t),
+	$$
+	where \(u:I\to\mathbb{R}\) is given.
+	
+	The unknown function is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The independent variable is \(t\in I\subset\mathbb{R}\). The derivative operator acts on the unknown map:
+	$$
+	D[y]=y'.
+	$$
+	The given input is
+	$$
+	u:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t,s)=-\frac{1}{RC}s+\frac{1}{RC}u(t).
+	$$
+	Hence the equation has the structural form
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	This equation is first order, non-autonomous, and affine in the state variable \(s\). If \(u\) is viewed as a forcing term, then the equation is linear in \(y\).
+	
+	\subsection*{Explanatory Example 2: RL-type law}
+	
+	Consider
+	$$
+	L\,y'(t)+R\,y(t)=u(t).
+	$$
+	Rewriting gives
+	$$
+	y'(t)=-\frac{R}{L}y(t)+\frac{1}{L}u(t).
+	$$
+	The unknown function is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t,s)=-\frac{R}{L}s+\frac{1}{L}u(t).
+	$$
+	Thus the equation has the form
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	This equation is first order, non-autonomous, affine, and belongs to the same structural class as the RC equation.
+	
+	\subsection*{Explanatory Example 3: Exponential decay law}
+	
+	Consider
+	$$
+	y'(t)=-k\,y(t),
+	\qquad k>0.
+	$$
+	The unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t,s)=-k\,s.
+	$$
+	Thus
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	Since \(f\) does not depend explicitly on \(t\), one may also write
+	$$
+	F:\mathbb{R}\to\mathbb{R},
+	\qquad
+	F(s)=-k\,s,
+	$$
+	and the equation becomes
+	$$
+	y'(t)=F(y(t)).
+	$$
+	This equation is first order, autonomous, and linear homogeneous.
+	
+	\subsection*{Explanatory Example 4: Nonlinear law}
+	
+	Consider
+	$$
+	y'(x)=\sin(x)-y(x)^2.
+	$$
+	The unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(x,s)=\sin(x)-s^2.
+	$$
+	Thus
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	This equation is first order, non-autonomous, and nonlinear.
+	
+	\subsection*{Explanatory Example 5: Mechanical first-order analogue}
+	
+	Consider
+	$$
+	b\,y'(t)+k\,y(t)=F(t).
+	$$
+	Rewriting gives
+	$$
+	y'(t)=-\frac{k}{b}y(t)+\frac{1}{b}F(t).
+	$$
+	The unknown function is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The given function is
+	$$
+	F:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t,s)=-\frac{k}{b}s+\frac{1}{b}F(t).
+	$$
+	Hence the structural form is
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	This equation is first order, non-autonomous, affine, and belongs to the same abstract structural class as the RC and RL examples.
+	
+	\section*{Exercises}
+	
+	For each of the following differential equations, identify:
+	\begin{itemize}
+		\item the unknown map \(y:I\to S\),
+		\item the independent variable,
+		\item the state space \(S\),
+		\item a defining map \(f:I\times S\to\mathbb{R}\) or \(\mathbb{C}\),
+		\item whether the equation is autonomous or non-autonomous,
+		\item whether it is linear, affine, or nonlinear.
+	\end{itemize}
+	
+	\begin{enumerate}
+		\item
+		$$
+		y'(t)+3y(t)=g(t).
+		$$
+		
+		\item
+		$$
+		y'(x)=4y(x)-7.
+		$$
+		
+		\item
+		$$
+		y'(t)=\cos(t)\,y(t).
+		$$
+		
+		\item
+		$$
+		y'(x)=x^2+y(x)^2.
+		$$
+		
+		\item
+		$$
+		y'(t)=i\omega\,y(t).
+		$$
+		
+		\item
+		$$
+		C\,y'(t)=u(t)-y(t).
+		$$
+		
+		\item
+		$$
+		m\,y'(t)+c\,y(t)=0.
+		$$
+		
+		\item
+		$$
+		y'(x)=e^x-\sqrt{1+y(x)^2}.
+		$$
+		
+		\item
+		$$
+		y'(t)=\lambda y(t)+u(t),
+		\qquad \lambda\in\mathbb{C}.
+		$$
+		
+		\item
+		$$
+		y'(x)=\frac{x}{1+y(x)^2}.
+		$$
+	\end{enumerate}
+	
+	\section*{Solutions}
+	
+	\subsection*{1.}
+	Given
+	$$
+	y'(t)+3y(t)=g(t),
+	$$
+	rewrite as
+	$$
+	y'(t)=-3y(t)+g(t).
+	$$
+	The unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t,s)=-3s+g(t).
+	$$
+	This equation is non-autonomous and affine.
+	
+	\subsection*{2.}
+	Given
+	$$
+	y'(x)=4y(x)-7,
+	$$
+	the unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(x,s)=4s-7.
+	$$
+	This equation is autonomous and affine.
+	
+	\subsection*{3.}
+	Given
+	$$
+	y'(t)=\cos(t)\,y(t),
+	$$
+	the unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t,s)=\cos(t)\,s.
+	$$
+	This equation is non-autonomous and linear homogeneous.
+	
+	\subsection*{4.}
+	Given
+	$$
+	y'(x)=x^2+y(x)^2,
+	$$
+	the unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(x,s)=x^2+s^2.
+	$$
+	This equation is non-autonomous and nonlinear.
+	
+	\subsection*{5.}
+	Given
+	$$
+	y'(t)=i\omega\,y(t),
+	$$
+	the unknown map is
+	$$
+	y:I\to\mathbb{C}.
+	$$
+	The state space is \(S\subset\mathbb{C}\). The defining map is
+	$$
+	f:I\times\mathbb{C}\to\mathbb{C},
+	\qquad
+	f(t,s)=i\omega s.
+	$$
+	This equation is autonomous, linear homogeneous, and complex-valued.
+	
+	\subsection*{6.}
+	Given
+	$$
+	C\,y'(t)=u(t)-y(t),
+	$$
+	rewrite as
+	$$
+	y'(t)=-\frac{1}{C}y(t)+\frac{1}{C}u(t).
+	$$
+	The unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t,s)=-\frac{1}{C}s+\frac{1}{C}u(t).
+	$$
+	This equation is non-autonomous and affine.
+	
+	\subsection*{7.}
+	Given
+	$$
+	m\,y'(t)+c\,y(t)=0,
+	$$
+	rewrite as
+	$$
+	y'(t)=-\frac{c}{m}y(t).
+	$$
+	The unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(t,s)=-\frac{c}{m}s.
+	$$
+	This equation is autonomous and linear homogeneous.
+	
+	\subsection*{8.}
+	Given
+	$$
+	y'(x)=e^x-\sqrt{1+y(x)^2},
+	$$
+	the unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(x,s)=e^x-\sqrt{1+s^2}.
+	$$
+	This equation is non-autonomous and nonlinear.
+	
+	\subsection*{9.}
+	Given
+	$$
+	y'(t)=\lambda y(t)+u(t),
+	\qquad \lambda\in\mathbb{C},
+	$$
+	the unknown map is
+	$$
+	y:I\to\mathbb{C}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{C}\to\mathbb{C},
+	\qquad
+	f(t,s)=\lambda s+u(t),
+	$$
+	where \(u:I\to\mathbb{C}\) is given. This equation is non-autonomous, affine, and complex-valued.
+	
+	\subsection*{10.}
+	Given
+	$$
+	y'(x)=\frac{x}{1+y(x)^2},
+	$$
+	the unknown map is
+	$$
+	y:I\to\mathbb{R}.
+	$$
+	The defining map is
+	$$
+	f:I\times\mathbb{R}\to\mathbb{R},
+	\qquad
+	f(x,s)=\frac{x}{1+s^2}.
+	$$
+	This equation is non-autonomous and nonlinear.
+	
+	\section*{Final Structural Remark}
+	
+	In all of these examples the same structural procedure is used. First one identifies the unknown map \(y\). Then one rewrites the equation in the form
+	$$
+	y'(x)=f(x,y(x)).
+	$$
+	Next, one defines the map
+	$$
+	f(x,s)
+	$$
+	using a generic state variable \(s\in S\), rather than directly using the function \(y\). Finally, the equation is understood structurally as
+	$$
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	This habit makes the internal structure of the ordinary differential equation precise before any attempt is made to solve it.
+	
+	Structurally, a first--order ordinary differential equation is written in the form
+	$$
+	y'(x)=f(x,y(x)),
+	\qquad\text{or equivalently}\qquad
+	D[y]=f\circ(\operatorname{id}_I,y).
+	$$
+	Here the unknown is a map
+	$$
+	y:I\to S,
+	$$
+	the operator \(D\) acts on the function \(y\) and produces another function
+	$$
+	D[y]=y',
+	$$
+	and the right--hand side is obtained by composing the defining map
+	$$
+	f:I\times S\to\mathbb{C}
+	$$
+	(with codomain \(\mathbb{R}\) in the real case) with the pairing map
+	$$
+	(\operatorname{id}_I,y):I\to I\times S,
+	\qquad
+	x\mapsto (x,y(x)).
+	$$
+	Thus, for each \(x\in I\), one first forms the pair \((x,y(x))\), which lies on the graph of \(y\), and then evaluates \(f\) at that point. In this way, the composition
+	$$
+	f\circ(\operatorname{id}_I,y):I\to\mathbb{C},
+	\qquad
+	x\mapsto f(x,y(x)),
+	$$
+	becomes a one--variable function that can be compared with \(y'\). Therefore the equation states that the derivative actually produced by the unknown function \(y\) must coincide with the value assigned by the law \(f\) along the graph of \(y\).
+	
+	In this setting, the symbols \(I\) and \(S\) are not being introduced as algebraic spaces in the sense of vector spaces or modules arising from a field or ring. Rather, \(I\subset\mathbb{R}\) is typically an interval serving as the domain of the independent variable, and \(S\subset\mathbb{R}\) or \(S\subset\mathbb{C}\) is a subset or region serving as the set of possible values of the dependent variable. Thus their role here is primarily analytic and functional: they specify where the variables live and where the defining map \(f\) is defined. Although such sets may later carry additional algebraic structure when needed, they are not, at this stage, structural algebraic spaces by definition.
+\end{document}
