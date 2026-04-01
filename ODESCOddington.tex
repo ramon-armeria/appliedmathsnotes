@@ -966,4 +966,168 @@
 	becomes a one--variable function that can be compared with \(y'\). Therefore the equation states that the derivative actually produced by the unknown function \(y\) must coincide with the value assigned by the law \(f\) along the graph of \(y\).
 	
 	In this setting, the symbols \(I\) and \(S\) are not being introduced as algebraic spaces in the sense of vector spaces or modules arising from a field or ring. Rather, \(I\subset\mathbb{R}\) is typically an interval serving as the domain of the independent variable, and \(S\subset\mathbb{R}\) or \(S\subset\mathbb{C}\) is a subset or region serving as the set of possible values of the dependent variable. Thus their role here is primarily analytic and functional: they specify where the variables live and where the defining map \(f\) is defined. Although such sets may later carry additional algebraic structure when needed, they are not, at this stage, structural algebraic spaces by definition.
+	
+	\pagebreak
+	
+	Let
+	$$
+	\theta:I\to\mathbb{C},
+	\qquad
+	\theta(x)=\iota(x)+i\,\kappa(x),
+	$$
+	where \(I\subseteq\mathbb{R}\) and \(\iota,\kappa:I\to\mathbb{R}\). Then \(x\in I\) is the independent variable, the maps \(\iota\) and \(\kappa\) provide the real and imaginary components, and \(\theta\) assigns to each real input \(x\) a complex value \(\theta(x)\in\mathbb{C}\).
+	
+	For a function
+	$$
+	\theta:I\to\mathbb{C},
+	$$
+	the expression \(\theta(x)\) denotes the value of \(\theta\) at a single input \(x\in I\), and therefore \(\theta(x)\) is one complex number. By contrast,
+	$$
+	\theta(I)=\{\theta(x):x\in I\}
+	$$
+	denotes the image of the whole interval \(I\) under \(\theta\), that is, the set of all complex values attained by the function as \(x\) ranges over \(I\). Thus \(\theta(x)\in\mathbb{C}\), whereas \(\theta(I)\subseteq\mathbb{C}\).
+	
+	A very clean way to write it is:
+	\[
+	I \subseteq \mathbb{R},
+	\qquad
+	\theta : I \to \mathbb{C}.
+	\]
+	
+	Then
+	\[
+	x \in I \;\Rightarrow\; \theta(x) \in \mathbb{C},
+	\]
+	and for the whole interval,
+	\[
+	\theta(I) = \{\theta(x) : x \in I\} \subseteq S \subseteq \mathbb{C}.
+	\]
+	
+	So the true structure is:
+	\begin{itemize}
+		\item \(I\): input interval in \(\mathbb{R}\),
+		\item \(S\): output-region subset of \(\mathbb{C}\).
+	\end{itemize}
+	
+	Not both on the same side.
+	
+	A tiny memory line is:
+	\[
+	\boxed{I \text{ belongs to the domain side, } S \text{ belongs to the value side.}}
+	\]
+	
+	For each single input \(x\in I\), the function \(\theta\) produces one value \(\theta(x)\in\mathbb{C}\). As \(x\) ranges over the whole interval \(I\), the collection of all such values forms the image
+	$$
+	\theta(I)=\{\theta(x):x\in I\}.
+	$$
+	The set \(S\) is then chosen so that
+	$$
+	\theta(I)\subseteq S\subseteq\mathbb{C},
+	$$
+	that is, \(S\) contains all values attained by the function on the interval \(I\).
+	
+	The symbol \(s\) denotes a generic element of the set \(S\). When one defines
+	$$
+	f:I\times S\to\mathbb{C},
+	$$
+	the map \(f\) must first be understood on arbitrary pairs \((x,s)\in I\times S\), where \(x\in I\) and \(s\in S\). Thus \(s\) is not yet the specific value \(\theta(x)\), but rather a placeholder for any admissible element of the second input set. Only after the map \(f\) has been defined in this general form does one specialize the second input by replacing \(s\) with \(\theta(x)\), obtaining the expression
+	$$
+	f(x,\theta(x)).
+	$$
+	In this way, \(s\) represents the general second-input variable, while \(\theta(x)\) represents the particular value inserted into that slot.
+	
+	Structurally, the derivative operator \(D\) acts on the whole function \(\theta\), not on the single value \(\theta(x)\). Thus
+	$$
+	D[\theta]=\theta',
+	$$
+	where \(\theta'\) is itself another function. Evaluating this derived function at a point \(x\in I\) gives the value
+	$$
+	\theta'(x).
+	$$
+	On the right--hand side, the defining map
+	$$
+	f:I\times S\to\mathbb{C}
+	$$
+	does not use the operator \(D\). Instead, it takes as input the pair
+	$$
+	(x,\theta(x))\in I\times S
+	$$
+	and assigns the value
+	$$
+	f(x,\theta(x))\in\mathbb{C}.
+	$$
+	The differential equation
+	$$
+	\theta'(x)=f(x,\theta(x))
+	$$
+	therefore states that the value produced by differentiating \(\theta\) and then evaluating at \(x\) must coincide with the value assigned directly by the law \(f\) to the pair \((x,\theta(x))\).
+	
+	In the pointwise form
+	$$
+	\theta'(x)=f(x,\theta(x)),
+	$$
+	the same input \(x\in I\) is used on both sides: on the left, one evaluates the derived function \(\theta'\) at \(x\), and on the right, one evaluates the defining law \(f\) at the pair \((x,\theta(x))\).
+	
+	Here \(\operatorname{id}_I\) denotes the identity map on the interval \(I\), defined by
+	$$
+	\operatorname{id}_I:I\to I,\qquad \operatorname{id}_I(x)=x.
+	$$
+	Thus
+	$$
+	(\operatorname{id}_I,\theta):I\to I\times S,\qquad x\mapsto (x,\theta(x)),
+	$$
+	and therefore
+	$$
+	f\circ(\operatorname{id}_I,\theta):I\to\mathbb{C},\qquad x\mapsto f(x,\theta(x)).
+	$$
+	Hence the structural form
+	$$
+	D[\theta]=f\circ(\operatorname{id}_I,\theta)
+	$$
+	expresses that the derivative map of \(\theta\) coincides with the map obtained by evaluating \(f\) on the pair \((x,\theta(x))\) for each \(x\in I\).
+	
+	As a conclusion, an ordinary differential equation seeks a function, not a point, and a law, not an isolated value. More structurally, the object to be determined is the map
+	$$
+	\theta:I\to S,
+	$$
+	and this map is required to satisfy the relation
+	$$
+	D[\theta]=f\circ(\operatorname{id}_I,\theta).
+	$$
+	Thus the problem is not to determine a single output value, but to find an entire map whose derivative agrees with the defining law along the whole domain.
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|c|c|p{7.2cm}|}
+			\hline
+			\textbf{My notation} & \textbf{Common book notation} & \textbf{Meaning} \\
+			\hline
+			\(\theta\) & \(y\), \(u\), \(x\) (as dependent variable) & The main function being studied; the map whose derivative is constrained by the differential equation. \\
+			\hline
+			\(\theta'(x)\) & \(y'(x)\), \(\dfrac{dy}{dx}\) & The derivative value of the function at the input \(x\). \\
+			\hline
+			\(D[\theta]\) & \(y'\), \(Dy\), \(\dfrac{dy}{dx}\) & The derivative operator acting on the whole function and producing the derived function. \\
+			\hline
+			\(x\) & \(x\), \(t\) & The independent variable ranging over the interval \(I\). \\
+			\hline
+			\(I\) & \(I\), \((a,b)\), \([a,b]\) & The domain interval of the independent variable. \\
+			\hline
+			\(S\) & \(S\), \(\Omega\), \(D\), sometimes \( \mathbb{R} \) or \( \mathbb{C} \) directly & The allowed value set of the function; the second-input set for the defining map. \\
+			\hline
+			\(\theta(I)\) & \(y(I)\), \(\operatorname{Im}(y)\), range/image of \(y\) & The image of the interval \(I\) under the function, that is, the set of all values attained by the function. \\
+			\hline
+			\(f\) & \(f\), \(F\), \(g\) & The defining law of the ODE, usually written as a map \(I\times S\to\mathbb{C}\) or \(I\times S\to\mathbb{R}\). \\
+			\hline
+			\(f(x,s)\) & \(f(x,y)\), \(F(t,u)\) & The general two-variable form of the defining law, before substituting the actual function value. \\
+			\hline
+			\(f(x,\theta(x))\) & \(f(x,y(x))\), \(F(t,u(t))\) & The defining law evaluated along the function itself. \\
+			\hline
+			\(\operatorname{id}_I\) & \(\mathrm{id}\), identity on \(I\) & The identity map on the interval \(I\), sending \(x\mapsto x\). \\
+			\hline
+			\((\operatorname{id}_I,\theta)\) & \((\mathrm{id},y)\) & The pairing map \(x\mapsto (x,\theta(x))\), used to feed the defining law \(f\). \\
+			\hline
+			\(D[\theta]=f\circ(\operatorname{id}_I,\theta)\) & \(y'(x)=f(x,y(x))\) & Structural form versus pointwise form of the same first-order ordinary differential equation. \\
+			\hline
+		\end{tabular}
+	\end{center}
 \end{document}
