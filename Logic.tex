@@ -1,0 +1,729 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+	\section*{Final Skeleton for Implication}
+	
+	\subsection*{1. Universe and predicates}
+	Fix a universe \(U\) of elements.
+	
+	Let
+	\[
+	A(x) \quad \text{and} \quad B(x)
+	\]
+	be predicates on \(U\).
+	
+	That is, for each element \(x \in U\), the statements \(A(x)\) and \(B(x)\) express properties that \(x\) may or may not satisfy.
+	
+	\bigskip
+	
+	Define the associated subsets:
+	\[
+	[A] = \{x \in U : A(x)\},
+	\qquad
+	[B] = \{x \in U : B(x)\}.
+	\]
+	
+	So:
+	\begin{itemize}
+		\item \([A]\) is the set of all elements satisfying \(A\),
+		\item \([B]\) is the set of all elements satisfying \(B\).
+	\end{itemize}
+	
+	\subsection*{2. Structural meaning of implication}
+	The implication
+	\[
+	A \to B
+	\]
+	is read structurally as
+	\[
+	\forall x \in U,\; A(x) \Rightarrow B(x),
+	\]
+	equivalently,
+	\[
+	[A] \subseteq [B].
+	\]
+	
+	\noindent
+	So the clean reusable reading is:
+	
+	\begin{quote}
+		\emph{Every \(A\)-element is a \(B\)-element.}
+	\end{quote}
+	
+	or equivalently,
+	
+	\begin{quote}
+		\emph{Every element satisfying \(A\) also satisfies \(B\).}
+	\end{quote}
+	
+	\subsection*{3. Failure of implication}
+	The implication fails exactly when
+	\[
+	\neg(A \to B),
+	\]
+	that is, when
+	\[
+	\exists x \in U \text{ such that } A(x)\land \neg B(x).
+	\]
+	
+	\noindent
+	In words:
+	
+	\begin{quote}
+		\emph{There exists an \(A\)-element that is not a \(B\)-element.}
+	\end{quote}
+	
+	\noindent
+	Set-theoretically, this means:
+	\[
+	[A] \nsubseteq [B].
+	\]
+	
+	\subsection*{4. Permanent mental map}
+	For implication, always think in terms of \emph{sets of elements}, not isolated phrases.
+	
+	The permanent mental map is:
+	
+	\[
+	A \to B
+	\quad \Longleftrightarrow \quad
+	[A] \subseteq [B]
+	\]
+	
+	\noindent
+	that is,
+	
+	\begin{quote}
+		\emph{The set of \(A\)-elements is contained in the set of \(B\)-elements.}
+	\end{quote}
+	
+	\subsection*{5. Discipline to avoid collapsing into conjunction}
+	A common confusion is to read implication as if it were conjunction.
+	
+	To avoid this, maintain the following distinction.
+	
+	\subsubsection*{Conjunction}
+	\[
+	A(x)\land B(x)
+	\]
+	means:
+	
+	\begin{quote}
+		\emph{One element has both properties.}
+	\end{quote}
+	
+	\subsubsection*{Implication}
+	\[
+	A \to B
+	\]
+	means:
+	
+	\begin{quote}
+		\emph{Every \(A\)-element is a \(B\)-element.}
+	\end{quote}
+	
+	\noindent
+	Thus:
+	
+	\begin{itemize}
+		\item conjunction is about \emph{one element satisfying both properties},
+		\item implication is about \emph{containment of one class of elements inside another}.
+	\end{itemize}
+	
+	\subsection*{6. Practical rules}
+	Whenever an implication appears, apply the following rules.
+	
+	\begin{enumerate}
+		\item First identify the universe \(U\).
+		\item Then identify the predicates \(A(x)\) and \(B(x)\).
+		\item Form the sets
+		\[
+		[A]=\{x\in U:A(x)\},
+		\qquad
+		[B]=\{x\in U:B(x)\}.
+		\]
+		\item Rewrite the implication as
+		\[
+		[A]\subseteq [B].
+		\]
+		\item Read it only as:
+		\begin{quote}
+			\emph{Every \(A\)-element is a \(B\)-element.}
+		\end{quote}
+		\item To test failure, ask whether there exists an element in
+		\[
+		[A]\setminus [B].
+		\]
+	\end{enumerate}
+	
+	\subsection*{7. Wording rules}
+	To avoid ambiguity, follow these wording rules.
+	
+	\subsubsection*{At the predicate level}
+	Use only:
+	\[
+	A(x): \text{``\(x\) has property A''},
+	\qquad
+	B(x): \text{``\(x\) has property B''}.
+	\]
+	
+	Do not put words like ``every'' inside \(A(x)\) or \(B(x)\).  
+	The predicates describe the property of a \emph{single element}.
+	
+	\subsubsection*{At the implication level}
+	Use only one of the following forms:
+	
+	\begin{itemize}
+		\item \emph{Every \(A\)-element is a \(B\)-element.}
+		\item \emph{Every element satisfying \(A\) also satisfies \(B\).}
+		\item \emph{\([A]\subseteq[B]\).}
+	\end{itemize}
+	
+	Avoid wording such as:
+	
+	\begin{itemize}
+		\item ``\(A\) and \(B\)''
+		\item ``a person did \(A\), then did \(B\)''
+		\item singular compressed phrases that sound like conjunction
+	\end{itemize}
+	
+	because these tend to collapse implication into \(\land\).
+	
+	\subsection*{8. Anti-collapse check}
+	Whenever confusion appears, ask:
+	
+	\begin{quote}
+		\emph{Am I speaking about one element satisfying two properties, or about one set being contained in another?}
+	\end{quote}
+	
+	Then:
+	
+	\begin{itemize}
+		\item if it is \emph{one element satisfying two properties}, you are in the realm of conjunction:
+		\[
+		A(x)\land B(x);
+		\]
+		\item if it is \emph{one set contained in another}, you are in the realm of implication:
+		\[
+		A \to B.
+		\]
+	\end{itemize}
+	
+	\subsection*{9. Final reusable form}
+	The final skeleton is therefore:
+	
+	\[
+	U=\text{universe of elements}
+	\]
+	
+	\[
+	A(x)=\text{property A of }x,
+	\qquad
+	B(x)=\text{property B of }x
+	\]
+	
+	\[
+	[A]=\{x\in U:A(x)\},
+	\qquad
+	[B]=\{x\in U:B(x)\}
+	\]
+	
+	\[
+	A\to B
+	\iff
+	[A]\subseteq[B]
+	\]
+	
+	\noindent
+	Read as:
+	
+	\begin{quote}
+		\emph{Every \(A\)-element is a \(B\)-element.}
+	\end{quote}
+	
+	Failure:
+	
+	\[
+	\neg(A\to B)
+	\iff
+	\exists x\in U \text{ such that } A(x)\land \neg B(x)
+	\]
+	
+	\noindent
+	Read as:
+	
+	\begin{quote}
+		\emph{There exists an \(A\)-element that is not a \(B\)-element.}
+	\end{quote}
+	
+	\subsection*{10. Master reminder}
+	For implication, always think:
+	
+	\begin{quote}
+		\emph{Inclusion, not accumulation.}
+	\end{quote}
+	
+	That is:
+	
+	\begin{itemize}
+		\item \(\land\) corresponds to intersection,
+		\item \(\lor\) corresponds to union,
+		\item \(\to\) corresponds to containment.
+	\end{itemize}
+	
+	\section*{Set-Theoretic Interpretation of Implication}
+	
+	Let \(U\) be a universe, and let \(A(x)\) and \(B(x)\) be predicates on \(U\). Define
+	\[
+	[A]=\{x\in U : A(x)\},
+	\qquad
+	[B]=\{x\in U : B(x)\}.
+	\]
+	
+	We want to show that
+	\[
+	\forall x\in U,\; A(x)\Rightarrow B(x)
+	\quad\Longleftrightarrow\quad
+	[A]\subseteq[B].
+	\]
+	
+	We also want to identify the meaning of
+	\[
+	A(x)\land \neg B(x).
+	\]
+	
+	\subsection*{Proposition}
+	\[
+	\forall x\in U,\; A(x)\Rightarrow B(x)
+	\quad\Longleftrightarrow\quad
+	[A]\subseteq[B].
+	\]
+	
+	\subsection*{Proof}
+	By definition of the set \([A]\), for each \(x\in U\),
+	\[
+	x\in[A] \iff A(x).
+	\]
+	Likewise, by definition of the set \([B]\),
+	\[
+	x\in[B] \iff B(x).
+	\]
+	
+	Now recall the definition of subset:
+	\[
+	[A]\subseteq[B]
+	\quad\Longleftrightarrow\quad
+	\forall x\in U,\; (x\in[A]\Rightarrow x\in[B]).
+	\]
+	
+	Using the equivalences
+	\[
+	x\in[A]\iff A(x),
+	\qquad
+	x\in[B]\iff B(x),
+	\]
+	we may rewrite this as
+	\[
+	[A]\subseteq[B]
+	\quad\Longleftrightarrow\quad
+	\forall x\in U,\; (A(x)\Rightarrow B(x)).
+	\]
+	
+	Therefore,
+	\[
+	\forall x\in U,\; A(x)\Rightarrow B(x)
+	\quad\Longleftrightarrow\quad
+	[A]\subseteq[B].
+	\]
+	This proves the claim.
+	\qed
+	
+	\subsection*{Proposition}
+	For any \(x\in U\),
+	\[
+	A(x)\land \neg B(x)
+	\quad\Longleftrightarrow\quad
+	x\in[A]\setminus[B].
+	\]
+	
+	\subsection*{Proof}
+	Again, by definition,
+	\[
+	A(x)\iff x\in[A].
+	\]
+	Also,
+	\[
+	\neg B(x)\iff x\notin[B].
+	\]
+	Hence
+	\[
+	A(x)\land \neg B(x)
+	\quad\Longleftrightarrow\quad
+	(x\in[A]\land x\notin[B]).
+	\]
+	
+	But by definition of set difference,
+	\[
+	x\in[A]\setminus[B]
+	\quad\Longleftrightarrow\quad
+	(x\in[A]\land x\notin[B]).
+	\]
+	
+	Therefore,
+	\[
+	A(x)\land \neg B(x)
+	\quad\Longleftrightarrow\quad
+	x\in[A]\setminus[B].
+	\]
+	This proves the claim.
+	\qed
+	
+	\subsection*{Corollary}
+	\[
+	\forall x\in U,\; A(x)\Rightarrow B(x)
+	\quad\Longleftrightarrow\quad
+	[A]\setminus[B]=\varnothing.
+	\]
+	
+	\subsection*{Proof}
+	By the previous proposition,
+	\[
+	A(x)\land \neg B(x)
+	\quad\Longleftrightarrow\quad
+	x\in[A]\setminus[B].
+	\]
+	Thus the statement
+	\[
+	\forall x\in U,\; A(x)\Rightarrow B(x)
+	\]
+	means exactly that there exists no \(x\in U\) such that
+	\[
+	A(x)\land \neg B(x).
+	\]
+	Equivalently, there exists no \(x\in U\) such that
+	\[
+	x\in[A]\setminus[B].
+	\]
+	This is precisely the statement that
+	\[
+	[A]\setminus[B]=\varnothing.
+	\]
+	
+	Hence
+	\[
+	\forall x\in U,\; A(x)\Rightarrow B(x)
+	\quad\Longleftrightarrow\quad
+	[A]\setminus[B]=\varnothing.
+	\]
+	\qed
+	
+	\section*{Implication in Set-Theoretic Form}
+	
+	Let \(U\) be a universe, and let \(A(x)\) and \(B(x)\) be predicates on \(U\).  
+	Define the associated subsets
+	\[
+	[A]:=\{x\in U : A(x)\},
+	\qquad
+	[B]:=\{x\in U : B(x)\}.
+	\]
+	
+	\begin{theorem}
+		The following statements are equivalent:
+		\[
+		\forall x\in U,\; (A(x)\Rightarrow B(x)),
+		\]
+		\[
+		[A]\subseteq[B],
+		\]
+		\[
+		[A]\setminus[B]=\varnothing.
+		\]
+	\end{theorem}
+	
+	\begin{proof}
+		We first show that
+		\[
+		\forall x\in U,\; (A(x)\Rightarrow B(x))
+		\quad\Longleftrightarrow\quad
+		[A]\subseteq[B].
+		\]
+		
+		By definition of \([A]\) and \([B]\), for every \(x\in U\),
+		\[
+		x\in[A] \iff A(x),
+		\qquad
+		x\in[B] \iff B(x).
+		\]
+		Now, by definition of subset,
+		\[
+		[A]\subseteq[B]
+		\quad\Longleftrightarrow\quad
+		\forall x\in U,\; (x\in[A]\Rightarrow x\in[B]).
+		\]
+		Replacing membership by the corresponding predicates, we obtain
+		\[
+		[A]\subseteq[B]
+		\quad\Longleftrightarrow\quad
+		\forall x\in U,\; (A(x)\Rightarrow B(x)).
+		\]
+		
+		This proves the first equivalence.
+		
+		Next, we show that
+		\[
+		[A]\subseteq[B]
+		\quad\Longleftrightarrow\quad
+		[A]\setminus[B]=\varnothing.
+		\]
+		
+		Recall that
+		\[
+		[A]\setminus[B]=\{x\in U : x\in[A]\text{ and }x\notin[B]\}.
+		\]
+		Thus \([A]\setminus[B]=\varnothing\) means that there exists no element \(x\in U\) such that
+		\[
+		x\in[A]\text{ and }x\notin[B].
+		\]
+		Equivalently, there is no element of \([A]\) lying outside \([B]\). But this is exactly the statement that every element of \([A]\) belongs to \([B]\), namely,
+		\[
+		[A]\subseteq[B].
+		\]
+		
+		Hence
+		\[
+		\forall x\in U,\; (A(x)\Rightarrow B(x))
+		\quad\Longleftrightarrow\quad
+		[A]\subseteq[B]
+		\quad\Longleftrightarrow\quad
+		[A]\setminus[B]=\varnothing.
+		\]
+	\end{proof}
+	
+	\begin{proposition}
+		For every \(x\in U\),
+		\[
+		A(x)\land \neg B(x)
+		\quad\Longleftrightarrow\quad
+		x\in[A]\setminus[B].
+		\]
+	\end{proposition}
+	
+	\begin{proof}
+		By definition,
+		\[
+		A(x)\iff x\in[A].
+		\]
+		Also,
+		\[
+		\neg B(x)\iff x\notin[B].
+		\]
+		Therefore
+		\[
+		A(x)\land \neg B(x)
+		\quad\Longleftrightarrow\quad
+		(x\in[A]\land x\notin[B]).
+		\]
+		By definition of set difference, the right-hand side is equivalent to
+		\[
+		x\in[A]\setminus[B].
+		\]
+		Hence
+		\[
+		A(x)\land \neg B(x)
+		\quad\Longleftrightarrow\quad
+		x\in[A]\setminus[B].
+		\]
+	\end{proof}
+	
+	\subsection*{Interpretation}
+	The statement
+	\[
+	\forall x\in U,\; (A(x)\Rightarrow B(x))
+	\]
+	says that every element satisfying \(A\) also satisfies \(B\). In set-theoretic language, this is the inclusion
+	\[
+	[A]\subseteq[B].
+	\]
+	
+	The expression
+	\[
+	A(x)\land \neg B(x)
+	\]
+	describes the bad configuration: an element \(x\) which satisfies \(A\) but does not satisfy \(B\). Set-theoretically, such an element lies in
+	\[
+	[A]\setminus[B].
+	\]
+	
+	Thus implication holds exactly when the bad region is empty:
+	\[
+	[A]\setminus[B]=\varnothing.
+	\]
+\section*{Implication and Set Inclusion}
+
+Let \(U\) be a universe, and let \(A(x)\) and \(B(x)\) be predicates on \(U\). Define
+\[
+[A]:=\{x\in U: A(x)\},
+\qquad
+[B]:=\{x\in U: B(x)\}.
+\]
+
+\begin{theorem}
+	The following are equivalent:
+	\[
+	\forall x\in U,\; (A(x)\Rightarrow B(x)),
+	\]
+	\[
+	[A]\subseteq[B],
+	\]
+	\[
+	[A]\setminus[B]=\varnothing.
+	\]
+\end{theorem}
+
+\begin{proof}
+	By definition of subset,
+	\[
+	[A]\subseteq[B]
+	\iff
+	\forall x\in U,\; (x\in[A]\Rightarrow x\in[B]).
+	\]
+	Since
+	\[
+	x\in[A]\iff A(x),
+	\qquad
+	x\in[B]\iff B(x),
+	\]
+	it follows that
+	\[
+	[A]\subseteq[B]
+	\iff
+	\forall x\in U,\; (A(x)\Rightarrow B(x)).
+	\]
+	
+	Also,
+	\[
+	[A]\setminus[B]
+	=
+	\{x\in U: x\in[A]\text{ and }x\notin[B]\}.
+	\]
+	Hence
+	\[
+	[A]\setminus[B]=\varnothing
+	\iff
+	\neg \exists x\in U\; (x\in[A]\land x\notin[B]).
+	\]
+	Equivalently,
+	\[
+	[A]\setminus[B]=\varnothing
+	\iff
+	\forall x\in U,\; (x\in[A]\Rightarrow x\in[B]).
+	\]
+	Therefore
+	\[
+	\forall x\in U,\; (A(x)\Rightarrow B(x))
+	\iff
+	[A]\subseteq[B]
+	\iff
+	[A]\setminus[B]=\varnothing.
+	\]
+\end{proof}
+
+\begin{proposition}
+	For every \(x\in U\),
+	\[
+	A(x)\land \neg B(x)
+	\iff
+	x\in[A]\setminus[B].
+	\]
+\end{proposition}
+
+\begin{proof}
+	We have
+	\[
+	A(x)\iff x\in[A],
+	\qquad
+	\neg B(x)\iff x\notin[B].
+	\]
+	Thus
+	\[
+	A(x)\land \neg B(x)
+	\iff
+	(x\in[A]\land x\notin[B]).
+	\]
+	By definition of set difference,
+	\[
+	(x\in[A]\land x\notin[B])
+	\iff
+	x\in[A]\setminus[B].
+	\]
+	Hence
+	\[
+	A(x)\land \neg B(x)
+	\iff
+	x\in[A]\setminus[B].
+	\]
+\end{proof}
+
+\subsection*{Compressed form}
+\[
+\forall x\in U,\; (A(x)\Rightarrow B(x))
+\iff
+[A]\subseteq[B]
+\iff
+[A]\setminus[B]=\varnothing.
+\]
+
+\[
+A(x)\land \neg B(x)
+\iff
+x\in[A]\setminus[B].
+\]
+
+\subsection*{Example}
+
+Consider the universe of suspects
+\[
+U=\{\text{Butler},\text{Gardener},\text{Maid},\text{Nephew}\}.
+\]
+Define the following subsets of \(U\):
+\[
+A=\{\text{people who had access to the study}\},\qquad
+B=\{\text{people whose shoes were muddy}\},\qquad
+C=\{\text{people seen near the broken window}\},\qquad
+D=\{\text{people who knew the victim's safe code}\}.
+\]
+The investigation yields
+\[
+A=\{\text{Butler},\text{Gardener},\text{Nephew}\},\qquad
+B=\{\text{Gardener},\text{Nephew}\},\qquad
+C=\{\text{Gardener},\text{Maid},\text{Nephew}\},\qquad
+D=\{\text{Butler},\text{Nephew}\}.
+\]
+Suppose now that the detective establishes the following facts: the murderer belonged to
+\[
+A\cap C,
+\]
+because the murderer both had access to the study and was seen near the broken window; if a suspect is the murderer, then that suspect had muddy shoes, so
+\[
+M\subseteq B;
+\]
+if a suspect is the murderer, then that suspect knew the safe code, so
+\[
+M\subseteq D;
+\]
+and there was exactly one murderer. Here \(M\) denotes the set containing the murderer. Compute first the set
+\[
+A\cap C.
+\]
+Then use the implications
+\[
+M\subseteq B
+\qquad\text{and}\qquad
+M\subseteq D
+\]
+to determine which elements of \(A\cap C\) can still be the murderer, and conclude who the murderer is. As an extra question, explain why the statement “if \(x\) is the murderer, then \(x\in B\)” can be read as a containment statement between sets.
+
+
+\end{document}

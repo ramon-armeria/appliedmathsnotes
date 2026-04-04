@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{setspace}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\onehalfspacing
+
+\titleformat{\section}{\large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\writelines}[1]{%
+	\vspace*{#1}
+	\hrule
+}
+
+% ---------- Full reading sheet ----------
+\newcommand{\MathReadingTemplate}{
+	\section*{Reading Sheet}
+	
+	\textbf{Book / Chapter / Section:}
+	
+	\writelines{0.8cm}
+	
+	\textbf{Page / Passage:}
+	
+	\writelines{0.8cm}
+	
+	\textbf{Topic:}
+	
+	\writelines{0.8cm}
+	
+	\textbf{Role:}
+	
+	\writelines{0.8cm}
+	
+	\section*{Question}
+	\textbf{Hidden question}
+	
+	\writelines{2cm}
+	
+	\section*{Content}
+	\textbf{Statement / notation / assumptions / conclusion}
+	
+	\writelines{3cm}
+	
+	\section*{Structure}
+	\textbf{What is the real point?}
+	
+	\writelines{3cm}
+	
+	\section*{Place}
+	\textbf{Why here? What gap does it fill?}
+	
+	\writelines{2cm}
+	
+	\section*{Dependency}
+	\textbf{What does it rely on?}
+	
+	\writelines{2cm}
+	
+	\section*{Necessity}
+	\textbf{What fails without it?}
+	
+	\writelines{3cm}
+	
+	\section*{Mechanism}
+	\textbf{Proof strategy / construction / key move}
+	
+	\writelines{2.5cm}
+	
+	\section*{Pattern}
+	\textbf{Logical skeleton}
+	
+	\writelines{2cm}
+	
+	\section*{Forward}
+	\textbf{What does it prepare?}
+	
+	\writelines{2cm}
+	
+	\section*{Tension}
+	\textbf{What still feels unresolved?}
+	
+	\writelines{2.5cm}
+	
+	\section*{Compression}
+	\textbf{One-line version}
+	
+	\writelines{1.2cm}
+	
+	\textbf{Three-line version}
+	
+	\writelines{2cm}
+	
+	\section*{Rule}
+	\begin{enumerate}[leftmargin=2em]
+		\item the question
+		\item the mathematical answer
+		\item the structural role
+	\end{enumerate}
+	
+	\section*{Master prompt}
+	\emph{What is this doing, why now, and what breaks without it?}
+}
+
+% ---------- Compact entry ----------
+\newcommand{\MathReadingEntry}[4]{
+	\section*{Reading Entry}
+	
+	\textbf{Book / Section:} #1
+	
+	\textbf{Page / Passage:} #2
+	
+	\textbf{Topic:} #3
+	
+	\textbf{Role:} #4
+	
+	\subsection*{Question}
+	\writelines{1.6cm}
+	
+	\subsection*{Content}
+	\writelines{2.2cm}
+	
+	\subsection*{Structure}
+	\writelines{2.2cm}
+	
+	\subsection*{Place}
+	\writelines{1.6cm}
+	
+	\subsection*{Dependency}
+	\writelines{1.6cm}
+	
+	\subsection*{Necessity}
+	\writelines{2cm}
+	
+	\subsection*{Mechanism}
+	\writelines{1.8cm}
+	
+	\subsection*{Pattern}
+	\writelines{1.6cm}
+	
+	\subsection*{Forward}
+	\writelines{1.6cm}
+	
+	\subsection*{Tension}
+	\writelines{1.8cm}
+	
+	\subsection*{One-line version}
+	\writelines{1cm}
+}
+
+% ---------- Very short form ----------
+\newcommand{\QuickReadingEntry}[3]{
+	\section*{Quick Entry}
+	
+	\textbf{Book / Section:} #1
+	
+	\textbf{Page / Passage:} #2
+	
+	\textbf{Topic:} #3
+	
+	\subsection*{What is it?}
+	\writelines{1.2cm}
+	
+	\subsection*{Why here?}
+	\writelines{1.2cm}
+	
+	\subsection*{What problem does it solve?}
+	\writelines{1.5cm}
+	
+	\subsection*{What fails without it?}
+	\writelines{1.5cm}
+	
+	\subsection*{What comes next?}
+	\writelines{1.2cm}
+}
+
+\begin{document}
+	
+	\MathReadingTemplate
+	
+	% Example:
+	% \newpage
+	% \MathReadingEntry
+	%   {Lang, Algebra, Chapter I}
+	%   {p. 15, Definition 2.1}
+	%   {Subgroup}
+	%   {definition}
+	
+	% Example:
+	% \newpage
+	% \QuickReadingEntry
+	%   {Abbott, Chapter 2}
+	%   {p. 28, Theorem 2.5}
+	%   {Supremum property}
+	
+\end{document}

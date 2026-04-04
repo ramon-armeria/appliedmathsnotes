@@ -1,29 +1,55 @@
-\documentclass{article}
+\documentclass[11pt]{article}
 
-\input{preamble}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{hyperref}
 
-\begin{document}
-	
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\onehalfspacing
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=black,
+	citecolor=black
+}
+
+\titleformat{\section}{\large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+
+% ---------- Writing space ----------
+\newcommand{\writelines}[1]{%
+	\vspace*{#1}
+	\hrule
+}
+
+% ---------- Main full template ----------
+\newcommand{\MathReadingTemplate}{
 	\section*{Mathematical Reading and Note Template}
 	
 	\subsection*{Purpose}
-	This template is designed to help transform mathematical reading into an active dialogue with the text. The aim is not merely to record what the book says, but to identify what problem each passage is solving, why it appears at that point, how it works, and what it prepares.
-	
-	\bigskip
+	This template is intended to turn mathematical reading into an active dialogue with the text. The aim is not merely to record what the book says, but to determine what problem each passage is solving, why it appears where it does, how it works, and what it prepares.
 	
 	\section*{1. Location}
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item \textbf{Book / Chapter / Section:}
 		\item \textbf{Page:}
-		\item \textbf{Paragraph / Theorem / Definition:}
+		\item \textbf{Passage:} paragraph, theorem, definition, lemma, proof step, example, or remark
 		\item \textbf{Topic:}
 	\end{itemize}
 	
 	\section*{2. What is happening here?}
-	First identify the role of the passage.
+	Identify the role of the passage.
 	
 	Possible roles:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item definition
 		\item theorem
 		\item lemma
@@ -35,16 +61,15 @@
 		\item transition to the next idea
 	\end{itemize}
 	
-	\noindent
 	\textbf{Role of this passage:}
 	
-	\vspace{2cm}
+	\writelines{2cm}
 	
 	\section*{3. What question is this passage answering?}
-	Read the passage as if the book were replying to a hidden question.
+	Read the passage as though the book were replying to a hidden question.
 	
 	Possible forms:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item Why do we need this notion?
 		\item What problem is this solving?
 		\item Why is this condition imposed?
@@ -53,16 +78,15 @@
 		\item What would fail without this hypothesis?
 	\end{itemize}
 	
-	\noindent
 	\textbf{Hidden question:}
 	
-	\vspace{2cm}
+	\writelines{2cm}
 	
 	\section*{4. Literal mathematical content}
-	Write exactly what the paragraph gives, but in a clean mathematical form.
+	Write exactly what the passage gives, but in a clean mathematical form.
 	
 	Include:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item the statement
 		\item the formula
 		\item the notation introduced
@@ -70,16 +94,15 @@
 		\item the conclusion
 	\end{itemize}
 	
-	\noindent
 	\textbf{Content:}
 	
-	\vspace{3cm}
+	\writelines{3cm}
 	
 	\section*{5. Structural meaning}
 	Rewrite the idea in your own precise language.
 	
 	Questions to guide this:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item What is the real mathematical point?
 		\item What structure is being isolated?
 		\item What is preserved?
@@ -87,31 +110,29 @@
 		\item What is enabled by this passage?
 	\end{itemize}
 	
-	\noindent
 	\textbf{Structural reading:}
 	
-	\vspace{3cm}
+	\writelines{3cm}
 	
 	\section*{6. Why here?}
 	Place the passage inside the flow of the chapter.
 	
 	Ask:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item Why does it appear at this exact moment?
 		\item What was missing just before?
 		\item What gap is it filling?
 	\end{itemize}
 	
-	\noindent
 	\textbf{Why now:}
 	
-	\vspace{2cm}
+	\writelines{2cm}
 	
 	\section*{7. Dependency}
 	Identify the earlier material on which this passage relies.
 	
 	Possible dependencies:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item previous definitions
 		\item earlier theorems
 		\item algebraic structure
@@ -119,31 +140,29 @@
 		\item proof technique
 	\end{itemize}
 	
-	\noindent
 	\textbf{Depends on:}
 	
-	\vspace{2cm}
+	\writelines{2cm}
 	
 	\section*{8. What would fail without it?}
 	This is one of the most important parts.
 	
 	Ask:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item If this definition were absent, what could not be said?
 		\item If one hypothesis were removed, what could go wrong?
 		\item If this distinction were ignored, what confusion would appear?
 	\end{itemize}
 	
-	\noindent
 	\textbf{Without this:}
 	
-	\vspace{3cm}
+	\writelines{3cm}
 	
 	\section*{9. Proof or mechanism}
 	If the passage contains a theorem, proof, or argument, identify its engine.
 	
 	Possible strategies:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item direct proof
 		\item proof by contradiction
 		\item proof by contrapositive
@@ -154,21 +173,19 @@
 		\item reduction to a previous theorem
 	\end{itemize}
 	
-	\noindent
 	\textbf{Proof strategy / mechanism:}
 	
-	\vspace{2cm}
+	\writelines{2cm}
 	
-	\noindent
 	\textbf{Key step / hinge of the argument:}
 	
-	\vspace{2cm}
+	\writelines{2cm}
 	
 	\section*{10. Formal pattern}
 	Extract the logical skeleton.
 	
 	Examples:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item Assume \(x \in A\), prove \(x \in B\).
 		\item Show two inclusions.
 		\item Assume the negation and derive a contradiction.
@@ -177,57 +194,52 @@
 		\item Reduce the claim to a known theorem.
 	\end{itemize}
 	
-	\noindent
 	\textbf{Logical pattern:}
 	
-	\vspace{2cm}
+	\writelines{2cm}
 	
 	\section*{11. Forward use}
 	Predict what the passage is preparing.
 	
 	Ask:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item What theorem does this prepare?
 		\item What later construction depends on it?
 		\item Is it foundational, technical, or transitional?
 	\end{itemize}
 	
-	\noindent
 	\textbf{Used later for:}
 	
-	\vspace{2cm}
+	\writelines{2cm}
 	
 	\section*{12. My tension points}
 	Write down what still feels artificial, unresolved, or unmotivated.
 	
 	Examples:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item Why this exact definition?
 		\item Why is this stronger than expected?
 		\item Why is this hypothesis essential?
 		\item Why does this seem natural to mathematicians?
 	\end{itemize}
 	
-	\noindent
 	\textbf{Open questions / discomforts:}
 	
-	\vspace{3cm}
+	\writelines{3cm}
 	
 	\section*{13. Mini compression}
 	Compress the whole passage into a short note.
 	
 	\subsection*{One-line version}
-	\vspace{1.5cm}
+	\writelines{1.5cm}
 	
 	\subsection*{Three-line version}
-	\vspace{2cm}
-	
-	\bigskip
+	\writelines{2cm}
 	
 	\section*{Quick Reading Version}
 	When a full note is unnecessary, use this shortened form.
 	
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item What is this?
 		\item Why is it here?
 		\item What problem does it solve?
@@ -237,13 +249,11 @@
 		\item What will it be used for next?
 	\end{itemize}
 	
-	\bigskip
-	
 	\section*{How to use the template}
 	
 	\subsection*{For definitions}
 	Focus on:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item why this notion is needed
 		\item why these axioms are chosen
 		\item what structure the definition isolates
@@ -252,7 +262,7 @@
 	
 	\subsection*{For theorems}
 	Focus on:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item what the theorem really gives
 		\item why the hypotheses matter
 		\item whether the theorem is structural, computational, existential, or a uniqueness result
@@ -261,7 +271,7 @@
 	
 	\subsection*{For proofs}
 	Focus on:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item the strategy
 		\item the hinge step
 		\item the exact place where each hypothesis is used
@@ -270,19 +280,17 @@
 	
 	\subsection*{For examples}
 	Focus on:
-	\begin{itemize}
+	\begin{itemize}[leftmargin=2em]
 		\item what the example is illustrating
 		\item whether it shows possibility, failure, necessity, or subtlety
 		\item what general idea it is training you to detect
 	\end{itemize}
 	
-	\bigskip
-	
 	\section*{Important rule}
-	Do not write notes as a paraphrase of the paragraph alone.
+	Do not write notes as a paraphrase of the passage alone.
 	
 	Write notes as:
-	\begin{enumerate}
+	\begin{enumerate}[leftmargin=2em]
 		\item the question,
 		\item the mathematical answer,
 		\item the structural role.
@@ -290,13 +298,70 @@
 	
 	This is what keeps the note alive rather than archival.
 	
-	\bigskip
-	
 	\section*{Master reading question}
-	For every serious paragraph, ask:
+	For every serious passage, ask:
 	
 	\begin{quote}
 		\emph{What is this doing, why is it doing it now, and what breaks if it is not here?}
 	\end{quote}
+}
 
+% ---------- Compact single-entry version ----------
+\newcommand{\MathReadingEntry}[4]{
+	\section*{Reading Entry}
+	
+	\textbf{Book / Chapter / Section:} #1
+	
+	\textbf{Page / Passage:} #2
+	
+	\textbf{Topic:} #3
+	
+	\textbf{Role:} #4
+	
+	\subsection*{Hidden question}
+	\writelines{1.8cm}
+	
+	\subsection*{Content}
+	\writelines{2.5cm}
+	
+	\subsection*{Structural reading}
+	\writelines{2.5cm}
+	
+	\subsection*{Why now}
+	\writelines{1.8cm}
+	
+	\subsection*{Depends on}
+	\writelines{1.8cm}
+	
+	\subsection*{Without this}
+	\writelines{2cm}
+	
+	\subsection*{Proof strategy / mechanism}
+	\writelines{1.8cm}
+	
+	\subsection*{Logical pattern}
+	\writelines{1.8cm}
+	
+	\subsection*{Used later for}
+	\writelines{1.8cm}
+	
+	\subsection*{Open questions / discomforts}
+	\writelines{2cm}
+	
+	\subsection*{One-line version}
+	\writelines{1.2cm}
+}
+
+\begin{document}
+	
+	\MathReadingTemplate
+	
+	% Example:
+	% \newpage
+	% \MathReadingEntry
+	%   {Lang, Algebra, Chapter I}
+	%   {p. 15, Definition 2.1}
+	%   {Subgroup}
+	%   {definition}
+	
 \end{document}
