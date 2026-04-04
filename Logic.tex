@@ -725,5 +725,60 @@ M\subseteq D
 \]
 to determine which elements of \(A\cap C\) can still be the murderer, and conclude who the murderer is. As an extra question, explain why the statement “if \(x\) is the murderer, then \(x\in B\)” can be read as a containment statement between sets.
 
+To understand why the truth table of implication has the form it does, it is useful to begin not with isolated propositions \(P\) and \(Q\), but with predicates \(A(x)\) and \(B(x)\) on a universe \(U\). Define the associated subsets
+\[
+[A]=\{x\in U:A(x)\},
+\qquad
+[B]=\{x\in U:B(x)\}.
+\]
+Now the statement
+\[
+\forall x\in U,\; (A(x)\Rightarrow B(x))
+\]
+means precisely that every element satisfying \(A\) also satisfies \(B\), which is exactly the subset relation
+\[
+[A]\subseteq[B].
+\]
+Thus implication, at this level, expresses containment of one class of elements inside another. The crucial point is that such a containment fails exactly when there exists an element that belongs to \([A]\) but not to \([B]\). In symbols, the failure of
+\[
+[A]\subseteq[B]
+\]
+is the existence of some \(x\in U\) such that
+\[
+x\in[A]\land x\notin[B].
+\]
+By the definitions of \([A]\) and \([B]\), this is equivalent to
+\[
+A(x)\land \neg B(x).
+\]
+Hence the only pointwise configuration incompatible with implication is the configuration in which \(A(x)\) is true and \(B(x)\) is false. Therefore,
+\[
+A(x)\Rightarrow B(x)
+\]
+may be understood as the exclusion of the bad configuration
+\[
+A(x)\land \neg B(x),
+\]
+that is,
+\[
+A(x)\Rightarrow B(x)\iff \neg\bigl(A(x)\land \neg B(x)\bigr).
+\]
+If we now abstract away the element \(x\) and replace the predicate-values \(A(x)\) and \(B(x)\) simply by propositional variables \(P\) and \(Q\), then implication becomes
+\[
+P\Rightarrow Q\iff \neg(P\land \neg Q).
+\]
+From this, the truth table follows immediately. If \(P=\mathrm{T}\) and \(Q=\mathrm{T}\), then \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. If \(P=\mathrm{T}\) and \(Q=\mathrm{F}\), then \(P\land \neg Q\) is true, so \(P\Rightarrow Q\) is false. If \(P=\mathrm{F}\) and \(Q=\mathrm{T}\), then \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. If \(P=\mathrm{F}\) and \(Q=\mathrm{F}\), then again \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. Thus the usual truth table
+\[
+\begin{array}{c|c|c}
+	P & Q & P\Rightarrow Q\\
+	\hline
+	\mathrm{T} & \mathrm{T} & \mathrm{T}\\
+	\mathrm{T} & \mathrm{F} & \mathrm{F}\\
+	\mathrm{F} & \mathrm{T} & \mathrm{T}\\
+	\mathrm{F} & \mathrm{F} & \mathrm{T}
+\end{array}
+\]
+is not arbitrary: it is the truth-value compression of the set-theoretic fact that \([A]\subseteq[B]\) fails exactly when there exists an element in \([A]\setminus[B]\). In this way, the truth table of implication becomes conceptually clear: implication is true exactly when the bad region \([A]\setminus[B]\) is empty, and false exactly when that region contains at least one element.
+
 
 \end{document}
