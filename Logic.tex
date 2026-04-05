@@ -780,5 +780,48 @@ From this, the truth table follows immediately. If \(P=\mathrm{T}\) and \(Q=\mat
 \]
 is not arbitrary: it is the truth-value compression of the set-theoretic fact that \([A]\subseteq[B]\) fails exactly when there exists an element in \([A]\setminus[B]\). In this way, the truth table of implication becomes conceptually clear: implication is true exactly when the bad region \([A]\setminus[B]\) is empty, and false exactly when that region contains at least one element.
 
+In the logical environment adopted here, the default framework is intentionally stripped down to its structural essentials. One begins with a fixed universe of discourse \(U\), whose elements may be numbers, people, situations, objects, or any other admissible entities under consideration. Predicates such as \(A(x)\) and \(B(x)\) are then understood simply as properties that an element \(x\in U\) may or may not satisfy. From these predicates one forms the corresponding subsets
+\[
+[A]=\{x\in U:A(x)\},
+\qquad
+[B]=\{x\in U:B(x)\}.
+\]
+Thus the passage from logic to set theory is immediate: to say that \(A(x)\) holds is to say that \(x\in[A]\), and to say that \(B(x)\) holds is to say that \(x\in[B]\). In this setting, implication is interpreted not causally, physically, or narratively, but structurally. The statement
+\[
+\forall x\in U,\; (A(x)\Rightarrow B(x))
+\]
+is read as the subset relation
+\[
+[A]\subseteq[B],
+\]
+that is, every element satisfying \(A\) also satisfies \(B\). Equivalently, implication is true exactly when no element of \([A]\) lies outside \([B]\), or, in set-theoretic language,
+\[
+[A]\setminus[B]=\varnothing.
+\]
+Its failure is therefore witnessed by the existence of an element in the bad region
+\[
+[A]\setminus[B],
+\]
+namely by the existence of some \(x\in U\) such that
+\[
+A(x)\land \neg B(x).
+\]
+This shows that the truth table of implication is not arbitrary when viewed through this bridge: it is the truth-value compression of the set-theoretic fact that inclusion fails exactly when an \(A\)-element escapes \(B\).
+
+Within this framework, only two truth values are admitted, namely \(\mathrm{T}\) and \(\mathrm{F}\). No intermediate values, causal suggestions, probabilistic overtones, or external interpretations are inserted unless explicitly stated. In particular, implication is not read as physical consequence, temporal succession, or causal production. One does not interpret
+\[
+A\Rightarrow B
+\]
+as saying that \(A\) causes \(B\), but rather as saying that the \(A\)-region is contained in the \(B\)-region. This discipline removes much of the ambiguity that ordinary language introduces. Moreover, one counts only what is literally given by the hypotheses, definitions, and formal statements. If a text does not specify causality, chronology, or some external factor, then none is imported. The default reading remains strictly structural: elements, predicates, subsets, inclusion, complement, and truth values. In this way, logical implication is stabilized by set-theoretic containment, and the potentially misleading language of “consequence” is replaced by the cleaner mathematical picture of membership and inclusion.
+
+A further refinement concerns the relation between the components of an implication. At the purely propositional level, two statements \(P\) and \(Q\) need not be related in content at all; the connective \(P\Rightarrow Q\) depends only on their truth values. Thus two propositions may be semantically unrelated, yet still form a legitimate implication in propositional logic. At the predicate level, however, predicates \(A(x)\) and \(B(x)\) acquire a formal connection by being interpreted on the same universe \(U\). This common universe does not create causality between them, nor does it force a meaningful relation in content, but it does place them on the same domain of discourse and thereby makes comparison possible. Because both predicates apply to the same class of elements, one may meaningfully ask whether
+\[
+[A]\subseteq[B],
+\qquad
+[A]\cap[B]\neq\varnothing,
+\qquad
+[A]\setminus[B]=\varnothing,
+\]
+and so on. Thus the common universe \(U\) supplies the minimal structural link required for implication to be interpreted set-theoretically. In this sense, propositions may be unrelated in meaning, whereas predicates become comparable once they share a universe. This is the precise role of the domain of discourse in the present framework.
 
 \end{document}
