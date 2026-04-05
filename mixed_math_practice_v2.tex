@@ -1,0 +1,190 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=0.95in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{lastpage}
+\usepackage{needspace}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Mixed Practice Sheet -- Harder Version}
+\rhead{Page \thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+\setlist[enumerate]{itemsep=1.2em, topsep=0.5em}
+
+\newcommand{\workspace}{\vspace{2.2cm}}
+\newcommand{\smallworkspace}{\vspace{1.6cm}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Mixed Practice Sheet -- Version 2}}\\[0.4em]
+    {\large Definite Integrals, First-Order ODEs, and Laplace Transforms}\\[0.5em]
+    {\normalsize Slightly harder set with writing space}\\[0.8em]
+    \rule{0.9\textwidth}{0.6pt}
+\end{center}
+
+This version is slightly harder than the first one and leaves space under each question for handwritten work. All integrals are definite. The ODE section mixes separable, linear, exact, Bernoulli, and integrating-factor problems. The answer key starts on a new page.
+
+\section*{1. Definite integrals (20 exercises)}
+Evaluate each integral.
+
+\begin{enumerate}
+    \item $\displaystyle \int_0^1 x^2\ln(1+x)\,dx$\workspace
+    \item $\displaystyle \int_0^{\pi/2} x\cos x\,dx$\workspace
+    \item $\displaystyle \int_1^4 \frac{\sqrt{x-1}}{x}\,dx$\workspace
+    \item $\displaystyle \int_0^1 \frac{\ln(1+x)}{1+x}\,dx$\workspace
+    \item $\displaystyle \int_0^1 x^2 e^x\,dx$\workspace
+    \item $\displaystyle \int_0^{\pi/4} \frac{dx}{\cos^2 x+\sin^2 x}$\smallworkspace
+    \item $\displaystyle \int_0^2 \frac{x}{\sqrt{x^2+4}}\,dx$\workspace
+    \item $\displaystyle \int_0^1 \frac{x^3}{x^2+1}\,dx$\workspace
+    \item $\displaystyle \int_0^{\pi} \frac{dx}{2+\sin x}$\workspace
+    \item $\displaystyle \int_0^1 \frac{\arctan x}{1+x^2}\,dx$\workspace
+    \item $\displaystyle \int_0^1 \frac{x}{(x+1)^2}\,dx$\workspace
+    \item $\displaystyle \int_0^1 \sqrt{1-x}\,\ln(1-x)\,dx$\workspace
+    \item $\displaystyle \int_{-1}^1 x^2 e^x\,dx$\workspace
+    \item $\displaystyle \int_0^{\pi/2} \ln(\sin x)\,dx$\workspace
+    \item $\displaystyle \int_0^1 \frac{1-x}{1+x^2}\,dx$\workspace
+    \item $\displaystyle \int_0^1 \frac{dx}{\sqrt{x}+1}$\workspace
+    \item $\displaystyle \int_0^2 x\,|x-\tfrac12|\,dx$\workspace
+    \item $\displaystyle \int_0^1 \frac{e^x}{1+e^x}\,dx$\workspace
+    \item $\displaystyle \int_0^{\pi/2} \sin x\cos^2 x\,dx$\workspace
+    \item $\displaystyle \int_1^e \frac{1+\ln x}{x^2}\,dx$\workspace
+\end{enumerate}
+
+\section*{2. First-order ODEs (20 exercises)}
+Solve each differential equation. When an initial condition is given, determine the particular solution.
+
+\begin{enumerate}
+    \item \textbf{(Separable)} $\displaystyle \frac{dy}{dx}=\frac{xy}{1+x^2}$, \quad $y(0)=3$.\workspace
+    \item \textbf{(Separable)} $\displaystyle \frac{dy}{dx}=e^x(1+y^2)$.\workspace
+    \item \textbf{(Separable)} $\displaystyle \frac{dy}{dx}=\frac{y-1}{x+2}$, \quad $x>-2$.\workspace
+    \item \textbf{(Separable)} $\displaystyle \frac{dy}{dx}=\frac{x^2}{y^2}$, \quad $y(0)=1$.\workspace
+    \item \textbf{(Linear)} $y'+3y=6e^{-x}$, \quad $y(0)=2$.\workspace
+    \item \textbf{(Linear)} $y'-\frac{2}{x}y=x^2$, \quad $x>0$.\workspace
+    \item \textbf{(Linear)} $y'+y=x\cos x$.\workspace
+    \item \textbf{(Linear)} $y'+\frac{1}{x}y=\ln x$, \quad $x>0$, \quad $y(1)=0$.\workspace
+    \item \textbf{(Exact)} $(2x+y)\,dx+(x+2y)\,dy=0$.\workspace
+    \item \textbf{(Exact)} $(2xy+\cos x)\,dx+(x^2-\sin y)\,dy=0$.\workspace
+    \item \textbf{(Exact)} $(3x^2+2y)\,dx+(2x+4y^3)\,dy=0$, \quad $y(0)=1$.\workspace
+    \item \textbf{(Exact)} $(e^x+y)\,dx+(x+2y)\,dy=0$.\workspace
+    \item \textbf{(Bernoulli)} $y'+2y=xy^2$.\workspace
+    \item \textbf{(Bernoulli)} $y'-\frac{1}{x}y=x^2 y^3$, \quad $x>0$.\workspace
+    \item \textbf{(Bernoulli)} $y'+y=e^{-x}y^{1/2}$.\workspace
+    \item \textbf{(Bernoulli)} $y'+\frac{2}{x}y=\frac{1}{x^2}y^2$, \quad $x>0$.\workspace
+    \item \textbf{(Integrating factor)} $(y+2x)\,dx+x\,dy=0$.\workspace
+    \item \textbf{(Integrating factor)} $(2xy+x)\,dx+x^2\,dy=0$.\workspace
+    \item \textbf{(Integrating factor)} $(3y+1)\,dx+x\,dy=0$, \quad $y(1)=0$.\workspace
+    \item \textbf{(Integrating factor)} $(x+y+1)\,dx+dy=0$, \quad $y(0)=1$.\workspace
+\end{enumerate}
+
+\section*{3. Laplace transforms (20 exercises)}
+Find the Laplace transform $\mathcal{L}\{f(t)\}$ of each function.
+
+\begin{enumerate}
+    \item $f(t)=t^4$\smallworkspace
+    \item $f(t)=e^{-2t}$\smallworkspace
+    \item $f(t)=\sin(3t)$\smallworkspace
+    \item $f(t)=\cos(2t)$\smallworkspace
+    \item $f(t)=t e^{-t}$\smallworkspace
+    \item $f(t)=t^2 e^{3t}$\smallworkspace
+    \item $f(t)=e^{2t}\sin(4t)$\smallworkspace
+    \item $f(t)=e^{-t}\cos(5t)$\smallworkspace
+    \item $f(t)=\sinh(3t)$\smallworkspace
+    \item $f(t)=\cosh(2t)$\smallworkspace
+    \item $f(t)=t\sin(2t)$\smallworkspace
+    \item $f(t)=t\cos(3t)$\smallworkspace
+    \item $f(t)=3e^t-2\sin t$\smallworkspace
+    \item $f(t)=(t+1)^2$\smallworkspace
+    \item $f(t)=e^{-3t}(t^2-t+1)$\smallworkspace
+    \item $f(t)=\dfrac{\sin(at)}{a}$\smallworkspace
+    \item $f(t)=e^t\cosh t$\smallworkspace
+    \item $f(t)=\displaystyle \int_0^t u\,du$\smallworkspace
+    \item $f(t)=t^3-2t+5$\smallworkspace
+    \item $f(t)=2\cos(4t)-\sin(4t)$\smallworkspace
+\end{enumerate}
+
+\newpage
+\begin{center}
+    {\Large \textbf{Answer key -- Version 2}}\\[0.3em]
+    \rule{0.7\textwidth}{0.6pt}
+\end{center}
+
+\section*{1. Definite integrals: answers}
+\begin{enumerate}
+    \item $\displaystyle \frac{2}{3}\ln 2-\frac{5}{18}$
+    \item $\displaystyle \frac{\pi}{2}-1$
+    \item $\displaystyle \pi-2$
+    \item $\displaystyle \frac{(\ln 2)^2}{2}$
+    \item $\displaystyle e-2$
+    \item $\displaystyle \frac{\pi}{4}$
+    \item $\displaystyle 2\sqrt{2}-2$
+    \item $\displaystyle \frac{1}{2}-\frac{1}{2}\ln 2$
+    \item $\displaystyle \frac{\pi}{\sqrt{3}}-\frac{2\pi}{3}$
+    \item $\displaystyle \frac{\pi^2}{32}$
+    \item $\displaystyle \ln 2-\frac{1}{2}$
+    \item $\displaystyle -\frac{4}{9}$
+    \item $\displaystyle 2$
+    \item $\displaystyle -\frac{\pi}{2}\ln 2$
+    \item $\displaystyle \frac{\pi}{4}-\frac{1}{2}\ln 2$
+    \item $\displaystyle 2-2\ln 2$
+    \item $\displaystyle \frac{5}{3}$
+    \item $\displaystyle \ln(1+e)-1$
+    \item $\displaystyle \frac{1}{3}$
+    \item $\displaystyle 1-\frac{2}{e}$
+\end{enumerate}
+
+\section*{2. First-order ODEs: solutions}
+\begin{enumerate}
+    \item $y=3\sqrt{1+x^2}$.
+    \item $\arctan y=e^x+C$, hence $y=\tan(e^x+C)$.
+    \item $y=1+C(x+2)$.
+    \item $y^3=x^3+3$, hence $y=(x^3+3)^{1/3}$.
+    \item $y=3e^{-x}-e^{-3x}$.
+    \item $y=x^3+Cx^2$.
+    \item $y=e^{-x}\!\left(\frac{x}{2}(\sin x+\cos x)+\frac{1}{2}\sin x+C\right)$.
+    \item $y=x\left(\frac{x}{2}\ln x-\frac{x}{4}+\frac{1}{4}\right)$.
+    \item Potential: $F(x,y)=x^2+xy+y^2=C$.
+    \item Potential: $F(x,y)=x^2y+\sin x+\cos y=C$.
+    \item Potential: $F(x,y)=x^3+2xy+y^4=C$; using $y(0)=1$, $C=1$.
+    \item Potential: $F(x,y)=e^x+xy+y^2=C$.
+    \item $y=\dfrac{1}{Ce^{2x}+\frac{x}{2}-\frac14}$.
+    \item $y=\pm\dfrac{1}{x\sqrt{C-x^4}}$.
+    \item $y=\left(\dfrac{2}{3}e^{-x}+Ce^{-x/2}\right)^2$.
+    \item $y=\dfrac{1}{Cx^2+x}$.
+    \item Since $dy/dx+\frac{1}{x}y=-2$, an integrating factor is $\mu(x)=x$, and a first integral is $xy+x^2=C$.
+    \item Here $M=2xy+x$, $N=x^2$. Since $\dfrac{\partial M/\partial y-\partial N/\partial x}{N}=0$, the equation is already exact after simplification as $y'+\frac{2}{x}y=-\frac{1}{x}$ for $x\neq 0$, giving $x^2y+\frac{x^2}{2}=C$.
+    \item Writing $y'+\frac{3}{x}y=-\frac{1}{x}$, an integrating factor is $x^3$, so $x^3y+\frac{x^3}{3}=C$. Using $y(1)=0$, $C=\frac13$, hence $y=\dfrac{1-x^3}{3x^3}$.
+    \item Since $y'+y=-x-1$, we get $y=-x+Ce^{-x}$. Using $y(0)=1$, $C=1$, hence $y=1-x+e^{-x}-1=e^{-x}-x$.
+\end{enumerate}
+
+\section*{3. Laplace transforms: answers}
+\begin{enumerate}
+    \item $\displaystyle \frac{24}{s^5}$
+    \item $\displaystyle \frac{1}{s+2}$
+    \item $\displaystyle \frac{3}{s^2+9}$
+    \item $\displaystyle \frac{s}{s^2+4}$
+    \item $\displaystyle \frac{1}{(s+1)^2}$
+    \item $\displaystyle \frac{2}{(s-3)^3}$
+    \item $\displaystyle \frac{4}{(s-2)^2+16}$
+    \item $\displaystyle \frac{s+1}{(s+1)^2+25}$
+    \item $\displaystyle \frac{3}{s^2-9}$
+    \item $\displaystyle \frac{s}{s^2-4}$
+    \item $\displaystyle \frac{4s}{(s^2+4)^2}$
+    \item $\displaystyle \frac{s^2-9}{(s^2+9)^2}$
+    \item $\displaystyle \frac{3}{s-1}-\frac{2}{s^2+1}$
+    \item $\displaystyle \frac{2}{s^3}+\frac{2}{s^2}+\frac{1}{s}$
+    \item $\displaystyle \frac{2}{(s+3)^3}-\frac{1}{(s+3)^2}+\frac{1}{s+3}$
+    \item $\displaystyle \frac{1}{s^2+a^2}$
+    \item Since $e^t\cosh t=\frac{e^{2t}+1}{2}$, \quad $\displaystyle \mathcal{L}\{f(t)\}=\frac{1}{2}\left(\frac{1}{s-2}+\frac{1}{s}\right)$.
+    \item Since $\int_0^t u\,du=\frac{t^2}{2}$, \quad $\displaystyle \mathcal{L}\{f(t)\}=\frac{1}{s^3}$.
+    \item $\displaystyle \frac{6}{s^4}-\frac{2}{s^2}+\frac{5}{s}$
+    \item $\displaystyle \frac{2s}{s^2+16}-\frac{4}{s^2+16}$
+\end{enumerate}
+
+\end{document}
