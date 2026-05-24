@@ -1,0 +1,660 @@
+\documentclass{article}
+
+\input{preamble}
+
+\begin{document}
+	
+	\section{Topological Spaces and Bases}
+	
+	We begin with a set \(X\). At this stage, \(X\) is only a collection of elements. Its elements are written
+	\[
+	x\in X.
+	\]
+	A subset of \(X\) is written
+	\[
+	U\subseteq X.
+	\]
+	The collection of all subsets of \(X\) is called the power set of \(X\), and is denoted by
+	\[
+	\mathcal P(X)=\{U:U\subseteq X\}.
+	\]
+	Thus, if \(U\subseteq X\), then
+	\[
+	U\in\mathcal P(X).
+	\]
+	The basic hierarchy is therefore
+	\[
+	x\in U\subseteq X,
+	\]
+	and
+	\[
+	U\in\mathcal P(X).
+	\]
+	
+	A topology on \(X\) is a selected collection of subsets of \(X\). Formally, a topology is a collection
+	\[
+	\mathcal T\subseteq\mathcal P(X)
+	\]
+	such that
+	\[
+	\varnothing\in\mathcal T
+	\qquad\text{and}\qquad
+	X\in\mathcal T,
+	\]
+	arbitrary unions of elements of \(\mathcal T\) are again elements of \(\mathcal T\), and finite intersections of elements of \(\mathcal T\) are again elements of \(\mathcal T\). That is, if
+	\[
+	U_\alpha\in\mathcal T
+	\quad\text{for every }\alpha\in J,
+	\]
+	then
+	\[
+	\bigcup_{\alpha\in J}U_\alpha\in\mathcal T,
+	\]
+	and if
+	\[
+	U_1,\dots,U_n\in\mathcal T,
+	\]
+	then
+	\[
+	U_1\cap\cdots\cap U_n\in\mathcal T.
+	\]
+	
+	The elements of \(\mathcal T\) are called the open subsets of \(X\). Thus,
+	\[
+	U\in\mathcal T
+	\]
+	means that \(U\) is open in \(X\). The pair
+	\[
+	(X,\mathcal T)
+	\]
+	is called a topological space. Therefore, a topological space is not merely a set; it is a set equipped with a chosen collection of subsets satisfying the topology axioms:
+	\[
+	\text{topological space}=\text{set }X+\text{topology }\mathcal T.
+	\]
+	
+	The reason for introducing open sets is that they provide a way to discuss nearness, continuity, connectedness, and limits without always relying on a distance function. In a metric space, nearness is described using a distance
+	\[
+	d(x,y).
+	\]
+	In a topological space, this role is taken by the open sets. The topology tells us which subsets of \(X\) behave like open regions. These open regions are then used to define the main ideas of topology.
+	
+	For example, continuity can be defined using open sets. If
+	\[
+	f:(X,\mathcal T_X)\to(Y,\mathcal T_Y)
+	\]
+	is a function between topological spaces, then \(f\) is continuous if, for every open set \(V\in\mathcal T_Y\), the inverse image
+	\[
+	f^{-1}(V)
+	\]
+	is open in \(X\). Formally,
+	\[
+	f\text{ is continuous}
+	\iff
+	\forall V\in\mathcal T_Y,\quad f^{-1}(V)\in\mathcal T_X.
+	\]
+	Thus, open sets allow continuity to be expressed without mentioning distances, derivatives, or geometric pictures.
+	
+	Closed sets are introduced as complements of open sets. A subset \(C\subseteq X\) is called closed if
+	\[
+	X-C
+	\]
+	is open. Equivalently,
+	\[
+	C\text{ is closed}
+	\iff
+	X-C\in\mathcal T.
+	\]
+	Closed sets are useful because they capture the idea of containing boundary or limiting points. In analysis, for example, intervals such as
+	\[
+	[0,1]
+	\]
+	are closed because they contain their endpoints, while
+	\[
+	(0,1)
+	\]
+	is open because each point inside it has room around it. In topology, this intuition is abstracted: open sets describe local room around points, while closed sets describe sets that contain their limit behaviour. The exact meaning depends on the topology chosen.
+	
+	It is important to remember that openness and closedness are not absolute properties of a subset alone. They depend on the topology. The same subset \(U\subseteq X\) may be open in one topology and not open in another. Thus, the topology \(\mathcal T\) is the structure that determines which subsets count as open, and therefore which subsets count as closed.
+	
+	Instead of describing all open sets directly, one can often describe a smaller collection of basic open pieces. This leads to the concept of a basis. Let
+	\[
+	\mathcal B\subseteq\mathcal P(X)
+	\]
+	be a collection of subsets of \(X\). The elements of \(\mathcal B\) are called basis elements. Thus, if
+	\[
+	B\in\mathcal B,
+	\]
+	then
+	\[
+	B\subseteq X.
+	\]
+	The hierarchy is
+	\[
+	x\in B\subseteq X,
+	\]
+	and
+	\[
+	B\in\mathcal B\subseteq\mathcal P(X).
+	\]
+	
+	The collection \(\mathcal B\) is called a basis for a topology on \(X\) if it satisfies two conditions. First, every point of \(X\) must belong to at least one basis element:
+	\[
+	\forall x\in X,\ \exists B\in\mathcal B
+	\quad\text{such that}\quad
+	x\in B.
+	\]
+	Equivalently,
+	\[
+	X=\bigcup_{B\in\mathcal B}B.
+	\]
+	This condition says that the basis elements cover the whole set \(X\).
+	
+	Second, whenever two basis elements overlap at a point, the overlap must locally contain another basis element around that point. Formally, if
+	\[
+	B_1,B_2\in\mathcal B
+	\]
+	and
+	\[
+	x\in B_1\cap B_2,
+	\]
+	then there must exist some
+	\[
+	B_3\in\mathcal B
+	\]
+	such that
+	\[
+	x\in B_3\subseteq B_1\cap B_2.
+	\]
+	Compactly,
+	\[
+	\forall B_1,B_2\in\mathcal B,\ \forall x\in B_1\cap B_2,\ 
+	\exists B_3\in\mathcal B
+	\quad\text{such that}\quad
+	x\in B_3\subseteq B_1\cap B_2.
+	\]
+	This condition guarantees that intersections of basic open pieces behave locally like open sets.
+	
+	Once \(\mathcal B\) satisfies these two conditions, it generates a topology on \(X\). A subset \(U\subseteq X\) is open in the topology generated by \(\mathcal B\) if every point of \(U\) lies inside some basis element contained in \(U\):
+	\[
+	U\in\mathcal T_{\mathcal B}
+	\iff
+	\forall x\in U,\ \exists B\in\mathcal B
+	\quad\text{such that}\quad
+	x\in B\subseteq U.
+	\]
+	Equivalently, the topology generated by \(\mathcal B\) consists of all unions of basis elements:
+	\[
+	\mathcal T_{\mathcal B}
+	=
+	\left\{
+	\bigcup_{\alpha\in J}B_\alpha:
+	B_\alpha\in\mathcal B
+	\right\}.
+	\]
+	Thus, the basis gives the basic open pieces, and the topology consists of all sets built from those pieces by unions:
+	\[
+	\mathcal B=\text{basic open pieces},
+	\]
+	\[
+	\mathcal T_{\mathcal B}=\text{all unions of basis elements}.
+	\]
+	
+	This is analogous to the role of a basis in linear algebra. In a vector space, basis vectors generate all vectors by linear combinations. In topology, basis elements generate all open sets by unions:
+	\[
+	\text{basis vectors}
+	\longrightarrow
+	\text{all vectors by linear combinations},
+	\]
+	while
+	\[
+	\text{basis elements}
+	\longrightarrow
+	\text{all open sets by unions}.
+	\]
+	The word ``basis'' therefore indicates a smaller generating family. The operation used to generate the larger structure is different: in linear algebra it is linear combination, while in topology it is union.
+	
+	The complete hierarchy is
+	\[
+	x\in X,
+	\]
+	\[
+	U\subseteq X,
+	\]
+	\[
+	U\in\mathcal P(X),
+	\]
+	\[
+	\mathcal T\subseteq\mathcal P(X),
+	\]
+	and
+	\[
+	(X,\mathcal T)=\text{topological space}.
+	\]
+	For a basis, the corresponding hierarchy is
+	\[
+	x\in B\subseteq X,
+	\]
+	\[
+	B\in\mathcal B\subseteq\mathcal P(X),
+	\]
+	and
+	\[
+	\mathcal T_{\mathcal B}
+	=
+	\text{the topology generated by }\mathcal B.
+	\]
+	
+	In summary, a topology selects which subsets of \(X\) are open. Open sets are used to express nearness, continuity, connectedness, and limits. Closed sets are complements of open sets and are useful for describing boundary and limiting behaviour. A basis is a smaller collection of basic open subsets from which all open sets of the topology are generated by unions.
+	
+	\subsection{Example: The Finite Complement Topology}
+	
+	Let \(X\) be a set. We define a collection \(\mathcal T_f\subseteq\mathcal P(X)\) by the rule
+	\[
+	\mathcal T_f
+	=
+	\{U\subseteq X:X-U\text{ is finite or }X-U=X\}.
+	\]
+	
+	Here \(U\) is a running subset of \(X\). The expression
+	\[
+	X-U
+	\]
+	means the complement of \(U\) in \(X\):
+	\[
+	X-U=\{x\in X:x\notin U\}.
+	\]
+	
+	Thus, the rule defining \(\mathcal T_f\) says that a subset \(U\subseteq X\) is declared open if the part of \(X\) missing from \(U\) is finite, or if \(X-U=X\). The second case occurs precisely when
+	\[
+	U=\varnothing.
+	\]
+	
+	Therefore, we can also write
+	\[
+	\mathcal T_f
+	=
+	\{\varnothing\}
+	\cup
+	\{U\subseteq X:X-U\text{ is finite}\}.
+	\]
+	
+	This topology is called the finite complement topology. The important idea is that this topology is defined by a rule involving complements. A subset \(U\subseteq X\) is not tested directly by its own size, but by the size of its complement \(X-U\).
+	
+	If \(X\) is infinite, the nonempty open sets in \(\mathcal T_f\) are those subsets of \(X\) that miss only finitely many points. For example, if
+	\[
+	X=\mathbb R
+	\]
+	and
+	\[
+	U=\mathbb R-\{1,2,3\},
+	\]
+	then
+	\[
+	\mathbb R-U=\{1,2,3\},
+	\]
+	which is finite. Hence
+	\[
+	U\in\mathcal T_f.
+	\]
+	
+	On the other hand, the interval
+	\[
+	(0,1)
+	\]
+	is not open in the finite complement topology on \(\mathbb R\), because
+	\[
+	\mathbb R-(0,1)=(-\infty,0]\cup[1,\infty),
+	\]
+	which is infinite.
+	
+	We now check the required topology conditions.
+	
+	First,
+	\[
+	X\in\mathcal T_f.
+	\]
+	Indeed, if \(U=X\), then
+	\[
+	X-U=X-X=\varnothing.
+	\]
+	Since \(\varnothing\) is finite, it follows that
+	\[
+	X\in\mathcal T_f.
+	\]
+	
+	Also,
+	\[
+	\varnothing\in\mathcal T_f.
+	\]
+	Indeed, if \(U=\varnothing\), then
+	\[
+	X-U=X-\varnothing=X.
+	\]
+	Thus
+	\[
+	X-U=X,
+	\]
+	so the second part of the defining condition is satisfied. Hence
+	\[
+	\varnothing\in\mathcal T_f.
+	\]
+	
+	To prove closure under arbitrary unions, let
+	\[
+	\{U_\alpha\}_{\alpha\in J}
+	\]
+	be an indexed family of elements of \(\mathcal T_f\). We want to show that
+	\[
+	\bigcup_{\alpha\in J}U_\alpha\in\mathcal T_f.
+	\]
+	
+	If every \(U_\alpha\) is empty, then
+	\[
+	\bigcup_{\alpha\in J}U_\alpha=\varnothing,
+	\]
+	and we already know that
+	\[
+	\varnothing\in\mathcal T_f.
+	\]
+	
+	Otherwise, choose some index \(\alpha_0\in J\) such that
+	\[
+	U_{\alpha_0}\neq\varnothing.
+	\]
+	Since
+	\[
+	U_{\alpha_0}\in\mathcal T_f
+	\]
+	and \(U_{\alpha_0}\neq\varnothing\), we know that
+	\[
+	X-U_{\alpha_0}
+	\]
+	is finite.
+	
+	Now use De Morgan's law:
+	\[
+	X-\bigcup_{\alpha\in J}U_\alpha
+	=
+	\bigcap_{\alpha\in J}(X-U_\alpha).
+	\]
+	
+	Since
+	\[
+	\bigcap_{\alpha\in J}(X-U_\alpha)
+	\subseteq
+	X-U_{\alpha_0},
+	\]
+	and \(X-U_{\alpha_0}\) is finite, it follows that
+	\[
+	X-\bigcup_{\alpha\in J}U_\alpha
+	\]
+	is finite. Therefore,
+	\[
+	\bigcup_{\alpha\in J}U_\alpha\in\mathcal T_f.
+	\]
+	
+	So \(\mathcal T_f\) is closed under arbitrary unions.
+	
+	To prove closure under finite intersections, let
+	\[
+	U_1,\dots,U_n\in\mathcal T_f.
+	\]
+	We want to show that
+	\[
+	U_1\cap\cdots\cap U_n\in\mathcal T_f.
+	\]
+	
+	If one of the sets \(U_i\) is empty, then
+	\[
+	U_1\cap\cdots\cap U_n=\varnothing,
+	\]
+	and therefore
+	\[
+	U_1\cap\cdots\cap U_n\in\mathcal T_f.
+	\]
+	
+	If none of the \(U_i\)'s is empty, then for each \(i=1,\dots,n\),
+	\[
+	X-U_i
+	\]
+	is finite.
+	
+	Now use De Morgan's law:
+	\[
+	X-\bigcap_{i=1}^{n}U_i
+	=
+	\bigcup_{i=1}^{n}(X-U_i).
+	\]
+	
+	Since each \(X-U_i\) is finite, and a finite union of finite sets is finite, it follows that
+	\[
+	X-\bigcap_{i=1}^{n}U_i
+	\]
+	is finite. Therefore,
+	\[
+	\bigcap_{i=1}^{n}U_i\in\mathcal T_f.
+	\]
+	
+	So \(\mathcal T_f\) is closed under finite intersections.
+	
+	Hence
+	\[
+	\mathcal T_f
+	=
+	\{U\subseteq X:X-U\text{ is finite or }X-U=X\}
+	\]
+	is a topology on \(X\).
+	
+	The key set identities used in this example are the De Morgan laws:
+	\[
+	X-\bigcup_{\alpha\in J}U_\alpha
+	=
+	\bigcap_{\alpha\in J}(X-U_\alpha),
+	\]
+	and
+	\[
+	X-\bigcap_{i=1}^{n}U_i
+	=
+	\bigcup_{i=1}^{n}(X-U_i).
+	\]
+	
+	The conceptual takeaway is that a topology can be defined by a rule on subsets. In this case, the rule says that open sets are either empty or have finite complement in \(X\).
+	
+	\subsection{Example: Circular Regions in the Plane}
+	
+	Let
+	\[
+	X=\mathbb R^2.
+	\]
+	For a point \(p\in\mathbb R^2\) and a real number \(r>0\), define
+	\[
+	B(p,r)=\{x\in\mathbb R^2:d(x,p)<r\}.
+	\]
+	This is the open circular region, or open disk, centred at \(p\) with radius \(r\).
+	
+	Now define
+	\[
+	\mathcal B=\{B(p,r):p\in\mathbb R^2,\ r>0\}.
+	\]
+	Thus, \(\mathcal B\) is the collection of all open circular regions in the plane.
+	
+	We check that \(\mathcal B\) is a basis for a topology on \(\mathbb R^2\).
+	
+	First, every point of \(\mathbb R^2\) lies in at least one basis element. Indeed, if \(x\in\mathbb R^2\), then
+	\[
+	x\in B(x,1).
+	\]
+	Therefore,
+	\[
+	\forall x\in\mathbb R^2,\ \exists B\in\mathcal B
+	\quad\text{such that}\quad
+	x\in B.
+	\]
+	So the first basis condition holds.
+	
+	Second, suppose
+	\[
+	B(p_1,r_1),B(p_2,r_2)\in\mathcal B
+	\]
+	and
+	\[
+	x\in B(p_1,r_1)\cap B(p_2,r_2).
+	\]
+	Then
+	\[
+	d(x,p_1)<r_1
+	\qquad\text{and}\qquad
+	d(x,p_2)<r_2.
+	\]
+	Hence
+	\[
+	r_1-d(x,p_1)>0
+	\qquad\text{and}\qquad
+	r_2-d(x,p_2)>0.
+	\]
+	Choose
+	\[
+	\varepsilon
+	=
+	\frac12
+	\min\{r_1-d(x,p_1),\ r_2-d(x,p_2)\}.
+	\]
+	Then
+	\[
+	\varepsilon>0.
+	\]
+	The open disk
+	\[
+	B(x,\varepsilon)
+	\]
+	is an element of \(\mathcal B\), and it satisfies
+	\[
+	x\in B(x,\varepsilon)
+	\subseteq
+	B(p_1,r_1)\cap B(p_2,r_2).
+	\]
+	Therefore the second basis condition holds.
+	
+	Thus
+	\[
+	\mathcal B=\{B(p,r):p\in\mathbb R^2,\ r>0\}
+	\]
+	is a basis for a topology on \(\mathbb R^2\). The topology generated by this basis is the usual topology on the plane.
+	
+	The important idea is that each circular region \(B(p,r)\) is one basis element, and the whole basis \(\mathcal B\) is obtained by allowing \(p\) and \(r\) to vary.
+	
+	\subsection{Example: A Rule-Based Basis on a Finite Set}
+	
+	Let
+	\[
+	X=\{a,b,c\}.
+	\]
+	Then
+	\[
+	\mathcal P(X)
+	=
+	\{\varnothing,\{a\},\{b\},\{c\},
+	\{a,b\},\{a,c\},\{b,c\},X\}.
+	\]
+	
+	Define a collection \(\mathcal B\subseteq \mathcal P(X)\) by the rule
+	\[
+	\mathcal B=\{B\subseteq X:a\in B\}.
+	\]
+	Thus, \(\mathcal B\) is the collection of all subsets of \(X\) that contain the element \(a\). Explicitly,
+	\[
+	\mathcal B=\{\{a\},\{a,b\},\{a,c\},X\}.
+	\]
+	
+	We check that \(\mathcal B\) is a basis for a topology on \(X\).
+	
+	First, every element of \(X\) belongs to at least one element of \(\mathcal B\):
+	\[
+	a\in\{a\},
+	\]
+	\[
+	b\in\{a,b\},
+	\]
+	and
+	\[
+	c\in\{a,c\}.
+	\]
+	Therefore,
+	\[
+	\forall x\in X,\ \exists B\in\mathcal B
+	\quad\text{such that}\quad
+	x\in B.
+	\]
+	So the first basis condition holds.
+	
+	Second, take any two basis elements
+	\[
+	B_1,B_2\in\mathcal B.
+	\]
+	If
+	\[
+	x\in B_1\cap B_2,
+	\]
+	then we need to find a basis element \(B_3\in\mathcal B\) such that
+	\[
+	x\in B_3\subseteq B_1\cap B_2.
+	\]
+	
+	Since every element of \(\mathcal B\) contains \(a\), the intersection of any two elements of \(\mathcal B\) also contains \(a\). Moreover, the intersection of any two basis elements is again one of the elements of \(\mathcal B\). For example,
+	\[
+	\{a,b\}\cap\{a,c\}=\{a\},
+	\]
+	\[
+	\{a,b\}\cap X=\{a,b\},
+	\]
+	and
+	\[
+	\{a,c\}\cap X=\{a,c\}.
+	\]
+	Thus, whenever
+	\[
+	x\in B_1\cap B_2,
+	\]
+	we may choose
+	\[
+	B_3=B_1\cap B_2.
+	\]
+	Then
+	\[
+	B_3\in\mathcal B
+	\]
+	and
+	\[
+	x\in B_3\subseteq B_1\cap B_2.
+	\]
+	So the second basis condition holds.
+	
+	Therefore,
+	\[
+	\mathcal B=\{\{a\},\{a,b\},\{a,c\},X\}
+	\]
+	is a basis for a topology on \(X\).
+	
+	The topology generated by \(\mathcal B\) is the collection of all unions of basis elements:
+	\[
+	\mathcal T_{\mathcal B}
+	=
+	\{\varnothing,\{a\},\{a,b\},\{a,c\},X\}.
+	\]
+	
+	This example shows the hierarchy
+	\[
+	x\in B\subseteq X,
+	\]
+	with
+	\[
+	B\in\mathcal B\subseteq\mathcal P(X),
+	\]
+	and then
+	\[
+	\mathcal T_{\mathcal B}
+	\]
+	is generated from \(\mathcal B\) by taking unions.
+	
+
+\end{document}
