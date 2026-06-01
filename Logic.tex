@@ -3,6 +3,891 @@
 \input{preamble}
 
 \begin{document}
+	
+	\section{Basic Membership Cases}
+	
+	The guiding principle is that set operations are membership filters, while subset statements are membership implications.
+	
+	$$
+	X \subseteq Y
+	$$
+	
+	means
+	
+	$$
+	\forall x,\; x \in X \Rightarrow x \in Y.
+	$$
+	
+	So, to prove $X \subseteq Y$, we begin with an arbitrary element $x \in X$ and prove $x \in Y$.
+	
+	\subsection{Intersection}
+	
+	The intersection of two sets is defined by
+	
+	$$
+	x \in A \cap B
+	\iff
+	(x \in A \text{ and } x \in B).
+	$$
+	
+	Thus, membership in $A \cap B$ requires membership in both $A$ and $B$.
+	
+	So:
+	
+	$$
+	A \cap B \subseteq A
+	$$
+	
+	and
+	
+	$$
+	A \cap B \subseteq B.
+	$$
+	
+	\subsection{Union}
+	
+	The union of two sets is defined by
+	
+	$$
+	x \in A \cup B
+	\iff
+	(x \in A \text{ or } x \in B).
+	$$
+	
+	Thus, membership in $A \cup B$ requires membership in at least one of the two sets.
+	
+	So:
+	
+	$$
+	A \subseteq A \cup B
+	$$
+	
+	and
+	
+	$$
+	B \subseteq A \cup B.
+	$$
+	
+	The word ``or'' is inclusive: $x$ may be in $A$, in $B$, or in both.
+	
+	\subsection{Set Difference}
+	
+	The set difference $A \setminus B$ is defined by
+	
+	$$
+	x \in A \setminus B
+	\iff
+	(x \in A \text{ and } x \notin B).
+	$$
+	
+	Thus, $A \setminus B$ is the part of $A$ that remains after excluding the elements that also belong to $B$.
+	
+	So:
+	
+	$$
+	A \setminus B \subseteq A.
+	$$
+	
+	The rejected part is not all of $B$, but only the part of $A$ that lies in $B$, namely
+	
+	$$
+	A \cap B.
+	$$
+	
+	Hence $A$ splits into two parts:
+	
+	$$
+	A = (A \setminus B) \cup (A \cap B).
+	$$
+	
+	\subsection{Complement}
+	
+	If $U$ is the universe, then the complement of $A$ is
+	
+	$$
+	A^{c} = U \setminus A.
+	$$
+	
+	Thus,
+	
+	$$
+	x \in A^{c}
+	\iff
+	(x \in U \text{ and } x \notin A).
+	$$
+	
+	If the universe $U$ is understood, we write simply
+	
+	$$
+	x \in A^{c}
+	\iff
+	x \notin A.
+	$$
+	
+	\section{Full Two-Set Membership Table}
+	
+	For two sets $A$ and $B$, every element $x$ has exactly one of the following four membership statuses:
+	
+	$$
+	x \in A,\quad x \in B;
+	$$
+	
+	$$
+	x \in A,\quad x \notin B;
+	$$
+	
+	$$
+	x \notin A,\quad x \in B;
+	$$
+	
+	$$
+	x \notin A,\quad x \notin B.
+	$$
+	
+	The basic operations select regions from this table:
+	
+	$$
+	\begin{array}{c|c|c|c|c}
+		\text{Membership status} & A \cap B & A \cup B & A \setminus B & B \setminus A \\
+		\hline
+		x \in A,\; x \in B & \text{yes} & \text{yes} & \text{no} & \text{no} \\
+		x \in A,\; x \notin B & \text{no} & \text{yes} & \text{yes} & \text{no} \\
+		x \notin A,\; x \in B & \text{no} & \text{yes} & \text{no} & \text{yes} \\
+		x \notin A,\; x \notin B & \text{no} & \text{no} & \text{no} & \text{no}
+	\end{array}
+	$$
+	
+	This table is the formal replacement for a Venn diagram.
+	
+	\section{Subset Translations}
+	
+	\subsection{Subset}
+	
+	$$
+	A \subseteq B
+	$$
+	
+	means
+	
+	$$
+	\forall x,\; x \in A \Rightarrow x \in B.
+	$$
+	
+	So every element allowed by $A$ is also allowed by $B$.
+	
+	\subsection{Subset Into a Union}
+	
+	$$
+	A \subseteq B \cup C
+	$$
+	
+	means
+	
+	$$
+	\forall x,\; x \in A \Rightarrow (x \in B \text{ or } x \in C).
+	$$
+	
+	Thus every element of $A$ is covered by $B$ or by $C$.
+	
+	\subsection{Subset Into an Intersection}
+	
+	$$
+	A \subseteq B \cap C
+	$$
+	
+	means
+	
+	$$
+	\forall x,\; x \in A \Rightarrow (x \in B \text{ and } x \in C).
+	$$
+	
+	Thus every element of $A$ must belong to both $B$ and $C$.
+	
+	\subsection{Difference Subset}
+	
+	$$
+	A \setminus B \subseteq C
+	$$
+	
+	means
+	
+	$$
+	\forall x,\; (x \in A \text{ and } x \notin B) \Rightarrow x \in C.
+	$$
+	
+	Thus the part of $A$ outside $B$ must be contained in $C$.
+	
+	\section{Indexed Families of Sets}
+	
+	A family of sets is often written as
+	
+	$$
+	\mathcal{U} = \{U_\alpha\}_{\alpha \in J}.
+	$$
+	
+	Here $J$ is the index set, and each $\alpha \in J$ labels one set $U_\alpha$.
+	
+	\subsection{Big Union}
+	
+	For a family of sets $\{U_\alpha\}_{\alpha \in J}$, the union is written
+	
+	$$
+	\bigcup_{\alpha \in J} U_\alpha.
+	$$
+	
+	This is the indexed version of ordinary union.
+	
+	For finitely many sets,
+	
+	$$
+	\bigcup_{i=1}^{3} U_i
+	=
+	U_1 \cup U_2 \cup U_3.
+	$$
+	
+	Membership in a big union means membership in at least one set in the family:
+	
+	$$
+	x \in \bigcup_{\alpha \in J} U_\alpha
+	\iff
+	\exists \alpha \in J \text{ such that } x \in U_\alpha.
+	$$
+	
+	Thus, big union corresponds to the logical quantifier $\exists$.
+	
+	\subsection{Big Intersection}
+	
+	For a family of sets $\{U_\alpha\}_{\alpha \in J}$, the intersection is written
+	
+	$$
+	\bigcap_{\alpha \in J} U_\alpha.
+	$$
+	
+	For finitely many sets,
+	
+	$$
+	\bigcap_{i=1}^{3} U_i
+	=
+	U_1 \cap U_2 \cap U_3.
+	$$
+	
+	Membership in a big intersection means membership in every set in the family:
+	
+	$$
+	x \in \bigcap_{\alpha \in J} U_\alpha
+	\iff
+	\forall \alpha \in J,\; x \in U_\alpha.
+	$$
+	
+	Thus, big intersection corresponds to the logical quantifier $\forall$.
+	
+	\section{Family-Level Subset Translations}
+	
+	\subsection{Subset Into a Big Union}
+	
+	$$
+	A \subseteq \bigcup_{\alpha \in J} U_\alpha
+	$$
+	
+	means
+	
+	$$
+	\forall x,\; x \in A \Rightarrow x \in \bigcup_{\alpha \in J} U_\alpha.
+	$$
+	
+	Expanding the big union:
+	
+	$$
+	\forall x,\; x \in A \Rightarrow
+	\exists \alpha \in J \text{ such that } x \in U_\alpha.
+	$$
+	
+	Equivalently,
+	
+	$$
+	\forall x \in A,\; \exists \alpha \in J \text{ such that } x \in U_\alpha.
+	$$
+	
+	Important: the index $\alpha$ may depend on $x$.
+	
+	\subsection{Subset Into a Big Intersection}
+	
+	$$
+	A \subseteq \bigcap_{\alpha \in J} U_\alpha
+	$$
+	
+	means
+	
+	$$
+	\forall x,\; x \in A \Rightarrow x \in \bigcap_{\alpha \in J} U_\alpha.
+	$$
+	
+	Expanding the big intersection:
+	
+	$$
+	\forall x,\; x \in A \Rightarrow
+	\forall \alpha \in J,\; x \in U_\alpha.
+	$$
+	
+	Equivalently,
+	
+	$$
+	\forall x \in A,\; \forall \alpha \in J,\; x \in U_\alpha.
+	$$
+	
+	Thus every element of $A$ must belong to every set $U_\alpha$ in the family.
+	
+	\section{Core Rules}
+	
+	$$
+	\text{Union means OR.}
+	$$
+	
+	$$
+	\text{Intersection means AND.}
+	$$
+	
+	$$
+	\text{Difference means AND NOT.}
+	$$
+	
+	$$
+	\text{Big union means THERE EXISTS an index.}
+	$$
+	
+	$$
+	\text{Big intersection means FOR ALL indices.}
+	$$
+	
+	$$
+	\text{Subset means membership implication.}
+	$$
+	
+	The central rule remains:
+	
+	$$
+	X \subseteq Y
+	\quad \text{means} \quad
+	\forall x,\; x \in X \Rightarrow x \in Y.
+	$$
+	
+	\section{Set Operations and Containment}
+	
+	\subsection{Basic Distinction}
+	
+	A set operation constructs a new set.
+	
+	A set relation states a claim about sets.
+	
+	For example,
+	
+	\[
+	A \cap B
+	\]
+	
+	is a set operation, while
+	
+	\[
+	A \cap B \subseteq A
+	\]
+	
+	is a set statement.
+	
+	The operation is \(A \cap B\). The relation is \(\subseteq A\).
+	
+	\subsection{Membership Principle}
+	
+	Every set statement should first be translated into membership language.
+	
+	\[
+	X \subseteq Y
+	\]
+	
+	means
+	
+	\[
+	\forall x,\; x \in X \Rightarrow x \in Y.
+	\]
+	
+	So, to prove
+	
+	\[
+	X \subseteq Y,
+	\]
+	
+	we begin with
+	
+	\[
+	\text{Let } x \in X.
+	\]
+	
+	Then we prove
+	
+	\[
+	x \in Y.
+	\]
+	
+	This is the basic mechanical test for containment.
+	
+	\subsection{Equality of Sets}
+	
+	Set equality means mutual containment:
+	
+	\[
+	X = Y
+	\]
+	
+	means
+	
+	\[
+	X \subseteq Y
+	\quad \text{and} \quad
+	Y \subseteq X.
+	\]
+	
+	Equivalently,
+	
+	\[
+	\forall x,\; x \in X \iff x \in Y.
+	\]
+	
+	Therefore, to prove \(X = Y\), prove both containments:
+	
+	\[
+	X \subseteq Y
+	\]
+	
+	and
+	
+	\[
+	Y \subseteq X.
+	\]
+	
+	\subsection{If and Only If}
+	
+	A biconditional statement
+	
+	\[
+	P \iff Q
+	\]
+	
+	means
+	
+	\[
+	P \Rightarrow Q
+	\quad \text{and} \quad
+	Q \Rightarrow P.
+	\]
+	
+	So every statement of the form ``if and only if'' has two directions.
+	
+	\subsection{Intersection}
+	
+	The intersection of two sets is defined by the membership rule
+	
+	\[
+	x \in A \cap B
+	\iff
+	(x \in A \text{ and } x \in B).
+	\]
+	
+	So \(A \cap B\) keeps only the elements common to both \(A\) and \(B\).
+	
+	Therefore,
+	
+	\[
+	A \cap B \subseteq A
+	\]
+	
+	and
+	
+	\[
+	A \cap B \subseteq B.
+	\]
+	
+	Proof of the first containment:
+	
+	\[
+	x \in A \cap B
+	\Rightarrow
+	(x \in A \text{ and } x \in B)
+	\Rightarrow
+	x \in A.
+	\]
+	
+	Hence,
+	
+	\[
+	A \cap B \subseteq A.
+	\]
+	
+	\subsection{Union}
+	
+	The union of two sets is defined by the membership rule
+	
+	\[
+	x \in A \cup B
+	\iff
+	(x \in A \text{ or } x \in B).
+	\]
+	
+	So \(A \cup B\) collects elements from either \(A\) or \(B\).
+	
+	Therefore,
+	
+	\[
+	A \subseteq A \cup B
+	\]
+	
+	and
+	
+	\[
+	B \subseteq A \cup B.
+	\]
+	
+	Proof of the first containment:
+	
+	\[
+	x \in A
+	\Rightarrow
+	(x \in A \text{ or } x \in B)
+	\Rightarrow
+	x \in A \cup B.
+	\]
+	
+	Hence,
+	
+	\[
+	A \subseteq A \cup B.
+	\]
+	
+	\subsection{Set Difference}
+	
+	The difference of two sets is defined by
+	
+	\[
+	x \in A \setminus B
+	\iff
+	(x \in A \text{ and } x \notin B).
+	\]
+	
+	So \(A \setminus B\) keeps the elements of \(A\) that are not in \(B\).
+	
+	Therefore,
+	
+	\[
+	A \setminus B \subseteq A.
+	\]
+	
+	Proof:
+	
+	\[
+	x \in A \setminus B
+	\Rightarrow
+	(x \in A \text{ and } x \notin B)
+	\Rightarrow
+	x \in A.
+	\]
+	
+	Hence,
+	
+	\[
+	A \setminus B \subseteq A.
+	\]
+	
+	\subsection{Complement}
+	
+	If \(U\) is the universe, then the complement of \(A\) is
+	
+	\[
+	A^{c} = U \setminus A.
+	\]
+	
+	Thus,
+	
+	\[
+	x \in A^{c}
+	\iff
+	(x \in U \text{ and } x \notin A).
+	\]
+	
+	If the universe \(U\) is understood, we write simply
+	
+	\[
+	x \in A^{c}
+	\iff
+	x \notin A.
+	\]
+	
+	\subsection{Common Containment Pattern}
+	
+	Suppose
+	
+	\[
+	A \subseteq B
+	\quad \text{and} \quad
+	A \subseteq C.
+	\]
+	
+	Then
+	
+	\[
+	A \subseteq B \cap C.
+	\]
+	
+	Reason:
+	
+	\[
+	A \subseteq B
+	\]
+	
+	means
+	
+	\[
+	x \in A \Rightarrow x \in B.
+	\]
+	
+	Also,
+	
+	\[
+	A \subseteq C
+	\]
+	
+	means
+	
+	\[
+	x \in A \Rightarrow x \in C.
+	\]
+	
+	Therefore, if \(x \in A\), then \(x \in B\) and \(x \in C\). Hence,
+	
+	\[
+	x \in B \cap C.
+	\]
+	
+	So
+	
+	\[
+	x \in A \Rightarrow x \in B \cap C.
+	\]
+	
+	Therefore,
+	
+	\[
+	A \subseteq B \cap C.
+	\]
+	
+	Important: from
+	
+	\[
+	A \subseteq B
+	\quad \text{and} \quad
+	A \subseteq C,
+	\]
+	
+	we cannot conclude that
+	
+	\[
+	B \subseteq C
+	\]
+	
+	or that
+	
+	\[
+	C \subseteq B.
+	\]
+	
+	The statement only says that \(B\) and \(C\) both contain \(A\).
+	
+	\subsection{Containment Into a Union}
+	
+	If
+	
+	\[
+	A \subseteq B,
+	\]
+	
+	then
+	
+	\[
+	A \subseteq B \cup C.
+	\]
+	
+	Reason:
+	
+	\[
+	x \in A \Rightarrow x \in B.
+	\]
+	
+	Since \(x \in B\), we also have
+	
+	\[
+	x \in B \cup C.
+	\]
+	
+	Therefore,
+	
+	\[
+	x \in A \Rightarrow x \in B \cup C.
+	\]
+	
+	Hence,
+	
+	\[
+	A \subseteq B \cup C.
+	\]
+	
+	\subsection{Operation Versus Claim}
+	
+	In the statement
+	
+	\[
+	A \cap B \subseteq A,
+	\]
+	
+	the expression
+	
+	\[
+	A \cap B
+	\]
+	
+	is the operation. It constructs a new set.
+	
+	The expression
+	
+	\[
+	A \cap B \subseteq A
+	\]
+	
+	is a claim. It says that every element of \(A \cap B\) is also an element of \(A\).
+	
+	The membership proof is
+	
+	\[
+	x \in A \cap B
+	\Rightarrow
+	(x \in A \text{ and } x \in B)
+	\Rightarrow
+	x \in A.
+	\]
+	
+	Therefore,
+	
+	\[
+	A \cap B \subseteq A.
+	\]
+	
+	\subsection{Containment Before Cardinality}
+	
+	At this level, ``smaller'' and ``larger'' should first be understood through containment, not counting.
+	
+	For example,
+	
+	\[
+	A \cap B \subseteq A
+	\]
+	
+	means that \(A \cap B\) is no larger than \(A\) in the containment sense.
+	
+	Similarly,
+	
+	\[
+	A \subseteq A \cup B
+	\]
+	
+	means that \(A \cup B\) is at least as large as \(A\) in the containment sense.
+	
+	For finite sets, this later connects to cardinality:
+	
+	\[
+	|A \cap B| \leq |A|
+	\]
+	
+	and
+	
+	\[
+	|A| \leq |A \cup B|.
+	\]
+	
+	But the first idea is containment, not counting.
+	
+	\subsection{General Proof Templates}
+	
+	To prove
+	
+	\[
+	X \subseteq Y,
+	\]
+	
+	write:
+	
+	\[
+	\text{Let } x \in X.
+	\]
+	
+	Then prove
+	
+	\[
+	x \in Y.
+	\]
+	
+	To prove
+	
+	\[
+	X = Y,
+	\]
+	
+	prove both
+	
+	\[
+	X \subseteq Y
+	\]
+	
+	and
+	
+	\[
+	Y \subseteq X.
+	\]
+	
+	To prove
+	
+	\[
+	P \iff Q,
+	\]
+	
+	prove both
+	
+	\[
+	P \Rightarrow Q
+	\]
+	
+	and
+	
+	\[
+	Q \Rightarrow P.
+	\]
+	
+	\subsection{Main Rules}
+	
+	\[
+	\text{Set operations are membership rules.}
+	\]
+	
+	\[
+	\text{Set relations are claims tested by arbitrary elements.}
+	\]
+	
+	\[
+	\text{Containment means implication of membership.}
+	\]
+	
+	The central rule is
+	
+	\[
+	X \subseteq Y
+	\quad \text{means} \quad
+	x \in X \Rightarrow x \in Y.
+	\]
 	\section*{Final Skeleton for Implication}
 	
 	\subsection*{1. Universe and predicates}
@@ -560,67 +1445,113 @@
 	\[
 	[A]\setminus[B]=\varnothing.
 	\]
-\section*{Implication and Set Inclusion}
-
-Let \(U\) be a universe, and let \(A(x)\) and \(B(x)\) be predicates on \(U\). Define
-\[
-[A]:=\{x\in U: A(x)\},
-\qquad
-[B]:=\{x\in U: B(x)\}.
-\]
-
-\begin{theorem}
-	The following are equivalent:
+	\section*{Implication and Set Inclusion}
+	
+	Let \(U\) be a universe, and let \(A(x)\) and \(B(x)\) be predicates on \(U\). Define
 	\[
-	\forall x\in U,\; (A(x)\Rightarrow B(x)),
-	\]
-	\[
-	[A]\subseteq[B],
-	\]
-	\[
-	[A]\setminus[B]=\varnothing.
-	\]
-\end{theorem}
-
-\begin{proof}
-	By definition of subset,
-	\[
-	[A]\subseteq[B]
-	\iff
-	\forall x\in U,\; (x\in[A]\Rightarrow x\in[B]).
-	\]
-	Since
-	\[
-	x\in[A]\iff A(x),
+	[A]:=\{x\in U: A(x)\},
 	\qquad
-	x\in[B]\iff B(x),
-	\]
-	it follows that
-	\[
-	[A]\subseteq[B]
-	\iff
-	\forall x\in U,\; (A(x)\Rightarrow B(x)).
+	[B]:=\{x\in U: B(x)\}.
 	\]
 	
-	Also,
-	\[
-	[A]\setminus[B]
-	=
-	\{x\in U: x\in[A]\text{ and }x\notin[B]\}.
-	\]
-	Hence
-	\[
-	[A]\setminus[B]=\varnothing
-	\iff
-	\neg \exists x\in U\; (x\in[A]\land x\notin[B]).
-	\]
-	Equivalently,
-	\[
-	[A]\setminus[B]=\varnothing
-	\iff
-	\forall x\in U,\; (x\in[A]\Rightarrow x\in[B]).
-	\]
-	Therefore
+	\begin{theorem}
+		The following are equivalent:
+		\[
+		\forall x\in U,\; (A(x)\Rightarrow B(x)),
+		\]
+		\[
+		[A]\subseteq[B],
+		\]
+		\[
+		[A]\setminus[B]=\varnothing.
+		\]
+	\end{theorem}
+	
+	\begin{proof}
+		By definition of subset,
+		\[
+		[A]\subseteq[B]
+		\iff
+		\forall x\in U,\; (x\in[A]\Rightarrow x\in[B]).
+		\]
+		Since
+		\[
+		x\in[A]\iff A(x),
+		\qquad
+		x\in[B]\iff B(x),
+		\]
+		it follows that
+		\[
+		[A]\subseteq[B]
+		\iff
+		\forall x\in U,\; (A(x)\Rightarrow B(x)).
+		\]
+		
+		Also,
+		\[
+		[A]\setminus[B]
+		=
+		\{x\in U: x\in[A]\text{ and }x\notin[B]\}.
+		\]
+		Hence
+		\[
+		[A]\setminus[B]=\varnothing
+		\iff
+		\neg \exists x\in U\; (x\in[A]\land x\notin[B]).
+		\]
+		Equivalently,
+		\[
+		[A]\setminus[B]=\varnothing
+		\iff
+		\forall x\in U,\; (x\in[A]\Rightarrow x\in[B]).
+		\]
+		Therefore
+		\[
+		\forall x\in U,\; (A(x)\Rightarrow B(x))
+		\iff
+		[A]\subseteq[B]
+		\iff
+		[A]\setminus[B]=\varnothing.
+		\]
+	\end{proof}
+	
+	\begin{proposition}
+		For every \(x\in U\),
+		\[
+		A(x)\land \neg B(x)
+		\iff
+		x\in[A]\setminus[B].
+		\]
+	\end{proposition}
+	
+	\begin{proof}
+		We have
+		\[
+		A(x)\iff x\in[A],
+		\qquad
+		\neg B(x)\iff x\notin[B].
+		\]
+		Thus
+		\[
+		A(x)\land \neg B(x)
+		\iff
+		(x\in[A]\land x\notin[B]).
+		\]
+		By definition of set difference,
+		\[
+		(x\in[A]\land x\notin[B])
+		\iff
+		x\in[A]\setminus[B].
+		\]
+		Hence
+		\[
+		A(x)\land \neg B(x)
+		\iff
+		x\in[A]\setminus[B].
+		\]
+	\end{proof}
+	
+	\subsection*{Compressed form}
 	\[
 	\forall x\in U,\; (A(x)\Rightarrow B(x))
 	\iff
@@ -628,200 +1559,786 @@ Let \(U\) be a universe, and let \(A(x)\) and \(B(x)\) be predicates on \(U\). D
 	\iff
 	[A]\setminus[B]=\varnothing.
 	\]
-\end{proof}
-
-\begin{proposition}
-	For every \(x\in U\),
+	
 	\[
 	A(x)\land \neg B(x)
 	\iff
 	x\in[A]\setminus[B].
 	\]
-\end{proposition}
-
-\begin{proof}
-	We have
+	
+	\subsection*{Example}
+	
+	Consider the universe of suspects
 	\[
-	A(x)\iff x\in[A],
+	U=\{\text{Butler},\text{Gardener},\text{Maid},\text{Nephew}\}.
+	\]
+	Define the following subsets of \(U\):
+	\[
+	A=\{\text{people who had access to the study}\},\qquad
+	B=\{\text{people whose shoes were muddy}\},\qquad
+	C=\{\text{people seen near the broken window}\},\qquad
+	D=\{\text{people who knew the victim's safe code}\}.
+	\]
+	The investigation yields
+	\[
+	A=\{\text{Butler},\text{Gardener},\text{Nephew}\},\qquad
+	B=\{\text{Gardener},\text{Nephew}\},\qquad
+	C=\{\text{Gardener},\text{Maid},\text{Nephew}\},\qquad
+	D=\{\text{Butler},\text{Nephew}\}.
+	\]
+	Suppose now that the detective establishes the following facts: the murderer belonged to
+	\[
+	A\cap C,
+	\]
+	because the murderer both had access to the study and was seen near the broken window; if a suspect is the murderer, then that suspect had muddy shoes, so
+	\[
+	M\subseteq B;
+	\]
+	if a suspect is the murderer, then that suspect knew the safe code, so
+	\[
+	M\subseteq D;
+	\]
+	and there was exactly one murderer. Here \(M\) denotes the set containing the murderer. Compute first the set
+	\[
+	A\cap C.
+	\]
+	Then use the implications
+	\[
+	M\subseteq B
+	\qquad\text{and}\qquad
+	M\subseteq D
+	\]
+	to determine which elements of \(A\cap C\) can still be the murderer, and conclude who the murderer is. As an extra question, explain why the statement “if \(x\) is the murderer, then \(x\in B\)” can be read as a containment statement between sets.
+	
+	To understand why the truth table of implication has the form it does, it is useful to begin not with isolated propositions \(P\) and \(Q\), but with predicates \(A(x)\) and \(B(x)\) on a universe \(U\). Define the associated subsets
+	\[
+	[A]=\{x\in U:A(x)\},
 	\qquad
-	\neg B(x)\iff x\notin[B].
+	[B]=\{x\in U:B(x)\}.
 	\]
-	Thus
+	Now the statement
 	\[
-	A(x)\land \neg B(x)
-	\iff
-	(x\in[A]\land x\notin[B]).
+	\forall x\in U,\; (A(x)\Rightarrow B(x))
 	\]
-	By definition of set difference,
+	means precisely that every element satisfying \(A\) also satisfies \(B\), which is exactly the subset relation
 	\[
-	(x\in[A]\land x\notin[B])
-	\iff
-	x\in[A]\setminus[B].
+	[A]\subseteq[B].
 	\]
-	Hence
+	Thus implication, at this level, expresses containment of one class of elements inside another. The crucial point is that such a containment fails exactly when there exists an element that belongs to \([A]\) but not to \([B]\). In symbols, the failure of
 	\[
-	A(x)\land \neg B(x)
-	\iff
-	x\in[A]\setminus[B].
+	[A]\subseteq[B]
 	\]
-\end{proof}
-
-\subsection*{Compressed form}
-\[
-\forall x\in U,\; (A(x)\Rightarrow B(x))
-\iff
-[A]\subseteq[B]
-\iff
-[A]\setminus[B]=\varnothing.
-\]
-
-\[
-A(x)\land \neg B(x)
-\iff
-x\in[A]\setminus[B].
-\]
-
-\subsection*{Example}
-
-Consider the universe of suspects
-\[
-U=\{\text{Butler},\text{Gardener},\text{Maid},\text{Nephew}\}.
-\]
-Define the following subsets of \(U\):
-\[
-A=\{\text{people who had access to the study}\},\qquad
-B=\{\text{people whose shoes were muddy}\},\qquad
-C=\{\text{people seen near the broken window}\},\qquad
-D=\{\text{people who knew the victim's safe code}\}.
-\]
-The investigation yields
-\[
-A=\{\text{Butler},\text{Gardener},\text{Nephew}\},\qquad
-B=\{\text{Gardener},\text{Nephew}\},\qquad
-C=\{\text{Gardener},\text{Maid},\text{Nephew}\},\qquad
-D=\{\text{Butler},\text{Nephew}\}.
-\]
-Suppose now that the detective establishes the following facts: the murderer belonged to
-\[
-A\cap C,
-\]
-because the murderer both had access to the study and was seen near the broken window; if a suspect is the murderer, then that suspect had muddy shoes, so
-\[
-M\subseteq B;
-\]
-if a suspect is the murderer, then that suspect knew the safe code, so
-\[
-M\subseteq D;
-\]
-and there was exactly one murderer. Here \(M\) denotes the set containing the murderer. Compute first the set
-\[
-A\cap C.
-\]
-Then use the implications
-\[
-M\subseteq B
-\qquad\text{and}\qquad
-M\subseteq D
-\]
-to determine which elements of \(A\cap C\) can still be the murderer, and conclude who the murderer is. As an extra question, explain why the statement “if \(x\) is the murderer, then \(x\in B\)” can be read as a containment statement between sets.
-
-To understand why the truth table of implication has the form it does, it is useful to begin not with isolated propositions \(P\) and \(Q\), but with predicates \(A(x)\) and \(B(x)\) on a universe \(U\). Define the associated subsets
-\[
-[A]=\{x\in U:A(x)\},
-\qquad
-[B]=\{x\in U:B(x)\}.
-\]
-Now the statement
-\[
-\forall x\in U,\; (A(x)\Rightarrow B(x))
-\]
-means precisely that every element satisfying \(A\) also satisfies \(B\), which is exactly the subset relation
-\[
-[A]\subseteq[B].
-\]
-Thus implication, at this level, expresses containment of one class of elements inside another. The crucial point is that such a containment fails exactly when there exists an element that belongs to \([A]\) but not to \([B]\). In symbols, the failure of
-\[
-[A]\subseteq[B]
-\]
-is the existence of some \(x\in U\) such that
-\[
-x\in[A]\land x\notin[B].
-\]
-By the definitions of \([A]\) and \([B]\), this is equivalent to
-\[
-A(x)\land \neg B(x).
-\]
-Hence the only pointwise configuration incompatible with implication is the configuration in which \(A(x)\) is true and \(B(x)\) is false. Therefore,
-\[
-A(x)\Rightarrow B(x)
-\]
-may be understood as the exclusion of the bad configuration
-\[
-A(x)\land \neg B(x),
-\]
-that is,
-\[
-A(x)\Rightarrow B(x)\iff \neg\bigl(A(x)\land \neg B(x)\bigr).
-\]
-If we now abstract away the element \(x\) and replace the predicate-values \(A(x)\) and \(B(x)\) simply by propositional variables \(P\) and \(Q\), then implication becomes
-\[
-P\Rightarrow Q\iff \neg(P\land \neg Q).
-\]
-From this, the truth table follows immediately. If \(P=\mathrm{T}\) and \(Q=\mathrm{T}\), then \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. If \(P=\mathrm{T}\) and \(Q=\mathrm{F}\), then \(P\land \neg Q\) is true, so \(P\Rightarrow Q\) is false. If \(P=\mathrm{F}\) and \(Q=\mathrm{T}\), then \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. If \(P=\mathrm{F}\) and \(Q=\mathrm{F}\), then again \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. Thus the usual truth table
-\[
-\begin{array}{c|c|c}
-	P & Q & P\Rightarrow Q\\
-	\hline
-	\mathrm{T} & \mathrm{T} & \mathrm{T}\\
-	\mathrm{T} & \mathrm{F} & \mathrm{F}\\
-	\mathrm{F} & \mathrm{T} & \mathrm{T}\\
-	\mathrm{F} & \mathrm{F} & \mathrm{T}
-\end{array}
-\]
-is not arbitrary: it is the truth-value compression of the set-theoretic fact that \([A]\subseteq[B]\) fails exactly when there exists an element in \([A]\setminus[B]\). In this way, the truth table of implication becomes conceptually clear: implication is true exactly when the bad region \([A]\setminus[B]\) is empty, and false exactly when that region contains at least one element.
-
-In the logical environment adopted here, the default framework is intentionally stripped down to its structural essentials. One begins with a fixed universe of discourse \(U\), whose elements may be numbers, people, situations, objects, or any other admissible entities under consideration. Predicates such as \(A(x)\) and \(B(x)\) are then understood simply as properties that an element \(x\in U\) may or may not satisfy. From these predicates one forms the corresponding subsets
-\[
-[A]=\{x\in U:A(x)\},
-\qquad
-[B]=\{x\in U:B(x)\}.
-\]
-Thus the passage from logic to set theory is immediate: to say that \(A(x)\) holds is to say that \(x\in[A]\), and to say that \(B(x)\) holds is to say that \(x\in[B]\). In this setting, implication is interpreted not causally, physically, or narratively, but structurally. The statement
-\[
-\forall x\in U,\; (A(x)\Rightarrow B(x))
-\]
-is read as the subset relation
-\[
-[A]\subseteq[B],
-\]
-that is, every element satisfying \(A\) also satisfies \(B\). Equivalently, implication is true exactly when no element of \([A]\) lies outside \([B]\), or, in set-theoretic language,
-\[
-[A]\setminus[B]=\varnothing.
-\]
-Its failure is therefore witnessed by the existence of an element in the bad region
-\[
-[A]\setminus[B],
-\]
-namely by the existence of some \(x\in U\) such that
-\[
-A(x)\land \neg B(x).
-\]
-This shows that the truth table of implication is not arbitrary when viewed through this bridge: it is the truth-value compression of the set-theoretic fact that inclusion fails exactly when an \(A\)-element escapes \(B\).
-
-Within this framework, only two truth values are admitted, namely \(\mathrm{T}\) and \(\mathrm{F}\). No intermediate values, causal suggestions, probabilistic overtones, or external interpretations are inserted unless explicitly stated. In particular, implication is not read as physical consequence, temporal succession, or causal production. One does not interpret
-\[
-A\Rightarrow B
-\]
-as saying that \(A\) causes \(B\), but rather as saying that the \(A\)-region is contained in the \(B\)-region. This discipline removes much of the ambiguity that ordinary language introduces. Moreover, one counts only what is literally given by the hypotheses, definitions, and formal statements. If a text does not specify causality, chronology, or some external factor, then none is imported. The default reading remains strictly structural: elements, predicates, subsets, inclusion, complement, and truth values. In this way, logical implication is stabilized by set-theoretic containment, and the potentially misleading language of “consequence” is replaced by the cleaner mathematical picture of membership and inclusion.
-
-A further refinement concerns the relation between the components of an implication. At the purely propositional level, two statements \(P\) and \(Q\) need not be related in content at all; the connective \(P\Rightarrow Q\) depends only on their truth values. Thus two propositions may be semantically unrelated, yet still form a legitimate implication in propositional logic. At the predicate level, however, predicates \(A(x)\) and \(B(x)\) acquire a formal connection by being interpreted on the same universe \(U\). This common universe does not create causality between them, nor does it force a meaningful relation in content, but it does place them on the same domain of discourse and thereby makes comparison possible. Because both predicates apply to the same class of elements, one may meaningfully ask whether
-\[
-[A]\subseteq[B],
-\qquad
-[A]\cap[B]\neq\varnothing,
-\qquad
-[A]\setminus[B]=\varnothing,
-\]
-and so on. Thus the common universe \(U\) supplies the minimal structural link required for implication to be interpreted set-theoretically. In this sense, propositions may be unrelated in meaning, whereas predicates become comparable once they share a universe. This is the precise role of the domain of discourse in the present framework.
+	is the existence of some \(x\in U\) such that
+	\[
+	x\in[A]\land x\notin[B].
+	\]
+	By the definitions of \([A]\) and \([B]\), this is equivalent to
+	\[
+	A(x)\land \neg B(x).
+	\]
+	Hence the only pointwise configuration incompatible with implication is the configuration in which \(A(x)\) is true and \(B(x)\) is false. Therefore,
+	\[
+	A(x)\Rightarrow B(x)
+	\]
+	may be understood as the exclusion of the bad configuration
+	\[
+	A(x)\land \neg B(x),
+	\]
+	that is,
+	\[
+	A(x)\Rightarrow B(x)\iff \neg\bigl(A(x)\land \neg B(x)\bigr).
+	\]
+	If we now abstract away the element \(x\) and replace the predicate-values \(A(x)\) and \(B(x)\) simply by propositional variables \(P\) and \(Q\), then implication becomes
+	\[
+	P\Rightarrow Q\iff \neg(P\land \neg Q).
+	\]
+	From this, the truth table follows immediately. If \(P=\mathrm{T}\) and \(Q=\mathrm{T}\), then \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. If \(P=\mathrm{T}\) and \(Q=\mathrm{F}\), then \(P\land \neg Q\) is true, so \(P\Rightarrow Q\) is false. If \(P=\mathrm{F}\) and \(Q=\mathrm{T}\), then \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. If \(P=\mathrm{F}\) and \(Q=\mathrm{F}\), then again \(P\land \neg Q\) is false, so \(P\Rightarrow Q\) is true. Thus the usual truth table
+	\[
+	\begin{array}{c|c|c}
+		P & Q & P\Rightarrow Q\\
+		\hline
+		\mathrm{T} & \mathrm{T} & \mathrm{T}\\
+		\mathrm{T} & \mathrm{F} & \mathrm{F}\\
+		\mathrm{F} & \mathrm{T} & \mathrm{T}\\
+		\mathrm{F} & \mathrm{F} & \mathrm{T}
+	\end{array}
+	\]
+	is not arbitrary: it is the truth-value compression of the set-theoretic fact that \([A]\subseteq[B]\) fails exactly when there exists an element in \([A]\setminus[B]\). In this way, the truth table of implication becomes conceptually clear: implication is true exactly when the bad region \([A]\setminus[B]\) is empty, and false exactly when that region contains at least one element.
+	
+	In the logical environment adopted here, the default framework is intentionally stripped down to its structural essentials. One begins with a fixed universe of discourse \(U\), whose elements may be numbers, people, situations, objects, or any other admissible entities under consideration. Predicates such as \(A(x)\) and \(B(x)\) are then understood simply as properties that an element \(x\in U\) may or may not satisfy. From these predicates one forms the corresponding subsets
+	\[
+	[A]=\{x\in U:A(x)\},
+	\qquad
+	[B]=\{x\in U:B(x)\}.
+	\]
+	Thus the passage from logic to set theory is immediate: to say that \(A(x)\) holds is to say that \(x\in[A]\), and to say that \(B(x)\) holds is to say that \(x\in[B]\). In this setting, implication is interpreted not causally, physically, or narratively, but structurally. The statement
+	\[
+	\forall x\in U,\; (A(x)\Rightarrow B(x))
+	\]
+	is read as the subset relation
+	\[
+	[A]\subseteq[B],
+	\]
+	that is, every element satisfying \(A\) also satisfies \(B\). Equivalently, implication is true exactly when no element of \([A]\) lies outside \([B]\), or, in set-theoretic language,
+	\[
+	[A]\setminus[B]=\varnothing.
+	\]
+	Its failure is therefore witnessed by the existence of an element in the bad region
+	\[
+	[A]\setminus[B],
+	\]
+	namely by the existence of some \(x\in U\) such that
+	\[
+	A(x)\land \neg B(x).
+	\]
+	This shows that the truth table of implication is not arbitrary when viewed through this bridge: it is the truth-value compression of the set-theoretic fact that inclusion fails exactly when an \(A\)-element escapes \(B\).
+	
+	Within this framework, only two truth values are admitted, namely \(\mathrm{T}\) and \(\mathrm{F}\). No intermediate values, causal suggestions, probabilistic overtones, or external interpretations are inserted unless explicitly stated. In particular, implication is not read as physical consequence, temporal succession, or causal production. One does not interpret
+	\[
+	A\Rightarrow B
+	\]
+	as saying that \(A\) causes \(B\), but rather as saying that the \(A\)-region is contained in the \(B\)-region. This discipline removes much of the ambiguity that ordinary language introduces. Moreover, one counts only what is literally given by the hypotheses, definitions, and formal statements. If a text does not specify causality, chronology, or some external factor, then none is imported. The default reading remains strictly structural: elements, predicates, subsets, inclusion, complement, and truth values. In this way, logical implication is stabilized by set-theoretic containment, and the potentially misleading language of “consequence” is replaced by the cleaner mathematical picture of membership and inclusion.
+	
+	A further refinement concerns the relation between the components of an implication. At the purely propositional level, two statements \(P\) and \(Q\) need not be related in content at all; the connective \(P\Rightarrow Q\) depends only on their truth values. Thus two propositions may be semantically unrelated, yet still form a legitimate implication in propositional logic. At the predicate level, however, predicates \(A(x)\) and \(B(x)\) acquire a formal connection by being interpreted on the same universe \(U\). This common universe does not create causality between them, nor does it force a meaningful relation in content, but it does place them on the same domain of discourse and thereby makes comparison possible. Because both predicates apply to the same class of elements, one may meaningfully ask whether
+	\[
+	[A]\subseteq[B],
+	\qquad
+	[A]\cap[B]\neq\varnothing,
+	\qquad
+	[A]\setminus[B]=\varnothing,
+	\]
+	and so on. Thus the common universe \(U\) supplies the minimal structural link required for implication to be interpreted set-theoretically. In this sense, propositions may be unrelated in meaning, whereas predicates become comparable once they share a universe. This is the precise role of the domain of discourse in the present framework.
+	
+	\section{Set-Theoretic Tools Needed for Topology}
+	
+	This section collects the set-theoretic mechanisms that appear constantly in topology, especially in the study of open sets, closed sets, bases, indexed families of sets, complements, and inverse images.
+	
+	\subsection{Topology as a Collection of Subsets}
+	
+	Let \(X\) be a set. A topology on \(X\) is a collection \(\mathcal{T}\) of subsets of \(X\).
+	
+	Thus,
+	
+	$$
+	\mathcal{T}\subseteq \mathcal{P}(X),
+	$$
+	
+	where \(\mathcal{P}(X)\) denotes the power set of \(X\).
+	
+	Elements of \(\mathcal{T}\) are themselves sets. If \(U\in\mathcal{T}\), then \(U\subseteq X\), and \(U\) is called an open set.
+	
+	There are two levels of membership:
+	
+	$$
+	x\in U
+	$$
+	
+	means \(x\) is an element of the set \(U\), while
+	
+	$$
+	U\in\mathcal{T}
+	$$
+	
+	means \(U\) is one of the open sets in the topology.
+	
+	So:
+	
+	$$
+	x\in U\subseteq X
+	$$
+	
+	is element-level membership, while
+	
+	$$
+	U\in\mathcal{T}\subseteq\mathcal{P}(X)
+	$$
+	
+	is set-level membership.
+	
+	\subsection{Power Set}
+	
+	The power set of \(X\) is the set of all subsets of \(X\):
+	
+	$$
+	\mathcal{P}(X)=\{A:A\subseteq X\}.
+	$$
+	
+	Therefore,
+	
+	$$
+	A\in\mathcal{P}(X)
+	\iff
+	A\subseteq X.
+	$$
+	
+	A topology \(\mathcal{T}\) is not usually all of \(\mathcal{P}(X)\). It is a selected collection of subsets of \(X\) satisfying the topology axioms.
+	
+	\subsection{Topology Axioms}
+	
+	A collection \(\mathcal{T}\subseteq\mathcal{P}(X)\) is a topology on \(X\) if:
+	
+	$$
+	\varnothing\in\mathcal{T}
+	\quad\text{and}\quad
+	X\in\mathcal{T};
+	$$
+	
+	if \(\{U_\alpha\}_{\alpha\in J}\) is any family of elements of \(\mathcal{T}\), then
+	
+	$$
+	\bigcup_{\alpha\in J}U_\alpha\in\mathcal{T};
+	$$
+	
+	and if \(U_1,\ldots,U_n\in\mathcal{T}\), then
+	
+	$$
+	\bigcap_{i=1}^{n}U_i\in\mathcal{T}.
+	$$
+	
+	So topology allows arbitrary unions but only finite intersections.
+	
+	This distinction is essential.
+	
+	\subsection{Open Sets}
+	
+	If \((X,\mathcal{T})\) is a topological space, then a subset \(U\subseteq X\) is open exactly when
+	
+	$$
+	U\in\mathcal{T}.
+	$$
+	
+	So ``open'' is not an intrinsic property of \(U\) alone. It depends on the chosen topology \(\mathcal{T}\).
+	
+	The same subset may be open in one topology and not open in another.
+	
+	\subsection{Closed Sets}
+	
+	A subset \(F\subseteq X\) is closed if its complement in \(X\) is open:
+	
+	$$
+	F\text{ is closed}
+	\iff
+	X\setminus F\in\mathcal{T}.
+	$$
+	
+	Thus, closedness is defined through openness and complement.
+	
+	Important:
+	
+	$$
+	\text{closed does not mean not open.}
+	$$
+	
+	A set can be open and closed, or neither open nor closed, depending on the topology.
+	
+	\subsection{Complement Relative to the Ambient Space}
+	
+	In topology, complements are usually taken relative to the ambient set \(X\).
+	
+	Thus, if \(A\subseteq X\), then
+	
+	$$
+	A^c=X\setminus A.
+	$$
+	
+	So,
+	
+	$$
+	x\in A^c
+	\iff
+	x\in X \text{ and } x\notin A.
+	$$
+	
+	If \(X\) is understood, one often writes simply
+	
+	$$
+	x\in A^c
+	\iff
+	x\notin A.
+	$$
+	
+	\subsection{Indexed Unions}
+	
+	Let \(\{U_\alpha\}_{\alpha\in J}\) be a family of subsets of \(X\).
+	
+	The indexed union is
+	
+	$$
+	\bigcup_{\alpha\in J}U_\alpha.
+	$$
+	
+	Membership is defined by
+	
+	$$
+	x\in\bigcup_{\alpha\in J}U_\alpha
+	\iff
+	\exists \alpha\in J \text{ such that } x\in U_\alpha.
+	$$
+	
+	So a big union corresponds to the existential quantifier:
+	
+	$$
+	\bigcup \quad \leftrightarrow \quad \exists.
+	$$
+	
+	In topology, arbitrary unions of open sets are open:
+	
+	$$
+	U_\alpha\in\mathcal{T}\text{ for all }\alpha\in J
+	\quad\Rightarrow\quad
+	\bigcup_{\alpha\in J}U_\alpha\in\mathcal{T}.
+	$$
+	
+	\subsection{Indexed Intersections}
+	
+	Let \(\{U_\alpha\}_{\alpha\in J}\) be a family of subsets of \(X\).
+	
+	The indexed intersection is
+	
+	$$
+	\bigcap_{\alpha\in J}U_\alpha.
+	$$
+	
+	Membership is defined by
+	
+	$$
+	x\in\bigcap_{\alpha\in J}U_\alpha
+	\iff
+	\forall \alpha\in J,\; x\in U_\alpha.
+	$$
+	
+	So a big intersection corresponds to the universal quantifier:
+	
+	$$
+	\bigcap \quad \leftrightarrow \quad \forall.
+	$$
+	
+	In topology, only finite intersections of open sets are required to be open:
+	
+	$$
+	U_1,\ldots,U_n\in\mathcal{T}
+	\quad\Rightarrow\quad
+	\bigcap_{i=1}^{n}U_i\in\mathcal{T}.
+	$$
+	
+	An arbitrary intersection of open sets need not be open.
+	
+	\subsection{De Morgan Laws for Families}
+	
+	For a family of subsets \(\{A_\alpha\}_{\alpha\in J}\) of \(X\), complements are taken in \(X\).
+	
+	The complement of a union is the intersection of the complements:
+	
+	$$
+	X\setminus\bigcup_{\alpha\in J}A_\alpha
+	=
+	\bigcap_{\alpha\in J}(X\setminus A_\alpha).
+	$$
+	
+	Membership proof:
+	
+	$$
+	x\in X\setminus\bigcup_{\alpha\in J}A_\alpha
+	$$
+	
+	means
+	
+	$$
+	x\notin\bigcup_{\alpha\in J}A_\alpha.
+	$$
+	
+	This means
+	
+	$$
+	\text{there is no }\alpha\in J\text{ such that }x\in A_\alpha.
+	$$
+	
+	Equivalently,
+	
+	$$
+	\forall \alpha\in J,\; x\notin A_\alpha.
+	$$
+	
+	Thus,
+	
+	$$
+	\forall \alpha\in J,\; x\in X\setminus A_\alpha.
+	$$
+	
+	Therefore,
+	
+	$$
+	x\in\bigcap_{\alpha\in J}(X\setminus A_\alpha).
+	$$
+	
+	The complement of an intersection is the union of the complements:
+	
+	$$
+	X\setminus\bigcap_{\alpha\in J}A_\alpha
+	=
+	\bigcup_{\alpha\in J}(X\setminus A_\alpha).
+	$$
+	
+	Membership proof:
+	
+	$$
+	x\in X\setminus\bigcap_{\alpha\in J}A_\alpha
+	$$
+	
+	means
+	
+	$$
+	x\notin\bigcap_{\alpha\in J}A_\alpha.
+	$$
+	
+	This means
+	
+	$$
+	\text{not every }A_\alpha\text{ contains }x.
+	$$
+	
+	Equivalently,
+	
+	$$
+	\exists \alpha\in J\text{ such that }x\notin A_\alpha.
+	$$
+	
+	Thus,
+	
+	$$
+	\exists \alpha\in J\text{ such that }x\in X\setminus A_\alpha.
+	$$
+	
+	Therefore,
+	
+	$$
+	x\in\bigcup_{\alpha\in J}(X\setminus A_\alpha).
+	$$
+	
+	\subsection{Open and Closed Set Duality}
+	
+	Using De Morgan's laws, the topology axioms for open sets translate into dual statements for closed sets.
+	
+	If \(\{F_\alpha\}_{\alpha\in J}\) is any family of closed subsets of \(X\), then
+	
+	$$
+	\bigcap_{\alpha\in J}F_\alpha
+	$$
+	
+	is closed.
+	
+	Reason:
+	
+	$$
+	X\setminus\bigcap_{\alpha\in J}F_\alpha
+	=
+	\bigcup_{\alpha\in J}(X\setminus F_\alpha).
+	$$
+	
+	Since each \(F_\alpha\) is closed, each \(X\setminus F_\alpha\) is open. An arbitrary union of open sets is open. Therefore the complement of the intersection is open, so the intersection is closed.
+	
+	If \(F_1,\ldots,F_n\) are closed, then
+	
+	$$
+	\bigcup_{i=1}^{n}F_i
+	$$
+	
+	is closed.
+	
+	Reason:
+	
+	$$
+	X\setminus\bigcup_{i=1}^{n}F_i
+	=
+	\bigcap_{i=1}^{n}(X\setminus F_i).
+	$$
+	
+	Each \(X\setminus F_i\) is open, and finite intersections of open sets are open. Therefore the complement is open, so the union is closed.
+	
+	Thus:
+	
+	$$
+	\text{open sets: arbitrary unions, finite intersections;}
+	$$
+	
+	$$
+	\text{closed sets: arbitrary intersections, finite unions.}
+	$$
+	
+	\subsection{Basis for a Topology}
+	
+	Let \(X\) be a set. A basis \(\mathcal{B}\) for a topology on \(X\) is a collection of subsets of \(X\) such that:
+	
+	For every \(x\in X\), there exists \(B\in\mathcal{B}\) such that
+	
+	$$
+	x\in B.
+	$$
+	
+	And if \(x\in B_1\cap B_2\), where \(B_1,B_2\in\mathcal{B}\), then there exists \(B_3\in\mathcal{B}\) such that
+	
+	$$
+	x\in B_3\subseteq B_1\cap B_2.
+	$$
+	
+	The first condition says that the basis covers \(X\):
+	
+	$$
+	X=\bigcup_{B\in\mathcal{B}}B.
+	$$
+	
+	The second condition says that whenever two basis elements overlap at \(x\), there is a smaller basis element around \(x\) contained inside their overlap.
+	
+	\subsection{Topology Generated by a Basis}
+	
+	Given a basis \(\mathcal{B}\) on \(X\), the topology generated by \(\mathcal{B}\) is the collection of all subsets \(U\subseteq X\) such that for every \(x\in U\), there exists \(B\in\mathcal{B}\) satisfying
+	
+	$$
+	x\in B\subseteq U.
+	$$
+	
+	Symbolically,
+	
+	$$
+	U\text{ is open}
+	\iff
+	\forall x\in U,\; \exists B\in\mathcal{B}\text{ such that }x\in B\subseteq U.
+	$$
+	
+	So openness in a basis-generated topology is a local membership condition: each point of \(U\) must lie in some basis element that stays inside \(U\).
+	
+	\subsection{Subspace Topology}
+	
+	If \(Y\subseteq X\) and \((X,\mathcal{T})\) is a topological space, then the subspace topology on \(Y\) is
+	
+	$$
+	\mathcal{T}_Y=\{Y\cap U:U\in\mathcal{T}\}.
+	$$
+	
+	A subset \(V\subseteq Y\) is open in the subspace \(Y\) if and only if there exists an open set \(U\subseteq X\) such that
+	
+	$$
+	V=Y\cap U.
+	$$
+	
+	Important distinction:
+	
+	$$
+	V\text{ open in }Y
+	$$
+	
+	does not necessarily mean
+	
+	$$
+	V\text{ open in }X.
+	$$
+	
+	It means \(V\) is the intersection of \(Y\) with some open set of \(X\).
+	
+	\subsection{Interior, Closure, and Boundary}
+	
+	For a subset \(A\subseteq X\), the interior of \(A\), denoted \(\operatorname{Int}(A)\), is the union of all open sets contained in \(A\):
+	
+	$$
+	\operatorname{Int}(A)
+	=
+	\bigcup\{U\in\mathcal{T}:U\subseteq A\}.
+	$$
+	
+	Thus,
+	
+	$$
+	x\in\operatorname{Int}(A)
+	$$
+	
+	means there exists an open set \(U\) such that
+	
+	$$
+	x\in U\subseteq A.
+	$$
+	
+	The closure of \(A\), denoted \(\overline{A}\), is the intersection of all closed sets containing \(A\):
+	
+	$$
+	\overline{A}
+	=
+	\bigcap\{F\subseteq X:F\text{ is closed and }A\subseteq F\}.
+	$$
+	
+	Thus,
+	
+	$$
+	x\in\overline{A}
+	$$
+	
+	means \(x\) lies in every closed set that contains \(A\).
+	
+	The boundary of \(A\), denoted \(\partial A\), is
+	
+	$$
+	\partial A=\overline{A}\setminus \operatorname{Int}(A).
+	$$
+	
+	So boundary points are points in the closure of \(A\) that are not in the interior of \(A\).
+	
+	\subsection{Image and Inverse Image}
+	
+	Let \(f:X\to Y\) be a function.
+	
+	If \(A\subseteq X\), the image of \(A\) is
+	
+	$$
+	f(A)=\{f(x):x\in A\}.
+	$$
+	
+	Membership in the image means
+	
+	$$
+	y\in f(A)
+	\iff
+	\exists x\in A\text{ such that }f(x)=y.
+	$$
+	
+	If \(B\subseteq Y\), the inverse image of \(B\) is
+	
+	$$
+	f^{-1}(B)=\{x\in X:f(x)\in B\}.
+	$$
+	
+	Membership in the inverse image means
+	
+	$$
+	x\in f^{-1}(B)
+	\iff
+	f(x)\in B.
+	$$
+	
+	Inverse images are especially important in topology because continuity is defined by them.
+	
+	\subsection{Continuity in Topology}
+	
+	A function
+	
+	$$
+	f:X\to Y
+	$$
+	
+	between topological spaces is continuous if for every open set \(V\subseteq Y\),
+	
+	$$
+	f^{-1}(V)
+	$$
+	
+	is open in \(X\).
+	
+	Symbolically,
+	
+	$$
+	V\in\mathcal{T}_Y
+	\Rightarrow
+	f^{-1}(V)\in\mathcal{T}_X.
+	$$
+	
+	So continuity is the preservation of openness under inverse image.
+	
+	Important: continuity is not defined by direct images of open sets. It is defined by inverse images.
+	
+	\subsection{Useful Inverse Image Laws}
+	
+	For a function \(f:X\to Y\) and subsets \(B,C\subseteq Y\),
+	
+	$$
+	f^{-1}(B\cup C)=f^{-1}(B)\cup f^{-1}(C),
+	$$
+	
+	$$
+	f^{-1}(B\cap C)=f^{-1}(B)\cap f^{-1}(C),
+	$$
+	
+	and
+	
+	$$
+	f^{-1}(Y\setminus B)=X\setminus f^{-1}(B).
+	$$
+	
+	More generally, for a family \(\{B_\alpha\}_{\alpha\in J}\) of subsets of \(Y\),
+	
+	$$
+	f^{-1}\left(\bigcup_{\alpha\in J}B_\alpha\right)
+	=
+	\bigcup_{\alpha\in J}f^{-1}(B_\alpha),
+	$$
+	
+	and
+	
+	$$
+	f^{-1}\left(\bigcap_{\alpha\in J}B_\alpha\right)
+	=
+	\bigcap_{\alpha\in J}f^{-1}(B_\alpha).
+	$$
+	
+	\subsection{Topology Proof Skeletons}
+	
+	To prove a set is open directly from a topology, show that it belongs to \(\mathcal{T}\).
+	
+	To prove a set is closed, show that its complement in \(X\) is open.
+	
+	To prove \(U\) is open using a basis, let \(x\in U\), then find \(B\in\mathcal{B}\) such that
+	
+	$$
+	x\in B\subseteq U.
+	$$
+	
+	To prove a function \(f:X\to Y\) is continuous, let \(V\subseteq Y\) be open, then prove
+	
+	$$
+	f^{-1}(V)
+	$$
+	
+	is open in \(X\).
+	
+	To prove equality of sets, prove both inclusions.
+	
+	To prove inclusion, let \(x\) belong to the left side and prove it belongs to the right side.
+	
+	\subsection{Topology Reference Rules}
+	
+	$$
+	U\in\mathcal{T}
+	\quad\text{means}\quad
+	U\text{ is open.}
+	$$
+	
+	$$
+	F\text{ is closed}
+	\quad\text{means}\quad
+	X\setminus F\in\mathcal{T}.
+	$$
+	
+	$$
+	x\in\bigcup_{\alpha\in J}U_\alpha
+	\quad\text{means}\quad
+	\exists \alpha\in J\text{ such that }x\in U_\alpha.
+	$$
+	
+	$$
+	x\in\bigcap_{\alpha\in J}U_\alpha
+	\quad\text{means}\quad
+	\forall \alpha\in J,\; x\in U_\alpha.
+	$$
+	
+	$$
+	U\text{ is open from a basis }\mathcal{B}
+	\quad\text{means}\quad
+	\forall x\in U,\; \exists B\in\mathcal{B}\text{ such that }x\in B\subseteq U.
+	$$
+	
+	$$
+	f\text{ is continuous}
+	\quad\text{means}\quad
+	V\text{ open in }Y\Rightarrow f^{-1}(V)\text{ open in }X.
+	$$
+	
+	The central topology habit is to translate every statement into membership, subset, union, intersection, complement, and inverse image language.
 
 \end{document}
